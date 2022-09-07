@@ -35,7 +35,7 @@
          <children>
             <VBox prefHeight="300.0" prefWidth="2769.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Foglalások">
+                  <Button layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#reservation_btn" prefHeight="4000.0" prefWidth="4000.0" text="Foglalások">
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.ReservationCon">
+   <children>
+      <BorderPane layoutX="192.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <TableView fx:id="booking_TW" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="id_TC" prefWidth="75.0" text="Foglalás azonosító" />
+                <TableColumn fx:id="uid_TC" prefWidth="75.0" text="Név" />
+                  <TableColumn fx:id="vehiclei_TC" prefWidth="75.0" text="Gépjármű" />
+                  <TableColumn fx:id="borrowstart_TC" prefWidth="75.0" text="Kezdete" />
+                  <TableColumn fx:id="borrowend_TC" prefWidth="75.0" text="Vége" />
+                  <TableColumn fx:id="idcard_TC" prefWidth="75.0" text="Szig-szám" />
+                  <TableColumn fx:id="price_TC" prefWidth="75.0" text="Fizetendő" />
+                  <TableColumn fx:id="status_TC" minWidth="-Infinity" prefWidth="75.0" text="Állapot" />
+              </columns>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

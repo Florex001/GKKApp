@@ -24,10 +24,8 @@ public class LoginCon implements Initializable {
 
     public static String uName;
     public static String pass;
-
     public static String global_rank;
     public static Stage welcome_window;
-
     @FXML
     private TextField uname_textfield;
     @FXML
@@ -42,7 +40,7 @@ public class LoginCon implements Initializable {
     @FXML
     private void exit_btn(){
         System.exit(0);
-    }
+    }//rendszerből való kilépés
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,7 +64,7 @@ public class LoginCon implements Initializable {
             try {//létrehozzuk a kapcsolatot az adatbázissal és le kérdezzük az adatokat
                 Connection con = DBConnector.getConnection();
 
-                ResultSet login = con.createStatement().executeQuery("SELECT * FROM user WHERE username = ('"+ username +"' AND password = '"+ password +"');");
+                ResultSet login = con.createStatement().executeQuery("SELECT * FROM user WHERE username = ('"+ username +"') AND password = ('"+ password +"');");
 
                 if (login.next()){
                     ResultSet rank = con.createStatement().executeQuery("SELECT rank FROM `user` WHERE (username = '"+ username +"')");
@@ -121,6 +119,6 @@ public class LoginCon implements Initializable {
                 no_connection.show();
             }
         }
-    }
+    }//bejelentkezés
 
 }

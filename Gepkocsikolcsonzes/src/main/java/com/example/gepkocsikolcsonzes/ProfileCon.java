@@ -3,34 +3,100 @@ package com.example.gepkocsikolcsonzes;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
-
-import static com.example.gepkocsikolcsonzes.GKKApp.login_window;
 
 public class ProfileCon implements Initializable {
     @FXML
     private Label mail_lab;
-
     @FXML
     private Label name_lab;
-
     @FXML
     private Label phonenum_lab;
-
     @FXML
     private Label rank_lab;
-
     @FXML
     private Label registrationdate_lab;
-
     @FXML
     private Label username_lab;
+
+    @FXML
+    private Label new_pass_lbl;
+
+    @FXML
+    private PasswordField new_PF_fx;
+
+    @FXML
+    private Button new_pass_fx_btn;
+
+    @FXML
+    private void new_pass_change_btn(){
+        new_pass_lbl.setVisible(true);
+        new_PF_fx.setVisible(true);
+        new_pass_fx_btn.setVisible(true);
+    }
+
+    @FXML
+    private void new_pass_ok_btn(){
+        if (new_PF_fx.equals("")){
+            Alert empty_new_pass_alert = new Alert(Alert.AlertType.INFORMATION);//hiba ablak jelenik meg a nem megadott információ miatt
+            empty_new_pass_alert.setTitle("Hiba!");
+            empty_new_pass_alert.setHeaderText("Adjon meg egy jelszót!");
+            empty_new_pass_alert.setContentText("Próbálja újra!");
+            empty_new_pass_alert.initOwner(WelcomeCon.profile_window);
+            empty_new_pass_alert.show();
+        }else {
+            try {
+                Connection con = DBConnector.getConnection();
+
+                Statement st = con.createStatement();
+
+                String pass_change_sql = ("UPDATE `user` SET `password` = '" + new_PF_fx.getText() + "' WHERE username = '" + LoginCon.uName + "';");
+
+                int i = st.executeUpdate(pass_change_sql);
+
+                if (i == 1){
+                    Alert done_new_pass_alert = new Alert(Alert.AlertType.INFORMATION);//hiba ablak jelenik meg a nem megadott információ miatt
+                    done_new_pass_alert.setTitle("");
+                    done_new_pass_alert.setHeaderText("Jelszava megváltozott");
+                    done_new_pass_alert.setContentText("Gratulálunk!");
+                    done_new_pass_alert.initOwner(WelcomeCon.profile_window);
+                    done_new_pass_alert.show();
+
+                    new_PF_fx.setText("");
+
+                    new_PF_fx.setVisible(false);
+                    new_pass_fx_btn.setVisible(false);
+                    new_pass_lbl.setVisible(false);
+                }else {
+                    Alert bad_connect = new Alert(Alert.AlertType.INFORMATION);//hiba ablak jelenik meg a nem megadott információ miatt
+                    bad_connect.setTitle("Hiba!");
+                    bad_connect.setHeaderText("Jelszavát nem tudtuk megváltoztatni!");
+                    bad_connect.setContentText("Próbálja újra, később!");
+                    bad_connect.initOwner(WelcomeCon.profile_window);
+                    bad_connect.show();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @FXML
+    private void logout_btn(){//kijelentkezés gomb
+        LoginCon.welcome_window.close();
+        WelcomeCon.profile_window.close();
+        GKKApp.login_window.show();
+    }
 
 
     @Override
@@ -57,7 +123,7 @@ public class ProfileCon implements Initializable {
             Alert no_connection = new Alert(Alert.AlertType.ERROR);
             no_connection.setHeaderText("Sajnos nem tudunk az adatbázishoz csatlakozni.");
             no_connection.setContentText("Ellenőrizze az internet kapcsolatot.");
-            no_connection.initOwner(login_window);
+            no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
     }
@@ -79,7 +145,7 @@ public class ProfileCon implements Initializable {
             Alert no_connection = new Alert(Alert.AlertType.ERROR);
             no_connection.setHeaderText("Sajnos nem tudunk az adatbázishoz csatlakozni.");
             no_connection.setContentText("Ellenőrizze az internet kapcsolatot.");
-            no_connection.initOwner(login_window);
+            no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
     }
@@ -98,7 +164,7 @@ public class ProfileCon implements Initializable {
             Alert no_connection = new Alert(Alert.AlertType.ERROR);
             no_connection.setHeaderText("Sajnos nem tudunk az adatbázishoz csatlakozni.");
             no_connection.setContentText("Ellenőrizze az internet kapcsolatot.");
-            no_connection.initOwner(login_window);
+            no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
     }
@@ -118,7 +184,7 @@ public class ProfileCon implements Initializable {
             Alert no_connection = new Alert(Alert.AlertType.ERROR);
             no_connection.setHeaderText("Sajnos nem tudunk az adatbázishoz csatlakozni.");
             no_connection.setContentText("Ellenőrizze az internet kapcsolatot.");
-            no_connection.initOwner(login_window);
+            no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
     }
