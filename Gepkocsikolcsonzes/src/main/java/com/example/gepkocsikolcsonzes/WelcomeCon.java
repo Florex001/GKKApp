@@ -27,8 +27,8 @@ public class WelcomeCon implements Initializable {
         Stage reservation_stage = new Stage();
         reservation_window = reservation_stage;
         reservation_stage.setScene(reservation_scene);
-        reservation_stage.setMinWidth(700);
-        reservation_stage.setMinHeight(500);
+        reservation_stage.setMinWidth(850);
+        reservation_stage.setMinHeight(600);
         reservation_stage.show();
         LoginCon.welcome_window.close();
     }
