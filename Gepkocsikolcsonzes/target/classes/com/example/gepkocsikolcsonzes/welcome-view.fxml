@@ -40,7 +40,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Személyautók">
+                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Gépjárművek">
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />
                      </VBox.margin>
@@ -54,38 +54,18 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="3102.0" GridPane.columnIndex="2">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Céges bérlés">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Tehergépjárművek">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
-                     </VBox.margin>
-                  </Button>
                   <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#account_btn" prefHeight="4000.0" prefWidth="4000.0" text="Profil">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="2936.0" GridPane.columnIndex="1">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Tartós gépjármű bérlet">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Lakóautók">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
-                     </VBox.margin>
-                  </Button>
                   <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Statisztika">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
                </children>

@@ -1,13 +1,11 @@
 package com.example.gepkocsikolcsonzes;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.w3c.dom.events.MouseEvent;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -30,8 +28,6 @@ public class ReservationCon implements Initializable {
     private TableColumn<Booking, String> idcard_TC;
     @FXML
     private TableColumn<Booking, String> price_TC;
-    @FXML
-    private TableColumn<Booking, String> status_TC;
     @FXML
     private TableColumn<Booking, String> uid_TC;
     @FXML
@@ -59,9 +55,6 @@ public class ReservationCon implements Initializable {
     private Label start_lab;
 
     @FXML
-    private Label status_lab;
-
-    @FXML
     private TextField car_id_TF;
 
     @FXML
@@ -76,8 +69,6 @@ public class ReservationCon implements Initializable {
     @FXML
     private TextField start_tf;
 
-    @FXML
-    private TextField status_tf;
 
     int index = -1;
 
@@ -90,7 +81,7 @@ public class ReservationCon implements Initializable {
         help_alert.setHeaderText("Olvass el!");
         help_alert.setContentText("Foglalás törlése: A törlés megkezdéséhez válassza ki a törölni kívánt elemet majd kattintson a Foglalás törlése gombra.\n\t\tFontos: csak akkor kattintson a Foglalás törlése gombra hogyha biztos benne hogy azt az elemet szeretné törölni!\n" +
                 "Adatok módosítása: Adatok módosításához válassza ki azt a sort amelyet módosítani szeretne. A Kezdete mezőt, Vége mezőt, Szig-szám mezőt, Fizetendő mezőt illetve Állapot mező módosítására van lehetőség. Amelyiket módosítani szeretné azt írja át és kattintson az Adatok módosítása gombra.\n\t\t Fontos: Ha a foglaló másik gépjárművet szeretne ahoz le kell mondani a foglalást, és új foglalást indítani.\n" +
-                "Foglalás hozzáadása: A foglalás hozzáadásához az összes mezőt ki kell töltenie! A Gépjármű azonosító-t a főoldalon a Személygépjárművek, Lakóautók vagy Teherautóknál tudja megnézni. A többi mezőt a foglalást kérő személy adja meg az által töltse ki! Fizetendő mezőt ön adja meg bérelt napok száma szorozva gépjármű bérlés napi díjjával. Az állapothoz 3 variációt adhat meg: Foglalva --> Magánszemélyeknek, tartos_berlet --> Magánszemélyeknek hosszútávra, ceges_berlet --> Cégeknek hosszútávra. Ha minden adat egyezik és töbször átnézte kattintson a Foglalás hozzáadása gombra.\n" +
+                "Foglalás hozzáadása: A foglalás hozzáadásához az összes mezőt ki kell töltenie! A Gépjármű azonosító-t a főoldalon a Személygépjárműveknél tudja megnézni. A többi mezőt a foglalást kérő személy adja meg az által töltse ki! Fizetendő mezőt ön adja meg bérelt napok száma szorozva gépjármű bérlés napi díjjával.\n" +
                 "\t\tFontos: Az Állapot megadásakor figyeljen a kis és nagy betűkre illetve a _ szimbólumra!");
         help_alert.show();
     }
@@ -115,12 +106,10 @@ public class ReservationCon implements Initializable {
         endd_lab.setText("Vége: " + borrowend_TC.getCellData(index).toString());
         idc_lab.setText("Szig-szám: " + idcard_TC.getCellData(index).toString());
         price_lab.setText("Fizetendő: " + price_TC.getCellData(index).toString() + " Ft.");
-        status_lab.setText("Állapot: " + status_TC.getCellData(index).toString());
         start_tf.setText(borrowstart_TC.getCellData(index).toString());
         end_TF.setText(borrowend_TC.getCellData(index).toString());
         pid_TF.setText(idcard_TC.getCellData(index).toString());
         price_TF.setText(price_TC.getCellData(index).toString());
-        status_tf.setText(status_TC.getCellData(index).toString());
 
     }//booking táblábol való kiválasztás
 
@@ -131,9 +120,8 @@ public class ReservationCon implements Initializable {
         String end_add = end_TF.getText();
         String pid_add = pid_TF.getText();
         String price_add = price_TF.getText();
-        String status_add = status_tf.getText();
 
-        if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("") || status_add.equals("")){
+        if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("")){
             Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
             error_alert.setTitle("Hiba");
             error_alert.setHeaderText("Töltse ki az össze mezőt!");
@@ -144,7 +132,7 @@ public class ReservationCon implements Initializable {
             try {
                 Connection con = DBConnector.getConnection();
 
-                String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `indenty_card_number`, `price`, `status`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"', '"+ status_add +"');";
+                String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `indenty_card_number`, `price`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"');";
 
                 pst = con.prepareStatement(sql);
                 pst.execute();
@@ -165,7 +153,6 @@ public class ReservationCon implements Initializable {
         end_TF.setText("");
         pid_TF.setText("");
         price_TF.setText("");
-        status_tf.setText("");
     }
 
     @FXML
@@ -220,12 +207,12 @@ public class ReservationCon implements Initializable {
         String end = end_TF.getText();
         String pid = pid_TF.getText();
         String price = price_TF.getText();
-        String status = status_tf.getText();
+
 
         try {
             Connection con = DBConnector.getConnection();
 
-            String sql = "UPDATE `bookings` SET `borrow_start` = '"+start+"', `borrow_end` = '"+end+"', `indenty_card_number` = '"+pid+"', `price` = '"+price+"', `status` = '"+status+"' WHERE `bookings`.`id` = "+id+";";
+            String sql = "UPDATE `bookings` SET `borrow_start` = '"+start+"', `borrow_end` = '"+end+"', `indenty_card_number` = '"+pid+"', `price` = '"+price+"' WHERE `bookings`.`id` = "+id+";";
 
             pst = con.prepareStatement(sql);
             pst.execute();
@@ -268,16 +255,17 @@ public class ReservationCon implements Initializable {
                     String fname = user_name.getString("first_name");
                     String lname = user_name.getString("last_name");
                     String name = lname + " " + fname;
+                    String vname = "";
 
                     String vehicleid = booking.getString("borrowed_vehicle_id");
 
                     ResultSet vehicle_name = con.createStatement().executeQuery("SELECT car FROM `vehicles` WHERE id = "+ vehicleid +";");
 
                     if (vehicle_name.next()){
-                        String vname = vehicle_name.getString("car");
-                        bookinglist.add(new Booking(booking.getString("id"), name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("indenty_card_number"), booking.getString("price"), booking.getString("status")));
+                         vname = vehicle_name.getString("car");
 
                     }
+                    bookinglist.add(new Booking(booking.getString("id"), name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("indenty_card_number"), booking.getString("price")));
                 }
 
             }
@@ -293,7 +281,6 @@ public class ReservationCon implements Initializable {
         borrowend_TC.setCellValueFactory(new PropertyValueFactory<>("borrow_end"));
         idcard_TC.setCellValueFactory(new PropertyValueFactory<>("indenty_card_number"));
         price_TC.setCellValueFactory(new PropertyValueFactory<>("price"));
-        status_TC.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         booking_TW.setItems(bookinglist);
 

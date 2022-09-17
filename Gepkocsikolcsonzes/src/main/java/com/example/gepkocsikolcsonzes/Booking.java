@@ -8,9 +8,8 @@ public class Booking {
     String borrow_end;
     String indenty_card_number;
     String price;
-    String status;
 
-    public Booking(String id, String user_id, String borrowed_vehicle_id, String borrow_start, String borrow_end, String indenty_card_number, String price, String status ){
+    public Booking(String id, String user_id, String borrowed_vehicle_id, String borrow_start, String borrow_end, String indenty_card_number, String price ){
         this.id = id;
         this.user_id = user_id;
         this.borrowed_vehicle_id = borrowed_vehicle_id;
@@ -18,7 +17,6 @@ public class Booking {
         this.borrow_end = borrow_end;
         this.indenty_card_number = indenty_card_number;
         this.price = price;
-        this.status = status;
     }
 
     public String getBorrow_end() {
@@ -43,10 +41,6 @@ public class Booking {
 
     public String getPrice() {
         return price;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public String getUser_id() {
@@ -75,10 +69,6 @@ public class Booking {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public void setUser_id(String user_id) {
