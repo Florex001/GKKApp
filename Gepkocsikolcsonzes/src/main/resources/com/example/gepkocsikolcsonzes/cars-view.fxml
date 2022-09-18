@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.CarsCon">
+   <children>
+      <BorderPane layoutX="192.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane prefHeight="34.0" prefWidth="850.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <AnchorPane prefHeight="410.0" prefWidth="263.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="120.0" layoutY="55.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#help_btn" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@picture/icon/help_ico.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button mnemonicParsing="false" onMouseClicked="#back_btn" text="Vissza a főoldalra">
+                           <VBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Label fx:id="CID_lab" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Gépjármű azonosító:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="name_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="638.0" text="Neve:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="dailyprice_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="638.0" text="Információ:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="info_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="17.0" prefWidth="638.0" text="Napi ára:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="173.0" prefHeight="17.0" prefWidth="638.0" text="Információ átírásához:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="Info_update_TA" prefHeight="200.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="214.0" prefHeight="17.0" prefWidth="638.0" text="Ár megváltoztatása:">
+                           <font>
+                              <Font name="SansSerif Regular" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="Price_update_TF">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Módosítás">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </left>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Gépjárművek">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="cars_TW" onMouseClicked="#cars_selected" prefHeight="217.0" prefWidth="587.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="id_TC" prefWidth="208.0" text="Gépjármű azonosító" />
+                                  <TableColumn fx:id="CarName_TC" prefWidth="147.0" text="Gépjármű neve" />
+                                    <TableColumn fx:id="info_TC" prefWidth="245.0" text="Információk" />
+                                    <TableColumn fx:id="dailyprice_TC" prefWidth="251.0" text="Napi ára" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

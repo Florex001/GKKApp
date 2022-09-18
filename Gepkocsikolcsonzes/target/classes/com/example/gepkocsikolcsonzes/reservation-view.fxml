@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,97 +18,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.ReservationCon">
+<AnchorPane prefHeight="600.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.ReservationCon">
    <children>
       <BorderPane layoutX="192.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <AnchorPane prefHeight="190.0" prefWidth="700.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
-               <children>
-                  <GridPane layoutX="250.0" layoutY="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="115.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="286.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="76.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="0.0" prefWidth="204.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="118.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TextField fx:id="start_tf" layoutX="10.0" layoutY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="end_TF" layoutX="10.0" layoutY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="pid_TF" layoutX="10.0" layoutY="156.0" GridPane.columnIndex="3">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="price_TF" layoutX="244.0" layoutY="30.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField fx:id="car_id_TF" layoutX="244.0" layoutY="156.0" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onMouseClicked="#booking_add" prefHeight="25.0" prefWidth="131.0" text="Foglalás hozzáadása" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="127.0" text="Gépjármű azonosító:">
-                           <font>
-                              <Font name="SansSerif Regular" size="13.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="34.0" prefHeight="17.0" prefWidth="127.0" text="Kezdete:" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="SansSerif Regular" size="13.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="97.0" prefHeight="17.0" prefWidth="127.0" text="Vége:" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="SansSerif Regular" size="13.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="160.0" prefHeight="17.0" prefWidth="86.0" text="Szig-szám:" GridPane.columnIndex="2">
-                           <font>
-                              <Font name="SansSerif Regular" size="13.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="34.0" prefHeight="17.0" prefWidth="86.0" text="Fizetendő:" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="SansSerif Regular" size="13.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Button layoutX="719.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#booking_del" prefHeight="25.0" prefWidth="131.0" text="Foglalás törlése" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button layoutX="719.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#booking_update" prefHeight="25.0" prefWidth="131.0" text="Adatok módosítása" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                     </children>
-                  </GridPane>
-               </children></AnchorPane>
+            <AnchorPane prefHeight="34.0" prefWidth="850.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
             <AnchorPane prefHeight="410.0" prefWidth="263.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
@@ -182,22 +98,172 @@
                               <Insets left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
+                        <Button fx:id="booking_finish_fxid" mnemonicParsing="false" onMouseClicked="#booking_finish" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: green;" text="Sikeres foglalás" visible="false">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                   </VBox>
                </children></AnchorPane>
          </left>
          <center>
-            <TableView fx:id="booking_TW" onMouseClicked="#booking_selected" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="id_TC" prefWidth="75.0" text="Foglalás azonosító" />
-                <TableColumn fx:id="uid_TC" prefWidth="75.0" text="Név" />
-                  <TableColumn fx:id="vehiclei_TC" prefWidth="75.0" text="Gépjármű" />
-                  <TableColumn fx:id="borrowstart_TC" prefWidth="75.0" text="Kezdete" />
-                  <TableColumn fx:id="borrowend_TC" prefWidth="75.0" text="Vége" />
-                  <TableColumn fx:id="idcard_TC" prefWidth="75.0" text="Szig-szám" />
-                  <TableColumn fx:id="price_TC" prefWidth="75.0" text="Fizetendő" />
-              </columns>
-            </TableView>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="bookingTab" onSelectionChanged="#foglalt_tab" text="Foglalások">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="396.0" minHeight="10.0" prefHeight="389.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="148.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TableView fx:id="booking_TW" onMouseClicked="#booking_selected" prefHeight="217.0" prefWidth="587.0">
+                                      <columns>
+                                        <TableColumn fx:id="id_TC" prefWidth="116.0" text="Foglalás azonosító" />
+                                        <TableColumn fx:id="uid_TC" prefWidth="60.0" text="Név" />
+                                          <TableColumn fx:id="vehiclei_TC" prefWidth="77.0" text="Gépjármű" />
+                                          <TableColumn fx:id="borrowstart_TC" prefWidth="66.0" text="Kezdete" />
+                                          <TableColumn fx:id="borrowend_TC" prefWidth="99.0" text="Vége" />
+                                          <TableColumn fx:id="idcard_TC" prefWidth="72.0" text="Szig-szám" />
+                                          <TableColumn fx:id="price_TC" prefWidth="96.0" text="Fizetendő" />
+                                      </columns>
+                                    </TableView>
+                                    <GridPane GridPane.rowIndex="1">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="115.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="286.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="76.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="0.0" prefWidth="204.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="118.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="start_tf" layoutX="10.0" layoutY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="end_TF" layoutX="10.0" layoutY="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="pid_TF" layoutX="10.0" layoutY="156.0" GridPane.columnIndex="3">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="price_TF" layoutX="244.0" layoutY="30.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField fx:id="car_id_TF" layoutX="244.0" layoutY="156.0" prefHeight="25.0" prefWidth="141.0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button mnemonicParsing="false" onMouseClicked="#booking_add" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: lightblue;" text="Foglalás hozzáadása" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                          <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="127.0" text="Gépjármű azonosító:">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="34.0" prefHeight="17.0" prefWidth="127.0" text="Kezdete:" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="97.0" prefHeight="17.0" prefWidth="127.0" text="Vége:" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="160.0" prefHeight="17.0" prefWidth="86.0" text="Szig-szám:" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="34.0" prefHeight="17.0" prefWidth="86.0" text="Fizetendő:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Button layoutX="719.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#booking_del" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: red;" text="Foglalás törlése" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                          <Button layoutX="719.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#booking_update" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: yellow;" text="Adatok módosítása" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                          <Button layoutX="10.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#booking_next_step" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: green;" text="Gépjármű átadva" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab onSelectionChanged="#elvitt_tab" text="Elvitt">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="booking_TW1" onMouseClicked="#booking_selected1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="id_TC1" prefWidth="116.0" text="Foglalás azonosító" />
+                                    <TableColumn fx:id="uid_TC1" prefWidth="60.0" text="Név" />
+                                    <TableColumn fx:id="vehiclei_TC1" prefWidth="77.0" text="Gépjármű" />
+                                    <TableColumn fx:id="borrowstart_TC1" prefWidth="66.0" text="Kezdete" />
+                                    <TableColumn fx:id="borrowend_TC1" prefWidth="99.0" text="Vége" />
+                                    <TableColumn fx:id="idcard_TC1" prefWidth="72.0" text="Szig-szám" />
+                                    <TableColumn fx:id="price_TC1" prefWidth="96.0" text="Fizetendő" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab onSelectionChanged="#finish_tab" text="Teljesített">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="booking_TW11" onMouseClicked="#booking_selected2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="id_TC11" prefWidth="116.0" text="Foglalás azonosító" />
+                                    <TableColumn fx:id="uid_TC11" prefWidth="60.0" text="Név" />
+                                    <TableColumn fx:id="vehiclei_TC11" prefWidth="77.0" text="Gépjármű" />
+                                    <TableColumn fx:id="borrowstart_TC11" prefWidth="66.0" text="Kezdete" />
+                                    <TableColumn fx:id="borrowend_TC11" prefWidth="99.0" text="Vége" />
+                                    <TableColumn fx:id="idcard_TC11" prefWidth="72.0" text="Szig-szám" />
+                                    <TableColumn fx:id="price_TC11" prefWidth="96.0" text="Fizetendő" />
+                                 </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </center>
       </BorderPane>
    </children>
