@@ -1,0 +1,52 @@
+body{
+    background-image: url(képek/fooldalhatter.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#focim{
+    font-size: 100px;
+    color: aliceblue;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 4px 3px 0 #7A7A7A;
+}
+#alcim{
+    font-size: 70px;
+    color: aliceblue;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 4px 3px 0 #7A7A7A;
+}
+
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+header ul li a{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+}
+header ul li a:hover, header ul li a.aktiv{
+    background: #fff;
+    color: #2b1055;
+}
+#szoveg{
+    font-size: 30px;
+    color: aliceblue;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 4px 3px 0 #7A7A7A;
+}
+.card{
+    width: 60%;
+    left: 20%;
+    top: 30px;
+    
+}
