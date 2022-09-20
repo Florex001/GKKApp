@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 public class WelcomeCon implements Initializable {
     public static Stage profile_window;
     public static Stage reservation_window;
+    public static Stage company_window;
 
     public static Stage cars_window;
 
@@ -61,6 +63,20 @@ public class WelcomeCon implements Initializable {
         profile_stage.setResizable(false);
         profile_stage.setScene(profile_scene);
         profile_stage.show();
+    }
+
+    @FXML
+    private void company_information_BTN() throws IOException{
+        FXMLLoader company_view = new FXMLLoader(GKKApp.class.getResource("company-view.fxml"));
+        Scene company_scene = new Scene(company_view.load(), 927, 592);
+        Stage company_stage = new Stage();
+        company_window = company_stage;
+        company_stage.initModality(Modality.WINDOW_MODAL);
+        company_stage.initStyle(StageStyle.UTILITY.UNDECORATED);
+        company_stage.initOwner(LoginCon.welcome_window);
+        company_stage.setResizable(false);
+        company_stage.setScene(company_scene);
+        company_stage.show();
     }
 
     @Override

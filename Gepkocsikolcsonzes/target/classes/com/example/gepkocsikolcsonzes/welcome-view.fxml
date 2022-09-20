@@ -45,7 +45,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Cégről">
+                  <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#company_information_BTN" prefHeight="4000.0" prefWidth="4000.0" text="Cégről">
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />
                      </VBox.margin>
