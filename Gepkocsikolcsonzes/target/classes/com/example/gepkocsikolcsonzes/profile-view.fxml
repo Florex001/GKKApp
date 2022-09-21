@@ -115,5 +115,6 @@
       <Button layoutX="132.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#new_pass_change_btn" text="Jelszó megváltoztatása" />
       <Button fx:id="new_pass_fx_btn" layoutX="183.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#new_pass_ok_btn" text="OK!" visible="false" />
       <PasswordField fx:id="new_PF_fx" layoutX="178.0" layoutY="423.0" visible="false" />
+      <Button fx:id="admin_btnfx" defaultButton="true" layoutX="306.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#admin_btn" prefHeight="25.0" prefWidth="85.0" text="Admin" textAlignment="CENTER" visible="false" wrapText="true" />
    </children>
 </AnchorPane>

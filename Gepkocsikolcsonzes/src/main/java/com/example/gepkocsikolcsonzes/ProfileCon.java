@@ -1,12 +1,19 @@
 package com.example.gepkocsikolcsonzes;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +22,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ProfileCon implements Initializable {
+
+    public static Stage admin_window;
     @FXML
     private Label mail_lab;
     @FXML
@@ -36,6 +45,9 @@ public class ProfileCon implements Initializable {
 
     @FXML
     private Button new_pass_fx_btn;
+
+    @FXML
+    private Button admin_btnfx;
 
     @FXML
     private void new_pass_change_btn(){
@@ -98,9 +110,27 @@ public class ProfileCon implements Initializable {
         GKKApp.login_window.show();
     }
 
+    @FXML
+    private void admin_btn() throws IOException {
+        Rectangle2D screenBounds = Screen. getPrimary(). getBounds();
+
+        FXMLLoader admin_view = new FXMLLoader(GKKApp.class.getResource("admin-view.fxml"));
+        Scene admin_scene = new Scene(admin_view.load(), screenBounds.getWidth(), screenBounds.getHeight() - 70);
+        Stage admin_stage = new Stage();
+        admin_window = admin_stage;
+        admin_stage.initModality(Modality.WINDOW_MODAL);
+        admin_stage.setScene(admin_scene);
+        admin_stage.show();
+        LoginCon.welcome_window.close();
+        WelcomeCon.profile_window.close();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (LoginCon.global_rank.equals("admin")){
+            admin_btnfx.setVisible(true);
+        }
         username_lab.setText(LoginCon.uName);
         email_sql();
         name_sql();

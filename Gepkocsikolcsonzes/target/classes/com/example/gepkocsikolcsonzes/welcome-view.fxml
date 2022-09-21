@@ -54,7 +54,12 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="3102.0" GridPane.columnIndex="2">
                <children>
-                  <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#account_btn" prefHeight="4000.0" prefWidth="4000.0" text="Profil">
+                  <Button fx:id="profile_FXID" layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#account_btn" prefHeight="4000.0" prefWidth="4000.0" text="Profil">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#logout_btn" prefHeight="4000.0" prefWidth="4000.0" text="Kijelentkezés">
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

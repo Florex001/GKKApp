@@ -40,8 +40,8 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="uname_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-border-radius: 13; -fx-background-radius: 13;" text="worker" GridPane.columnIndex="1" />
-            <PasswordField fx:id="pass_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-background-radius: 13; -fx-border-radius: 13;" text="worker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="uname_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-border-radius: 13; -fx-background-radius: 13;" text="admin" GridPane.columnIndex="1" />
+            <PasswordField fx:id="pass_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-background-radius: 13; -fx-border-radius: 13;" text="admin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#login_button" opacity="0.8" style="-fx-background-radius: 13;" text="Bejelentkezés" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

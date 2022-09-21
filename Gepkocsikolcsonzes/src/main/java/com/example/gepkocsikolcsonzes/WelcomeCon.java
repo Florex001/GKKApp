@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -18,9 +19,17 @@ public class WelcomeCon implements Initializable {
     public static Stage profile_window;
     public static Stage reservation_window;
     public static Stage company_window;
-
     public static Stage cars_window;
 
+    @FXML
+    private Button profile_FXID;
+
+
+    @FXML
+    private void logout_btn(){
+        LoginCon.welcome_window.close();
+        GKKApp.login_window.show();
+    }
     @FXML
     private void reservation_btn() throws IOException {
 
@@ -63,7 +72,7 @@ public class WelcomeCon implements Initializable {
         profile_stage.setResizable(false);
         profile_stage.setScene(profile_scene);
         profile_stage.show();
-    }
+    }//profil megtekintése és jelszó változtatás
 
     @FXML
     private void company_information_BTN() throws IOException{
@@ -77,9 +86,12 @@ public class WelcomeCon implements Initializable {
         company_stage.setResizable(false);
         company_stage.setScene(company_scene);
         company_stage.show();
-    }
+    }// cég információi itt jelennek meg
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (LoginCon.global_rank.equals("admin")){
+            profile_FXID.setText("Profil/Admin");
+        }
     }
 }
