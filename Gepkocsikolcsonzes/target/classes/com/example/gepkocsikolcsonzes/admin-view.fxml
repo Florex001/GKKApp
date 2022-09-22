@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -84,11 +90,11 @@
                                     <Insets bottom="10.0" top="30.0" />
                                  </VBox.margin>
                               </Label>
-                              <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="5000.0" prefWidth="5000.0">
+                              <SplitPane dividerPositions="0.3835139318885448" orientation="VERTICAL" prefHeight="5000.0" prefWidth="5000.0">
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="266.0" prefWidth="756.0">
                                        <children>
-                                          <TableView fx:id="users_table" layoutX="251.0" layoutY="28.0" onMouseClicked="#users_selected" prefHeight="258.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="users_table" layoutX="251.0" layoutY="28.0" onMouseClicked="#users_selected" prefHeight="258.0" prefWidth="756.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn fx:id="id_tc" prefWidth="75.0" text="Azonosító" />
                                               <TableColumn fx:id="uname_tc" prefWidth="99.0" text="Felhasználónév" />
@@ -102,7 +108,141 @@
                                           </TableView>
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="209.0" prefWidth="756.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="209.0" prefWidth="756.0" style="-fx-background-color: #142936;">
+                                       <children>
+                                          <BorderPane layoutX="258.0" layoutY="58.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <center>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Azonosító:" textFill="#b9b9b9">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="id_tf" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Felhasználónév:" textFill="#b9b9b9" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="76.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Név:" textFill="#b9b9b9" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="140.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Jelszó:" textFill="#b9b9b9" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Email:" textFill="#b9b9b9" GridPane.columnIndex="2">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="388.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Telefon szám:" textFill="#b9b9b9" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="388.0" layoutY="76.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Regisztrációs idő:" textFill="#b9b9b9" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="388.0" layoutY="140.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Jogosutság:" textFill="#b9b9b9" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="username_tf" layoutX="204.0" layoutY="24.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="name_tf" layoutX="199.0" layoutY="76.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="pass_tf" layoutX="199.0" layoutY="128.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="email_tf" layoutX="199.0" layoutY="180.0" GridPane.columnIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="phone_tf" layoutX="577.0" layoutY="24.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="regdate_tf" layoutX="577.0" layoutY="76.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="rank_tf" layoutX="577.0" layoutY="128.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: red;" text="Törlés" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Button layoutX="236.0" layoutY="234.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: orange;" text="Módosítás" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Button>
+                                                      <Button layoutX="425.0" layoutY="234.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                         <font>
+                                                            <Font name="Georgia" size="18.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </GridPane>
+                                             </center>
+                                             <top>
+                                                <HBox prefHeight="34.0" prefWidth="757.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <TextField fx:id="search_tf" prefHeight="26.0" prefWidth="558.0" promptText="Keresés felhasználónév, Név vagy Email alapján...">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="20.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Button mnemonicParsing="false" onMouseClicked="#search_btn" text="Keresés">
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="20.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </top>
+                                          </BorderPane>
+                                       </children></AnchorPane>
                                 </items>
                               </SplitPane>
                            </children>

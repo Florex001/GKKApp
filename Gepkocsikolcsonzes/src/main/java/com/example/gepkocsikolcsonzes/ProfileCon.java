@@ -119,6 +119,8 @@ public class ProfileCon implements Initializable {
         Stage admin_stage = new Stage();
         admin_window = admin_stage;
         admin_stage.initModality(Modality.WINDOW_MODAL);
+        admin_stage.setMinHeight(600);
+        admin_stage.setMinWidth(1000);
         admin_stage.setScene(admin_scene);
         admin_stage.show();
         LoginCon.welcome_window.close();
