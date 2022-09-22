@@ -8,101 +8,101 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.ProfileCon">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #142936;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.ProfileCon">
    <children>
       <VBox alignment="CENTER" layoutX="74.0" prefHeight="427.0" prefWidth="253.0" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label contentDisplay="CENTER" text="Felhasználónév:">
+            <Label contentDisplay="CENTER" text="Felhasználónév:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="username_lab" contentDisplay="CENTER" layoutX="166.0" layoutY="253.0">
+            <Label fx:id="username_lab" contentDisplay="CENTER" layoutX="166.0" layoutY="253.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="230.0" text="E-mail:">
+            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="230.0" text="E-mail:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="mail_lab" contentDisplay="CENTER" layoutX="191.0" layoutY="283.0">
+            <Label fx:id="mail_lab" contentDisplay="CENTER" layoutX="191.0" layoutY="283.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="215.0" text="Név:">
+            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="215.0" text="Név:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="name_lab" contentDisplay="CENTER" layoutX="198.0" layoutY="298.0">
+            <Label fx:id="name_lab" contentDisplay="CENTER" layoutX="198.0" layoutY="298.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="200.0" text="Telefonszám:">
+            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="200.0" text="Telefonszám:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="phonenum_lab" contentDisplay="CENTER" layoutX="174.0" layoutY="313.0">
+            <Label fx:id="phonenum_lab" contentDisplay="CENTER" layoutX="174.0" layoutY="313.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="185.0" text="Jogosultság:">
+            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="185.0" text="Jogosultság:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="rank_lab" contentDisplay="CENTER" layoutX="176.0" layoutY="328.0">
+            <Label fx:id="rank_lab" contentDisplay="CENTER" layoutX="176.0" layoutY="328.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="170.0" text="Regisztráció ideje:">
+            <Label contentDisplay="CENTER" layoutX="166.0" layoutY="170.0" text="Regisztráció ideje:" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="registrationdate_lab" contentDisplay="CENTER" layoutX="161.0" layoutY="343.0">
+            <Label fx:id="registrationdate_lab" contentDisplay="CENTER" layoutX="161.0" layoutY="343.0" textFill="#b9b9b9">
                <font>
-                  <Font name="SansSerif Bold" size="12.0" />
+                  <Font name="Georgia" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" />
@@ -110,11 +110,26 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="306.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logout_btn" text="Kijelentkezés" />
-      <Label fx:id="new_pass_lbl" layoutX="120.0" layoutY="427.0" prefHeight="17.0" prefWidth="47.0" text="Új jelszó:" visible="false" />
-      <Button layoutX="132.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#new_pass_change_btn" text="Jelszó megváltoztatása" />
-      <Button fx:id="new_pass_fx_btn" layoutX="183.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#new_pass_ok_btn" text="OK!" visible="false" />
+      <Button layoutX="306.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logout_btn" text="Kijelentkezés">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></Button>
+      <Label fx:id="new_pass_lbl" layoutX="120.0" layoutY="427.0" prefHeight="17.0" prefWidth="47.0" text="Új jelszó:" textFill="#b9b9b9" visible="false">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></Label>
+      <Button layoutX="132.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#new_pass_change_btn" text="Jelszó megváltoztatása">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></Button>
+      <Button fx:id="new_pass_fx_btn" layoutX="183.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#new_pass_ok_btn" text="OK!" visible="false">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></Button>
       <PasswordField fx:id="new_PF_fx" layoutX="178.0" layoutY="423.0" visible="false" />
-      <Button fx:id="admin_btnfx" defaultButton="true" layoutX="306.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#admin_btn" prefHeight="25.0" prefWidth="85.0" text="Admin" textAlignment="CENTER" visible="false" wrapText="true" />
+      <Button fx:id="admin_btnfx" defaultButton="true" layoutX="306.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#admin_btn" prefHeight="25.0" prefWidth="85.0" text="Admin" textAlignment="CENTER" visible="false" wrapText="true">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

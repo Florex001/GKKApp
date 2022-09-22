@@ -4,8 +4,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -78,7 +81,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="users_fx" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="users_fx" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox layoutX="174.0" layoutY="118.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -207,17 +210,17 @@
                                                             <Insets left="5.0" right="5.0" />
                                                          </GridPane.margin>
                                                       </TextField>
-                                                      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: red;" text="Törlés" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                      <Button mnemonicParsing="false" onMouseClicked="#user_delete" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: red;" text="Törlés" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                                          <font>
                                                             <Font name="Georgia" size="18.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button layoutX="236.0" layoutY="234.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: orange;" text="Módosítás" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                      <Button layoutX="236.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#update_user_btn" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: orange;" text="Módosítás" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                                          <font>
                                                             <Font name="Georgia" size="18.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button layoutX="425.0" layoutY="234.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                      <Button layoutX="425.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#user_add_btn" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                                          <font>
                                                             <Font name="Georgia" size="18.0" />
                                                          </font>
@@ -249,7 +252,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="message_fx" prefHeight="518.0" prefWidth="662.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="message_fx" prefHeight="518.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox layoutX="416.0" layoutY="208.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -261,6 +264,101 @@
                                     <Insets top="30.0" />
                                  </VBox.margin>
                               </Label>
+                              <TabPane prefHeight="5000.0" prefWidth="5000.0" style="-fx-background-color: #142936;" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Üzenetek">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <SplitPane dividerPositions="0.5" layoutX="236.0" layoutY="98.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <items>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                         <children>
+                                                            <TableView fx:id="message_table" layoutX="127.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <columns>
+                                                                <TableColumn fx:id="id_message_tc" prefWidth="75.0" text="Azonosító" />
+                                                                <TableColumn fx:id="user_name_tc" prefWidth="158.0" text="Felhasználónév" />
+                                                                  <TableColumn fx:id="name_messages_tc" prefWidth="165.0" text="Név" />
+                                                                  <TableColumn fx:id="messages_tc" prefWidth="357.0" text="Üzenet" />
+                                                              </columns>
+                                                            </TableView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #142936;">
+                                                         <children>
+                                                            <HBox layoutX="260.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <TextArea prefHeight="243.0" prefWidth="319.0">
+                                                                     <HBox.margin>
+                                                                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                                                                     </HBox.margin>
+                                                                  </TextArea>
+                                                                  <VBox prefHeight="243.0" prefWidth="250.0">
+                                                                     <children>
+                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: green;" text="Elfogadás">
+                                                                           <VBox.margin>
+                                                                              <Insets left="80.0" top="40.0" />
+                                                                           </VBox.margin>
+                                                                           <font>
+                                                                              <Font name="Georgia" size="12.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: red;" text="Elutasítás">
+                                                                           <VBox.margin>
+                                                                              <Insets left="80.0" top="50.0" />
+                                                                           </VBox.margin>
+                                                                           <font>
+                                                                              <Font name="Georgia" size="14.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children></HBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </items>
+                                                </SplitPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Elfogadva">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="message_table1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="id_message_tc1" prefWidth="75.0" text="Azonosító" />
+                                                      <TableColumn fx:id="user_name_tc1" prefWidth="158.0" text="Felhasználónév" />
+                                                      <TableColumn fx:id="name_messages_tc1" prefWidth="165.0" text="Név" />
+                                                      <TableColumn fx:id="messages_tc1" prefWidth="357.0" text="Üzenet" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab text="Elutasítva">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="message_table2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="id_message_tc2" prefWidth="75.0" text="Azonosító" />
+                                                      <TableColumn fx:id="user_name_tc2" prefWidth="158.0" text="Felhasználónév" />
+                                                      <TableColumn fx:id="name_messages_tc2" prefWidth="165.0" text="Név" />
+                                                      <TableColumn fx:id="messages_tc2" prefWidth="357.0" text="Üzenet" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TabPane>
                            </children>
                         </VBox>
                      </children>

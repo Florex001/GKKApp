@@ -2,80 +2,89 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.WelcomeCon">
-   <top>
-      <AnchorPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
-   </top>
-   <bottom>
-      <AnchorPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.WelcomeCon">
    <left>
-      <AnchorPane prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <AnchorPane prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
-   </right>
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <AnchorPane prefHeight="600.0" prefWidth="270.0" style="-fx-background-color: #101F27;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="300.0" prefWidth="2769.0">
+            <VBox layoutX="77.0" layoutY="100.0" prefHeight="600.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#reservation_btn" prefHeight="4000.0" prefWidth="4000.0" text="Foglalások">
+                  <Label fx:id="username_lab" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="valaki" textAlignment="CENTER" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="36.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ImageView fitHeight="104.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@picture/icon/user.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="86.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#reservation_btn" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Foglalások" textFill="#b9b9b9">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#cars_btn" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Gépjárművek" textFill="#b9b9b9">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#company_information_BTN" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Cégről" textFill="#b9b9b9">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#message_BTN" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Üzenet küldés" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#cars_btn" prefHeight="4000.0" prefWidth="4000.0" text="Gépjárművek">
+                  <Button fx:id="profile_FXID" mnemonicParsing="false" onMouseClicked="#account_btn" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Profil" textFill="#b9b9b9">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
                   </Button>
-                  <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#company_information_BTN" prefHeight="4000.0" prefWidth="4000.0" text="Cégről">
+                  <Button mnemonicParsing="false" onMouseClicked="#logout_btn" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: #101F27; -fx-border-color: black; -fx-border-radius: 30; -fx-background-radius: 30;" text="Kijelentkezés" textFill="#b9b9b9">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                        <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Georgia" size="30.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="3102.0" GridPane.columnIndex="2">
-               <children>
-                  <Button fx:id="profile_FXID" layoutX="15.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#account_btn" prefHeight="4000.0" prefWidth="4000.0" text="Profil">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#logout_btn" prefHeight="4000.0" prefWidth="4000.0" text="Kijelentkezés">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="2936.0" GridPane.columnIndex="1">
-               <children>
-                  <Button layoutX="15.0" layoutY="163.0" mnemonicParsing="false" prefHeight="4000.0" prefWidth="4000.0" text="Statisztika">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </GridPane>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

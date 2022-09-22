@@ -22,7 +22,6 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ProfileCon implements Initializable {
-
     public static Stage admin_window;
     @FXML
     private Label mail_lab;
@@ -54,7 +53,7 @@ public class ProfileCon implements Initializable {
         new_pass_lbl.setVisible(true);
         new_PF_fx.setVisible(true);
         new_pass_fx_btn.setVisible(true);
-    }
+    }//ez a metódus aktiválja a jelszó bekéréshez a textfieldet és az ok gombot
 
     @FXML
     private void new_pass_ok_btn(){
@@ -101,21 +100,22 @@ public class ProfileCon implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-    }
+    }//ezzel tudja a felhasználó megváltoztatni a jelszavát
 
     @FXML
     private void logout_btn(){//kijelentkezés gomb
         LoginCon.welcome_window.close();
         WelcomeCon.profile_window.close();
         GKKApp.login_window.show();
-    }
+    }//ki lépteti a fiókbol a felhasználót és megjelenik a login panel
 
     @FXML
     private void admin_btn() throws IOException {
-        Rectangle2D screenBounds = Screen. getPrimary(). getBounds();
+        int height = WelcomeCon.welcome_height;
+        int width = WelcomeCon.welcome_width;
 
         FXMLLoader admin_view = new FXMLLoader(GKKApp.class.getResource("admin-view.fxml"));
-        Scene admin_scene = new Scene(admin_view.load(), screenBounds.getWidth(), screenBounds.getHeight() - 70);
+        Scene admin_scene = new Scene(admin_view.load(), width, height);
         Stage admin_stage = new Stage();
         admin_window = admin_stage;
         admin_stage.initModality(Modality.WINDOW_MODAL);
@@ -125,7 +125,7 @@ public class ProfileCon implements Initializable {
         admin_stage.show();
         LoginCon.welcome_window.close();
         WelcomeCon.profile_window.close();
-    }
+    }//admin felület csak az adminoknak
 
 
     @Override
@@ -158,7 +158,7 @@ public class ProfileCon implements Initializable {
             no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
-    }
+    }//lekérdezzük az adott felhasználó email címét
 
     private void name_sql(){
         try {
@@ -180,7 +180,7 @@ public class ProfileCon implements Initializable {
             no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
-    }
+    }//lekérdezzük az adott felhasználó nevét
 
     private void phone_num_sql(){
         try {
@@ -199,7 +199,7 @@ public class ProfileCon implements Initializable {
             no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
-    }
+    }//lekérdezzük az adott felhasználó telefonszámát
 
     private void registration_date_sql(){
         try {
@@ -219,7 +219,7 @@ public class ProfileCon implements Initializable {
             no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
         }
-    }
+    }//lekérdezzük az adott felhasználó regisztrációjának idejét
 
 
 }

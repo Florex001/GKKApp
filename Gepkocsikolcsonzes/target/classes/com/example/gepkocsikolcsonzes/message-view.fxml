@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #142936;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.MessageCon">
+   <children>
+      <BorderPane layoutX="160.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <VBox prefHeight="103.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="732.0" text="Üdvözlöm az üzenetkűldő oldalon." textAlignment="CENTER" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="15.0" prefHeight="17.0" prefWidth="732.0" text="Az üzeneteit akármelyik admin láthatja." textAlignment="CENTER" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="17.0" prefWidth="732.0" text="Felhasználó kezelésben tudunk segítséget nyujtani." textAlignment="CENTER" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="78.0" prefHeight="17.0" prefWidth="732.0" text="Írja le kérését:" textAlignment="CENTER" textFill="#b9b9b9">
+                     <font>
+                        <Font name="Georgia" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <TextArea fx:id="message_ta" prefHeight="222.0" prefWidth="600.0" promptText="Írja le kérését..." BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="40.0" right="40.0" />
+               </BorderPane.margin>
+            </TextArea>
+         </center>
+         <bottom>
+            <Pane prefHeight="64.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="261.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#send_btn" text="Küldés">
+                     <font>
+                        <Font name="Georgia" size="18.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

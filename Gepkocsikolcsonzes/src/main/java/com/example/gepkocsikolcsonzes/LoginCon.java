@@ -74,15 +74,14 @@ public class LoginCon implements Initializable {
 
                         if (rank.getString("rank").equals("worker") || rank.getString("rank").equals("admin")){
 
-                            Rectangle2D screenBounds = Screen. getPrimary(). getBounds();
 
                             FXMLLoader welcome_view = new FXMLLoader(GKKApp.class.getResource("welcome-view.fxml"));
-                            Scene welcome_scene = new Scene(welcome_view.load(), screenBounds.getWidth(), screenBounds.getHeight() - 70);
+                            Scene welcome_scene = new Scene(welcome_view.load(), 1000, 600);
                             Stage welcome_stage = new Stage();
                             welcome_window = welcome_stage;
                             welcome_stage.setScene(welcome_scene);
-                            welcome_stage.setMinWidth(600);
-                            welcome_stage.setMinHeight(470);
+                            welcome_stage.setMinWidth(1000);
+                            welcome_stage.setMinHeight(600);
                             welcome_stage.show();
                             uname_textfield.setText("");
                             pass_textfield.setText("");

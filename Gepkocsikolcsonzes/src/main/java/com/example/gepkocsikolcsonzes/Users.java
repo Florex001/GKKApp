@@ -1,6 +1,7 @@
 package com.example.gepkocsikolcsonzes;
 
 public class Users {
+    int sorszam = -1;
     String id;
     String username;
     String name;
@@ -10,8 +11,9 @@ public class Users {
     String registration_date;
     String rank;
 
-    public Users(String id, String username, String name,
+    public Users(int sorszam, String id, String username, String name,
                  String password, String email, String phone_number, String registration_date, String rank){
+        this.sorszam = sorszam;
         this.id = id;
         this.username = username;
         this.name = name;
@@ -20,6 +22,14 @@ public class Users {
         this.phone_number = phone_number;
         this.registration_date = registration_date;
         this.rank = rank;
+    }
+
+    public int getSorszam() {
+        return sorszam;
+    }
+
+    public void setSorszam(int sorszam) {
+        this.sorszam = sorszam;
     }
 
     public String getId() {

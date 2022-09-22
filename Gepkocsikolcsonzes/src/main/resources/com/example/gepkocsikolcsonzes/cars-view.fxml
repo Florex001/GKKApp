@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,17 +14,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.CarsCon">
    <children>
-      <BorderPane layoutX="192.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="192.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <AnchorPane prefHeight="34.0" prefWidth="850.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="34.0" prefWidth="850.0" style="-fx-background-color: #101F27;" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
-            <AnchorPane prefHeight="410.0" prefWidth="263.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="410.0" prefWidth="263.0" style="-fx-background-color: #101F27;" BorderPane.alignment="CENTER">
                <children>
                   <VBox layoutX="120.0" layoutY="55.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -39,89 +43,112 @@
                            <VBox.margin>
                               <Insets left="5.0" top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Georgia" size="14.0" />
+                           </font>
                         </Button>
-                        <Label fx:id="CID_lab" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Gépjármű azonosító:">
+                        <Label fx:id="CID_lab" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Gépjármű azonosító:" textFill="#b9b9b9">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Georgia" size="20.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="name_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="638.0" text="Neve:">
+                        <Label fx:id="name_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="638.0" text="Neve:" textFill="#b9b9b9">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Georgia" size="20.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="dailyprice_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="638.0" text="Információ:">
+                        <Label fx:id="dailyprice_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="638.0" text="Információ:" textFill="#b9b9b9">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Georgia" size="20.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="info_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="17.0" prefWidth="638.0" text="Napi ára:">
+                        <Label fx:id="info_lab" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="17.0" prefWidth="638.0" text="Napi ára:" textFill="#b9b9b9">
                            <font>
-                              <Font name="SansSerif Regular" size="18.0" />
+                              <Font name="Georgia" size="20.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="15.0" left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="173.0" prefHeight="17.0" prefWidth="638.0" text="Információ átírásához:">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextArea fx:id="Info_update_TA" prefHeight="200.0" prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="214.0" prefHeight="17.0" prefWidth="638.0" text="Ár megváltoztatása:">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="Price_update_TF">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Módosítás">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="15.0" />
-                           </VBox.margin>
-                        </Button>
                      </children>
                   </VBox>
                </children></AnchorPane>
          </left>
          <center>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab text="Gépjárművek">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="cars_TW" onMouseClicked="#cars_selected" prefHeight="217.0" prefWidth="587.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columns>
-                                  <TableColumn fx:id="id_TC" prefWidth="208.0" text="Gépjármű azonosító" />
-                                  <TableColumn fx:id="CarName_TC" prefWidth="147.0" text="Gépjármű neve" />
-                                    <TableColumn fx:id="info_TC" prefWidth="245.0" text="Információk" />
-                                    <TableColumn fx:id="dailyprice_TC" prefWidth="251.0" text="Napi ára" />
-                                </columns>
-                              </TableView>
+                              <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <TableView fx:id="cars_TW" layoutX="-339.0" layoutY="-209.0" onMouseClicked="#cars_selected" prefHeight="217.0" prefWidth="587.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="id_TC" prefWidth="208.0" text="Gépjármű azonosító" />
+                                              <TableColumn fx:id="CarName_TC" prefWidth="147.0" text="Gépjármű neve" />
+                                                <TableColumn fx:id="info_TC" prefWidth="245.0" text="Információk" />
+                                                <TableColumn fx:id="dailyprice_TC" prefWidth="251.0" text="Napi ára" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #142936;">
+                                       <children>
+                                          <GridPane layoutX="309.0" layoutY="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.0" minWidth="10.0" prefWidth="432.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="225.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="193.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Információ átírásához:" textFill="#b9b9b9">
+                                                   <font>
+                                                      <Font name="Georgia" size="20.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextArea fx:id="Info_update_TA" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="223.0" prefWidth="434.0" GridPane.rowIndex="1">
+                                                   <padding>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
+                                                   </padding>
+                                                </TextArea>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Ár megváltoztatása:" textFill="#b9b9b9" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="Georgia" size="20.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="Price_update_TF" GridPane.columnIndex="2" />
+                                                <Button mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Módosítás" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font></Button>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
                            </children>
                         </AnchorPane>
                   </content>

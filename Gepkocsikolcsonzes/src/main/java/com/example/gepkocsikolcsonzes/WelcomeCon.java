@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -16,6 +17,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WelcomeCon implements Initializable {
+
+    public static Stage message_window;
+    public static int welcome_width;
+    public static int welcome_height;
     public static Stage profile_window;
     public static Stage reservation_window;
     public static Stage company_window;
@@ -23,6 +28,9 @@ public class WelcomeCon implements Initializable {
 
     @FXML
     private Button profile_FXID;
+
+    @FXML
+    private Label username_lab;
 
 
     @FXML
@@ -33,10 +41,11 @@ public class WelcomeCon implements Initializable {
     @FXML
     private void reservation_btn() throws IOException {
 
-        Rectangle2D screenBounds = Screen. getPrimary(). getBounds();
+        welcome_width = (int) LoginCon.welcome_window.getWidth();
+        welcome_height = (int) LoginCon.welcome_window.getHeight();
 
         FXMLLoader reservation_view = new FXMLLoader(GKKApp.class.getResource("reservation-view.fxml"));
-        Scene reservation_scene = new Scene(reservation_view.load(), screenBounds.getWidth(), screenBounds.getHeight() - 70);
+        Scene reservation_scene = new Scene(reservation_view.load(), welcome_width, welcome_height);
         Stage reservation_stage = new Stage();
         reservation_window = reservation_stage;
         reservation_stage.setScene(reservation_scene);
@@ -48,10 +57,11 @@ public class WelcomeCon implements Initializable {
 
     @FXML
     private void cars_btn() throws IOException {
-        Rectangle2D screenBounds = Screen. getPrimary(). getBounds();
+        welcome_width = (int) LoginCon.welcome_window.getWidth();
+        welcome_height = (int) LoginCon.welcome_window.getHeight();
 
         FXMLLoader cars_view = new FXMLLoader(GKKApp.class.getResource("cars-view.fxml"));
-        Scene cars_scene = new Scene(cars_view.load(), screenBounds.getWidth(), screenBounds.getHeight() - 70);
+        Scene cars_scene = new Scene(cars_view.load(), welcome_width, welcome_height);
         Stage cars_stage = new Stage();
         cars_window = cars_stage;
         cars_stage.setScene(cars_scene);
@@ -88,8 +98,22 @@ public class WelcomeCon implements Initializable {
         company_stage.show();
     }// cég információi itt jelennek meg
 
+    @FXML
+    private void message_BTN() throws IOException {
+        FXMLLoader message_view = new FXMLLoader(GKKApp.class.getResource("message-view.fxml"));
+        Scene message_scene = new Scene(message_view.load(), 600, 400);
+        Stage message_stage = new Stage();
+        message_window = message_stage;
+        message_stage.initModality(Modality.WINDOW_MODAL);
+        message_stage.initOwner(LoginCon.welcome_window);
+        message_stage.setResizable(false);
+        message_stage.setScene(message_scene);
+        message_stage.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        username_lab.setText(LoginCon.uName);
         if (LoginCon.global_rank.equals("admin")){
             profile_FXID.setText("Profil/Admin");
         }

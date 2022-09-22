@@ -206,7 +206,7 @@ public class ReservationCon implements Initializable {
         if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("")){
             Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
             error_alert.setTitle("Hiba");
-            error_alert.setHeaderText("Töltse ki az össze mezőt!");
+            error_alert.setHeaderText("Töltse ki az összes mezőt!");
             error_alert.initOwner(WelcomeCon.reservation_window);
             error_alert.show();
         }else{
