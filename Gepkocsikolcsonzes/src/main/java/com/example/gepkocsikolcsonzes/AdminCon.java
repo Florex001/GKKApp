@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -23,6 +20,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AdminCon implements Initializable {
+
+    public static int messid;
     @FXML
     private TableView<Users> users_table;
 
@@ -108,8 +107,8 @@ public class AdminCon implements Initializable {
     private TableColumn<Messages, String> name_messages_tc2;
     @FXML
     private TableColumn<Messages, String> user_name_tc2;
-
-
+    @FXML
+    private TextArea message_ta;
 
     int index = -1;
 
@@ -134,8 +133,16 @@ public class AdminCon implements Initializable {
         regdate_tf.setText(regdat_tc.getCellData(index).toString());
         rank_tf.setText(rank_tc.getCellData(index).toString());
     }//kiválasztott felhasználónak az indexe eltárolódik
+    @FXML
+    private void selected_message(){
+        index = message_table.getSelectionModel().getSelectedIndex();
+        if (index <= -1){
+            return;
+        }
 
-
+        messid = Integer.parseInt(id_message_tc.getCellData(index));
+        message_ta.setText(messages_tc.getCellData(index).toString());
+    }//a kiválasztott üzenetet megjeleníti a text areaban
     @FXML
     private void back_btn(){
         ProfileCon.admin_window.close();
@@ -383,6 +390,72 @@ public class AdminCon implements Initializable {
         rank_tf.setText("");
 
     }//törölni lehet a felhasználót
+
+    @FXML
+    private void confirmmessagebtn(){
+        PreparedStatement pst = null;
+
+        try {
+            Connection con = DBConnector.getConnection();
+
+            String sql = "UPDATE `message` SET `status` = 'elfogadva' WHERE `message`.`id` = "+messid+";";
+
+            pst = con.prepareStatement(sql);
+            pst.execute();
+            message_table.getItems().clear();
+            sendmessagestable();
+            message_table1.getItems().clear();
+            confirmmessagestable();
+
+
+            Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            done_update_alert.setTitle("Sikeres áthelyezés!");
+            done_update_alert.setHeaderText(messid +" azonosítóju üzenet áthelyezésre került az elfogadott üzenetekhez!");
+            done_update_alert.initOwner(ProfileCon.admin_window);
+            done_update_alert.show();
+        } catch (SQLException e) {
+            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            error_update_alert.setTitle("Hiba");
+            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+            error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+            error_update_alert.initOwner(WelcomeCon.reservation_window);
+            error_update_alert.show();
+        }
+        message_ta.setText("");
+    }//ha az üzenetet meg lehet valósítani akkor az elfogadott véglegesített üzenetekhez áthelyeződik
+
+    @FXML
+    private void badmessagebtn(){
+        PreparedStatement pst = null;
+
+        try {
+            Connection con = DBConnector.getConnection();
+
+            String sql = "UPDATE `message` SET `status` = 'elutasitva' WHERE `message`.`id` = "+messid+";";
+
+            pst = con.prepareStatement(sql);
+            pst.execute();
+            message_table.getItems().clear();
+            sendmessagestable();
+            message_table2.getItems().clear();
+            badmessagestable();
+
+
+            Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            done_update_alert.setTitle("Sikeres áthelyezés!");
+            done_update_alert.setHeaderText(messid +" azonosítóju üzenet áthelyezésre került az elutasitott üzenetekhez!");
+            done_update_alert.initOwner(ProfileCon.admin_window);
+            done_update_alert.show();
+        } catch (SQLException e) {
+            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            error_update_alert.setTitle("Hiba");
+            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+            error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+            error_update_alert.initOwner(WelcomeCon.reservation_window);
+            error_update_alert.show();
+        }
+        message_ta.setText("");
+    }//ha az üzenetnek nincs valóságalapja vagy nem megvalósítható kérés jön akkor elutasításra kerül
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

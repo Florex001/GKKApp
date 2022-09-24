@@ -274,7 +274,7 @@
                                                   <items>
                                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                          <children>
-                                                            <TableView fx:id="message_table" layoutX="127.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <TableView fx:id="message_table" layoutX="127.0" layoutY="22.0" onMouseClicked="#selected_message" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                               <columns>
                                                                 <TableColumn fx:id="id_message_tc" prefWidth="75.0" text="Azonosító" />
                                                                 <TableColumn fx:id="user_name_tc" prefWidth="158.0" text="Felhasználónév" />
@@ -288,14 +288,14 @@
                                                          <children>
                                                             <HBox layoutX="260.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                <children>
-                                                                  <TextArea prefHeight="243.0" prefWidth="319.0">
+                                                                  <TextArea fx:id="message_ta" prefHeight="243.0" prefWidth="319.0">
                                                                      <HBox.margin>
                                                                         <Insets bottom="5.0" left="5.0" top="5.0" />
                                                                      </HBox.margin>
                                                                   </TextArea>
                                                                   <VBox prefHeight="243.0" prefWidth="250.0">
                                                                      <children>
-                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: green;" text="Elfogadás">
+                                                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#confirmmessagebtn" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: green;" text="Elfogadás">
                                                                            <VBox.margin>
                                                                               <Insets left="80.0" top="40.0" />
                                                                            </VBox.margin>
@@ -303,7 +303,7 @@
                                                                               <Font name="Georgia" size="12.0" />
                                                                            </font>
                                                                         </Button>
-                                                                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: red;" text="Elutasítás">
+                                                                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#badmessagebtn" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: red;" text="Elutasítás">
                                                                            <VBox.margin>
                                                                               <Insets left="80.0" top="50.0" />
                                                                            </VBox.margin>
