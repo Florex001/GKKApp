@@ -1,5 +1,10 @@
 package com.example.gepkocsikolcsonzes;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.sql.Blob;
+
 public class Cars {
 
     String id;
@@ -7,11 +12,23 @@ public class Cars {
     String info;
     String daily_price;
 
-    public Cars(String id, String car, String info, String daily_price){
+    Image image;
+
+    public Cars(String id, String car, String info, String daily_price, Image image){
         this.id = id;
         this.car = car;
         this.info = info;
         this.daily_price = daily_price;
+        this.image = image;
+    }
+
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public void setId(String id) {

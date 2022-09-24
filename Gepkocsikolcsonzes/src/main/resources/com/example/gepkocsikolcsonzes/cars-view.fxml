@@ -97,9 +97,10 @@
                                           <TableView fx:id="cars_TW" layoutX="-339.0" layoutY="-209.0" onMouseClicked="#cars_selected" prefHeight="217.0" prefWidth="587.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn fx:id="id_TC" prefWidth="208.0" text="Gépjármű azonosító" />
-                                              <TableColumn fx:id="CarName_TC" prefWidth="147.0" text="Gépjármű neve" />
-                                                <TableColumn fx:id="info_TC" prefWidth="245.0" text="Információk" />
-                                                <TableColumn fx:id="dailyprice_TC" prefWidth="251.0" text="Napi ára" />
+                                              <TableColumn fx:id="CarName_TC" prefWidth="130.0" text="Gépjármű neve" />
+                                                <TableColumn fx:id="info_TC" prefWidth="91.0" text="Információk" />
+                                                <TableColumn fx:id="dailyprice_TC" minWidth="0.0" prefWidth="76.0" text="Napi ára" />
+                                                <TableColumn fx:id="image_tc" minWidth="0.0" prefWidth="222.0" text="Kép" />
                                             </columns>
                                           </TableView>
                                        </children>

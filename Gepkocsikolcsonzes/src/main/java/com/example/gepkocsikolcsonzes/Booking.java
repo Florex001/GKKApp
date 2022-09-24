@@ -1,22 +1,33 @@
 package com.example.gepkocsikolcsonzes;
 
 public class Booking {
+
+    int sorszam;
     String id;
     String user_id;
     String borrowed_vehicle_id;
     String borrow_start;
     String borrow_end;
-    String indenty_card_number;
+    String driver_license_number;
     String price;
 
-    public Booking(String id, String user_id, String borrowed_vehicle_id, String borrow_start, String borrow_end, String indenty_card_number, String price ){
+    public Booking(String id, int sorszam, String user_id, String borrowed_vehicle_id, String borrow_start, String borrow_end, String driver_license_number, String price ){
+        this.sorszam = sorszam;
         this.id = id;
         this.user_id = user_id;
         this.borrowed_vehicle_id = borrowed_vehicle_id;
         this.borrow_start = borrow_start;
         this.borrow_end = borrow_end;
-        this.indenty_card_number = indenty_card_number;
+        this.driver_license_number = driver_license_number;
         this.price = price;
+    }
+
+    public void setSorszam(int sorszam) {
+        this.sorszam = sorszam;
+    }
+
+    public int getSorszam() {
+        return sorszam;
     }
 
     public String getBorrow_end() {
@@ -35,8 +46,8 @@ public class Booking {
         return id;
     }
 
-    public String getIndenty_card_number() {
-        return indenty_card_number;
+    public String getDriver_license_number() {
+        return driver_license_number;
     }
 
     public String getPrice() {
@@ -63,8 +74,8 @@ public class Booking {
         this.id = id;
     }
 
-    public void setIndenty_card_number(String identity_card_number) {
-        this.indenty_card_number = identity_card_number;
+    public void setDriver_license_number(String driver_license_number) {
+        this.driver_license_number = driver_license_number;
     }
 
     public void setPrice(String price) {

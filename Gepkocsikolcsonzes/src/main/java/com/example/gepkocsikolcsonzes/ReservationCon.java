@@ -102,11 +102,13 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private TextField start_tf;
+    @FXML
+    private TextField searchbooking_tf;
 
     @FXML
-    private Button booking_finish_fxid;
-
-
+    private TextField searchbookingnext_tf;
+    @FXML
+    private TextField searchbookingfinish_tf1;
 
     int index = -1;
 
@@ -144,7 +146,7 @@ public class ReservationCon implements Initializable {
         car_lab.setText("Gépjármű: " + vehiclei_TC.getCellData(index).toString());
         start_lab.setText("Kezdete: " + borrowstart_TC.getCellData(index).toString());
         endd_lab.setText("Vége: " + borrowend_TC.getCellData(index).toString());
-        idc_lab.setText("Szig-szám: " + idcard_TC.getCellData(index).toString());
+        idc_lab.setText("V. eng, szám: " + idcard_TC.getCellData(index).toString());
         price_lab.setText("Fizetendő: " + price_TC.getCellData(index).toString() + " Ft.");
         start_tf.setText(borrowstart_TC.getCellData(index).toString());
         end_TF.setText(borrowend_TC.getCellData(index).toString());
@@ -165,7 +167,7 @@ public class ReservationCon implements Initializable {
         car_lab.setText("Gépjármű: " + vehiclei_TC1.getCellData(index).toString());
         start_lab.setText("Kezdete: " + borrowstart_TC1.getCellData(index).toString());
         endd_lab.setText("Vége: " + borrowend_TC1.getCellData(index).toString());
-        idc_lab.setText("Szig-szám: " + idcard_TC1.getCellData(index).toString());
+        idc_lab.setText("V. eng, szám: " + idcard_TC1.getCellData(index).toString());
         price_lab.setText("Fizetendő: " + price_TC1.getCellData(index).toString() + " Ft.");
         start_tf.setText(borrowstart_TC1.getCellData(index).toString());
         end_TF.setText(borrowend_TC1.getCellData(index).toString());
@@ -186,7 +188,7 @@ public class ReservationCon implements Initializable {
         car_lab.setText("Gépjármű: " + vehiclei_TC11.getCellData(index).toString());
         start_lab.setText("Kezdete: " + borrowstart_TC11.getCellData(index).toString());
         endd_lab.setText("Vége: " + borrowend_TC11.getCellData(index).toString());
-        idc_lab.setText("Szig-szám: " + idcard_TC11.getCellData(index).toString());
+        idc_lab.setText("V. eng, szám: " + idcard_TC11.getCellData(index).toString());
         price_lab.setText("Fizetendő: " + price_TC11.getCellData(index).toString() + " Ft.");
         start_tf.setText(borrowstart_TC11.getCellData(index).toString());
         end_TF.setText(borrowend_TC11.getCellData(index).toString());
@@ -214,7 +216,7 @@ public class ReservationCon implements Initializable {
             try {
                 Connection con = DBConnector.getConnection();
 
-                String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `indenty_card_number`, `price`, `status`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"', 'foglalva');";
+                String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `driver_license_number`, `price`, `status`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"', 'foglalva');";
 
                 pst = con.prepareStatement(sql);
                 pst.execute();
@@ -245,12 +247,8 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private void booking_del(){
-        index = booking_TW.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
-            return;
-        }
 
-        String car_id_del = id_TC.getCellData(index).toString();
+        String car_id_del = id_TC.getCellData(index);
 
         PreparedStatement pst = null;
 
@@ -289,14 +287,10 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private void booking_update(){
-        index = booking_TW.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
-            return;
-        }
 
         PreparedStatement pst = null;
 
-        String id = id_TC.getCellData(index).toString();
+        String id = id_TC.getCellData(index);
         String start = start_tf.getText();
         String end = end_TF.getText();
         String pid = pid_TF.getText();
@@ -306,7 +300,7 @@ public class ReservationCon implements Initializable {
         try {
             Connection con = DBConnector.getConnection();
 
-            String sql = "UPDATE `bookings` SET `borrow_start` = '"+start+"', `borrow_end` = '"+end+"', `indenty_card_number` = '"+pid+"', `price` = '"+price+"' WHERE `bookings`.`id` = "+id+";";
+            String sql = "UPDATE `bookings` SET `borrow_start` = '"+start+"', `borrow_end` = '"+end+"', `driver_license_number` = '"+pid+"', `price` = '"+price+"' WHERE `bookings`.`id` = "+id+";";
 
             pst = con.prepareStatement(sql);
             pst.execute();
@@ -338,10 +332,6 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private void booking_next_step(){
-        index = booking_TW.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
-            return;
-        }
 
         PreparedStatement pst = null;
 
@@ -392,7 +382,6 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private void foglalt_tab(){
-        booking_finish_fxid.setVisible(false);
         bookingid_lab.setText("Foglalás azonosító: ");
         name_lab.setText("Név: ");
         car_lab.setText("Gépjármű: ");
@@ -403,7 +392,6 @@ public class ReservationCon implements Initializable {
     }//ha megnyitja ezt a tabot akkor a labelekből kitörlődik az információ
     @FXML
     private void elvitt_tab(){
-        booking_finish_fxid.setVisible(true);
         bookingid_lab.setText("Foglalás azonosító: ");
         name_lab.setText("Név: ");
         car_lab.setText("Gépjármű: ");
@@ -414,7 +402,6 @@ public class ReservationCon implements Initializable {
     }//ha megnyitja ezt a tabot akkor a labelekből kitörlődik az információ és megjelenik egy gomb a baloldali sávban
     @FXML
     private void finish_tab(){
-        booking_finish_fxid.setVisible(false);
         bookingid_lab.setText("Foglalás azonosító: ");
         name_lab.setText("Név: ");
         car_lab.setText("Gépjármű: ");
@@ -426,10 +413,6 @@ public class ReservationCon implements Initializable {
 
     @FXML
     private void booking_finish(){
-        index = booking_TW1.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
-            return;
-        }
 
         PreparedStatement pst = null;
 
@@ -471,9 +454,120 @@ public class ReservationCon implements Initializable {
         }
     }//ha rákattint arra a gombra akkor az elvitt járművet amit visszahoztak átkerül a teljesített foglalásokhoz
 
+    @FXML
+    private void searchbooking_btn(){
+        String keres = searchbooking_tf.getText();
+
+        boolean volt = false;
+
+        for (Booking elem : bookinglist){
+            if (elem.driver_license_number.equals(keres) || elem.id.equals(keres) || elem.user_id.equals(keres)){
+                index = elem.sorszam;
+                volt = true;
+            }
+        }
+        if (!volt) {
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("Nem található ezekkel az adatokkal foglalás!");
+            error_alert.show();
+            searchbooking_tf.setText("");
+            searchbooking_tf.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }else{
+            bookingid_lab.setText("Foglalás azonosító: " + id_TC.getCellData(index).toString());
+            name_lab.setText("Név: " + uid_TC.getCellData(index).toString());
+            car_lab.setText("Gépjármű: " + vehiclei_TC.getCellData(index).toString());
+            start_lab.setText("Kezdete: " + borrowstart_TC.getCellData(index).toString());
+            endd_lab.setText("Vége: " + borrowend_TC.getCellData(index).toString());
+            idc_lab.setText("V. eng, szám: " + idcard_TC.getCellData(index).toString());
+            price_lab.setText("Fizetendő: " + price_TC.getCellData(index).toString() + " Ft.");
+            start_tf.setText(borrowstart_TC.getCellData(index).toString());
+            end_TF.setText(borrowend_TC.getCellData(index).toString());
+            pid_TF.setText(idcard_TC.getCellData(index).toString());
+            price_TF.setText(price_TC.getCellData(index).toString());
+            searchbooking_tf.setText("");
+            searchbooking_tf.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }
+    }//foglalások között lehet keresni azonosító vagy vezetői engedély szám alapján
+
+    @FXML
+    private void searchbookingnext_btn(){
+        String keres = searchbookingnext_tf.getText();
+
+        index = -1;
+
+        boolean volt = false;
+
+        for (Booking elem : bookinglist2){
+            if (elem.driver_license_number.equals(keres) || elem.id.equals(keres) || elem.user_id.equals(keres)){
+                index = elem.sorszam;
+                volt = true;
+            }
+        }
+
+        if (!volt) {
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("Nem található ezekkel az adatokkal elvitt gépjármű foglalás!");
+            error_alert.show();
+            searchbookingnext_tf.setText("");
+            searchbookingnext_tf.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }else{
+            bookingid_lab.setText("Foglalás azonosító: " + id_TC1.getCellData(index).toString());
+            name_lab.setText("Név: " + uid_TC1.getCellData(index).toString());
+            car_lab.setText("Gépjármű: " + vehiclei_TC1.getCellData(index).toString());
+            start_lab.setText("Kezdete: " + borrowstart_TC1.getCellData(index).toString());
+            endd_lab.setText("Vége: " + borrowend_TC1.getCellData(index).toString());
+            idc_lab.setText("V. eng, szám: " + idcard_TC1.getCellData(index).toString());
+            price_lab.setText("Fizetendő: " + price_TC1.getCellData(index).toString() + " Ft.");
+            start_tf.setText(borrowstart_TC1.getCellData(index).toString());
+            end_TF.setText(borrowend_TC1.getCellData(index).toString());
+            pid_TF.setText(idcard_TC1.getCellData(index).toString());
+            price_TF.setText(price_TC1.getCellData(index).toString());
+            searchbookingnext_tf.setText("");
+            searchbookingnext_tf.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }
+
+    }//az elvitt gépjármű foglalások között lehet keresni
+
+    @FXML
+    private void searchbookingfinish_btn(){
+        String keres = searchbookingfinish_tf1.getText();
+
+        boolean volt = false;
+
+        for (Booking elem : bookinglist3){
+            if (elem.driver_license_number.equals(keres) || elem.id.equals(keres) || elem.user_id.equals(keres)){
+                index = elem.sorszam;
+                volt = true;
+            }
+        }
+        if (!volt) {
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("Nem található ezekkel az adatokkal teljesített foglalás!");
+            error_alert.show();
+            searchbooking_tf.setText("");
+            searchbooking_tf.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }else{
+            bookingid_lab.setText("Foglalás azonosító: " + id_TC11.getCellData(index).toString());
+            name_lab.setText("Név: " + uid_TC11.getCellData(index).toString());
+            car_lab.setText("Gépjármű: " + vehiclei_TC11.getCellData(index).toString());
+            start_lab.setText("Kezdete: " + borrowstart_TC11.getCellData(index).toString());
+            endd_lab.setText("Vége: " + borrowend_TC11.getCellData(index).toString());
+            idc_lab.setText("V. eng, szám: " + idcard_TC11.getCellData(index).toString());
+            price_lab.setText("Fizetendő: " + price_TC11.getCellData(index).toString() + " Ft.");
+            start_tf.setText(borrowstart_TC11.getCellData(index).toString());
+            end_TF.setText(borrowend_TC11.getCellData(index).toString());
+            pid_TF.setText(idcard_TC11.getCellData(index).toString());
+            price_TF.setText(price_TC11.getCellData(index).toString());
+            searchbookingfinish_tf1.setText("");
+            searchbookingfinish_tf1.setPromptText("Keresés foglalási azonosító, név vagy vezetői engedély szám alapján...");
+        }
+    }//a teljesített foglalások között lehet keresni
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        booking_finish_fxid.setVisible(false);
         bookingtableRES();
         bookingtableNEXT();
         bookingtableFINISH();
@@ -485,11 +579,13 @@ public class ReservationCon implements Initializable {
 
             ResultSet booking = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE status = 'foglalva';");
 
-
+            int bookingssz = -1;
 
             while (booking.next()){
                 String userid = booking.getString("user_id");
                 ResultSet user_name = con.createStatement().executeQuery("SELECT first_name, last_name FROM `user` WHERE id = '"+ userid +"';");
+
+                bookingssz++;
                 if (user_name.next()){
                     String fname = user_name.getString("first_name");
                     String lname = user_name.getString("last_name");
@@ -504,7 +600,7 @@ public class ReservationCon implements Initializable {
                          vname = vehicle_name.getString("car");
 
                     }
-                    bookinglist.add(new Booking(booking.getString("id"), name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("indenty_card_number"), booking.getString("price")));
+                    bookinglist.add(new Booking(booking.getString("id"), bookingssz, name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("driver_license_number"), booking.getString("price")));
                 }
 
             }
@@ -518,7 +614,7 @@ public class ReservationCon implements Initializable {
         vehiclei_TC.setCellValueFactory(new PropertyValueFactory<>("borrowed_vehicle_id"));
         borrowstart_TC.setCellValueFactory(new PropertyValueFactory<>("borrow_start"));
         borrowend_TC.setCellValueFactory(new PropertyValueFactory<>("borrow_end"));
-        idcard_TC.setCellValueFactory(new PropertyValueFactory<>("indenty_card_number"));
+        idcard_TC.setCellValueFactory(new PropertyValueFactory<>("driver_license_number"));
         price_TC.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         booking_TW.setItems(bookinglist);
@@ -531,11 +627,12 @@ public class ReservationCon implements Initializable {
 
             ResultSet booking = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE status = 'elvitte';");
 
-
+            int nextssz = -1;
 
             while (booking.next()){
                 String userid = booking.getString("user_id");
                 ResultSet user_name = con.createStatement().executeQuery("SELECT first_name, last_name FROM `user` WHERE id = '"+ userid +"';");
+                nextssz++;
                 if (user_name.next()){
                     String fname = user_name.getString("first_name");
                     String lname = user_name.getString("last_name");
@@ -550,7 +647,7 @@ public class ReservationCon implements Initializable {
                         vname = vehicle_name.getString("car");
 
                     }
-                    bookinglist2.add(new Booking(booking.getString("id"), name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("indenty_card_number"), booking.getString("price")));
+                    bookinglist2.add(new Booking(booking.getString("id"), nextssz, name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("driver_license_number"), booking.getString("price")));
                 }
 
             }
@@ -564,7 +661,7 @@ public class ReservationCon implements Initializable {
         vehiclei_TC1.setCellValueFactory(new PropertyValueFactory<>("borrowed_vehicle_id"));
         borrowstart_TC1.setCellValueFactory(new PropertyValueFactory<>("borrow_start"));
         borrowend_TC1.setCellValueFactory(new PropertyValueFactory<>("borrow_end"));
-        idcard_TC1.setCellValueFactory(new PropertyValueFactory<>("indenty_card_number"));
+        idcard_TC1.setCellValueFactory(new PropertyValueFactory<>("driver_license_number"));
         price_TC1.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         booking_TW1.setItems(bookinglist2);
@@ -576,11 +673,12 @@ public class ReservationCon implements Initializable {
 
             ResultSet booking = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE status = 'teljesitve';");
 
-
+            int finishssz = -1;
 
             while (booking.next()){
                 String userid = booking.getString("user_id");
                 ResultSet user_name = con.createStatement().executeQuery("SELECT first_name, last_name FROM `user` WHERE id = '"+ userid +"';");
+                finishssz++;
                 if (user_name.next()){
                     String fname = user_name.getString("first_name");
                     String lname = user_name.getString("last_name");
@@ -595,7 +693,7 @@ public class ReservationCon implements Initializable {
                         vname = vehicle_name.getString("car");
 
                     }
-                    bookinglist3.add(new Booking(booking.getString("id"), name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("indenty_card_number"), booking.getString("price")));
+                    bookinglist3.add(new Booking(booking.getString("id"),finishssz, name, vname, booking.getString("borrow_start"), booking.getString("borrow_end"), booking.getString("driver_license_number"), booking.getString("price")));
                 }
 
             }
@@ -609,7 +707,7 @@ public class ReservationCon implements Initializable {
         vehiclei_TC11.setCellValueFactory(new PropertyValueFactory<>("borrowed_vehicle_id"));
         borrowstart_TC11.setCellValueFactory(new PropertyValueFactory<>("borrow_start"));
         borrowend_TC11.setCellValueFactory(new PropertyValueFactory<>("borrow_end"));
-        idcard_TC11.setCellValueFactory(new PropertyValueFactory<>("indenty_card_number"));
+        idcard_TC11.setCellValueFactory(new PropertyValueFactory<>("driver_license_number"));
         price_TC11.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         booking_TW11.setItems(bookinglist3);
