@@ -50,6 +50,10 @@ public class CarsCon implements Initializable {
 
     @FXML
     private TextField Price_update_TF;
+    @FXML
+    private TextField g_name_tf;
+    @FXML
+    private ImageView image_iv;
 
 
     int index = -1;
@@ -71,10 +75,12 @@ public class CarsCon implements Initializable {
 
         CID_lab.setText("Gépjármű azonosító: " + id_TC.getCellData(index).toString());
         name_lab.setText("Neve: " + CarName_TC.getCellData(index).toString());
+        g_name_tf.setText(CarName_TC.getCellData(index));
         dailyprice_lab.setText("Információ: " + info_TC.getCellData(index).toString());
         info_lab.setText("Napi ára: " + dailyprice_TC.getCellData(index).toString() + "Ft.");
         Info_update_TA.setText(info_TC.getCellData(index).toString());
         Price_update_TF.setText(dailyprice_TC.getCellData(index).toString());
+        image_iv.setImage((Image) image_tc.getCellData(index));
     }//kiválasztott elem bekerül a labelek mellé
 
     @FXML
@@ -96,6 +102,7 @@ public class CarsCon implements Initializable {
         PreparedStatement pst = null;
 
         String id = id_TC.getCellData(index).toString();
+        String name = g_name_tf.getText();
         String info = Info_update_TA.getText();
         String price = Price_update_TF.getText();
 
@@ -103,7 +110,7 @@ public class CarsCon implements Initializable {
         try {
             Connection con = DBConnector.getConnection();
 
-            String update = "UPDATE `vehicles` SET `info` = '"+info+"', `daily_price` = '"+price+"' WHERE `vehicles`.`id` = "+id+";";
+            String update = "UPDATE `vehicles` SET car = '"+name+"',  `info` = '"+info+"', `daily_price` = '"+price+"' WHERE `vehicles`.`id` = "+id+";";
 
             pst = con.prepareStatement(update);
             pst.execute();
@@ -128,6 +135,12 @@ public class CarsCon implements Initializable {
 
         Info_update_TA.setText("");
         Price_update_TF.setText("");
+        g_name_tf.setText("");
+
+    }
+
+    @FXML
+    private void addcars_btn(){
 
     }
 

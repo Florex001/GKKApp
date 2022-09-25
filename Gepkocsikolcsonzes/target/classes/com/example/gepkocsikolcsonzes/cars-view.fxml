@@ -92,6 +92,83 @@
                            <children>
                               <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #142936;">
+                                       <children>
+                                          <GridPane layoutX="309.0" layoutY="102.0" onMouseClicked="#addcars_btn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.0" minWidth="10.0" prefWidth="141.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="299.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="249.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="193.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="127.0" minHeight="1.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Információ:" textFill="#b9b9b9" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Georgia" size="20.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextArea fx:id="Info_update_TA" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="223.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Napi ár:" textFill="#b9b9b9" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Georgia" size="20.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="Price_update_TF" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </GridPane.margin></TextField>
+                                                <Button mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: orange;" text="Módosítás" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </GridPane.margin></Button>
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="136.0" prefHeight="17.0" prefWidth="638.0" text="G.név:" textFill="#b9b9b9">
+                                                   <font>
+                                                      <Font name="Georgia" size="20.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="g_name_tf" layoutX="164.0" layoutY="239.0" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="20.0" right="20.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Button layoutX="688.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <ImageView fx:id="image_iv" fitHeight="189.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </ImageView>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
                                           <TableView fx:id="cars_TW" layoutX="-339.0" layoutY="-209.0" onMouseClicked="#cars_selected" prefHeight="217.0" prefWidth="587.0" style="-fx-background-color: #142936;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -103,49 +180,6 @@
                                                 <TableColumn fx:id="image_tc" minWidth="0.0" prefWidth="222.0" text="Kép" />
                                             </columns>
                                           </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #142936;">
-                                       <children>
-                                          <GridPane layoutX="309.0" layoutY="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.0" minWidth="10.0" prefWidth="432.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="225.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="193.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Információ átírásához:" textFill="#b9b9b9">
-                                                   <font>
-                                                      <Font name="Georgia" size="20.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets left="20.0" />
-                                                   </padding>
-                                                </Label>
-                                                <TextArea fx:id="Info_update_TA" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="223.0" prefWidth="434.0" GridPane.rowIndex="1">
-                                                   <padding>
-                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
-                                                   </padding>
-                                                </TextArea>
-                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="638.0" text="Ár megváltoztatása:" textFill="#b9b9b9" GridPane.columnIndex="1">
-                                                   <font>
-                                                      <Font name="Georgia" size="20.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets left="20.0" />
-                                                   </padding>
-                                                </Label>
-                                                <TextField fx:id="Price_update_TF" GridPane.columnIndex="2" />
-                                                <Button mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Módosítás" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font size="24.0" />
-                                                   </font></Button>
-                                             </children>
-                                          </GridPane>
                                        </children>
                                     </AnchorPane>
                                 </items>
