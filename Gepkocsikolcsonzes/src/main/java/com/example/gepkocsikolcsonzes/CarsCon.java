@@ -57,6 +57,8 @@ public class CarsCon implements Initializable {
     private ImageView image_iv;
     @FXML
     private Button open_folder;
+    @FXML
+    private TextField searchbooking_tf;
 
 
     int index = -1;
@@ -96,7 +98,7 @@ public class CarsCon implements Initializable {
                 "és csak az után kattintson a Módosítás gombra miután meggyőződött hogy minden adat jól szerepel.\n" +
                 "\tFontos: Az adatokat csak akkor módosítsa ha biztos benne.");
         help_alert.show();
-    }
+    }//segítséget nyújt
 
 
     @FXML
@@ -139,8 +141,9 @@ public class CarsCon implements Initializable {
         Info_update_TA.setText("");
         Price_update_TF.setText("");
         g_name_tf.setText("");
+        image_iv.setImage(null);
 
-    }
+    }//frissiteni lehet vele
 
     @FXML
     private void addcars_btn(){
@@ -152,25 +155,117 @@ public class CarsCon implements Initializable {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(open_folder.getScene().getWindow());
         try {
-            Connection con = DBConnector.getConnection();
-            FileInputStream fis = new FileInputStream(file);
+            if (name.equals("") || info.equals("")){
+                Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                error_alert.setTitle("Hiba");
+                error_alert.setHeaderText("Töltse ki az összes mezőt!");
+                error_alert.initOwner(WelcomeCon.reservation_window);
+                error_alert.show();
+            }else {
+                Connection con = DBConnector.getConnection();
+                FileInputStream fis = new FileInputStream(file);
 
-            pst = con.prepareStatement(sql);
-            pst.setString(1, name);
-            pst.setString(2, info);
-            pst.setInt(3, price);
-            pst.setBinaryStream(4, fis, fis.available());
+                pst = con.prepareStatement(sql);
+                pst.setString(1, name);
+                pst.setString(2, info);
+                pst.setInt(3, price);
+                pst.setBinaryStream(4, fis, fis.available());
+                pst.execute();
+                Image image = new Image(fis);
+                image_iv.setImage(image);
+                cars_TW.getItems().clear();
+                carstable();
+
+                Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                apply_del_alert.setTitle("Sikeres gépjármű hozzáadás..");
+                apply_del_alert.setHeaderText("Ellenőrizze a hozzáadott elemet.");
+                apply_del_alert.initOwner(WelcomeCon.cars_window);
+                apply_del_alert.show();
+            }
+
+        } catch (SQLException | IOException e) {
+            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            error_update_alert.setTitle("Hiba");
+            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+            error_update_alert.setContentText("Próbálja újra!");
+            error_update_alert.initOwner(WelcomeCon.cars_window);
+            error_update_alert.show();
+        }
+        g_name_tf.setText("");
+        Info_update_TA.setText("");
+        Price_update_TF.setText("");
+        image_iv.setImage(null);
+
+    }//hozzá lehet adni gépjárművet
+
+    @FXML
+    private void cars_delete(){
+        int id = Integer.parseInt(id_TC.getCellData(index));
+        PreparedStatement pst;
+        String delete_cars = "DELETE FROM `vehicles` WHERE `vehicles`.`id` = ?";
+
+        try {
+            Connection con = DBConnector.getConnection();
+
+            pst = con.prepareStatement(delete_cars);
+            pst.setInt(1, id);
             pst.execute();
-            Image image = new Image(fis);
-            image_iv.setImage(image);
             cars_TW.getItems().clear();
             carstable();
 
-        } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
+            Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            apply_del_alert.setTitle("Sikeres gépjármű törlés...");
+            apply_del_alert.setHeaderText("Sikeresen törölte a gépjárművet.");
+            apply_del_alert.initOwner(WelcomeCon.cars_window);
+            apply_del_alert.show();
+
+        } catch (SQLException e) {
+            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            error_update_alert.setTitle("Hiba");
+            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+            error_update_alert.setContentText("Próbálja újra!");
+            error_update_alert.initOwner(WelcomeCon.cars_window);
+            error_update_alert.show();
+        }
+        g_name_tf.setText("");
+        Info_update_TA.setText("");
+        Price_update_TF.setText("");
+        image_iv.setImage(null);
+    }//törölni lehet vele gépjárművet
+
+    @FXML
+    private void searchbooking_btn(){
+        String keres = searchbooking_tf.getText();
+
+        boolean volt =false;
+        for (Cars elem : carslist){
+            if (elem.id.equals(keres) || elem.car.equals(keres)){
+                index = elem.sorszam;
+                volt = true;
+            }
         }
 
-    }
+        if (!volt){
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("Nem található ezekkel az adatokkal foglalás!");
+            error_alert.show();
+            searchbooking_tf.setText("");
+            searchbooking_tf.setPromptText("Keresés azonosító vagy gépjármű név alapján...");
+        }else {
+            CID_lab.setText("Gépjármű azonosító: " + id_TC.getCellData(index).toString());
+            name_lab.setText("Neve: " + CarName_TC.getCellData(index).toString());
+            g_name_tf.setText(CarName_TC.getCellData(index));
+            dailyprice_lab.setText("Információ: " + info_TC.getCellData(index).toString());
+            info_lab.setText("Napi ára: " + dailyprice_TC.getCellData(index).toString() + "Ft.");
+            Info_update_TA.setText(info_TC.getCellData(index).toString());
+            Price_update_TF.setText(dailyprice_TC.getCellData(index).toString());
+            image_iv.setImage((Image) image_tc.getCellData(index));
+            searchbooking_tf.setText("");
+            searchbooking_tf.setPromptText("Keresés azonosító vagy gépjármű név alapján...");
+        }
+
+    }//keresni lehet azonosító vagy gépkocsi név alapján
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -183,12 +278,16 @@ public class CarsCon implements Initializable {
 
             ResultSet cars = con.createStatement().executeQuery("SELECT * FROM `vehicles`");
 
+            int ssz = -1;
+
             while (cars.next()){
                 Blob blob = cars.getBlob("image");
                 InputStream inputStream = blob.getBinaryStream();
                 Image image = new Image(inputStream);
 
-                carslist.add(new Cars(cars.getString("id"), cars.getString("car"), cars.getString("info"), cars.getString("daily_price"), image ));
+                ssz++;
+
+                carslist.add(new Cars(ssz, cars.getString("id"), cars.getString("car"), cars.getString("info"), cars.getString("daily_price"), image ));
             }
 
 

@@ -7,6 +7,7 @@ import java.sql.Blob;
 
 public class Cars {
 
+    int sorszam;
     String id;
     String car;
     String info;
@@ -14,7 +15,8 @@ public class Cars {
 
     Image image;
 
-    public Cars(String id, String car, String info, String daily_price, Image image){
+    public Cars(int sorszam, String id, String car, String info, String daily_price, Image image){
+        this.sorszam = sorszam;
         this.id = id;
         this.car = car;
         this.info = info;
@@ -22,6 +24,13 @@ public class Cars {
         this.image = image;
     }
 
+    public int getSorszam() {
+        return sorszam;
+    }
+
+    public void setSorszam(int sorszam) {
+        this.sorszam = sorszam;
+    }
 
     public void setImage(Image image) {
         this.image = image;
