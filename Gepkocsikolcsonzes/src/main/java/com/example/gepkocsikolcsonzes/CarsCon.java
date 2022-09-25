@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.*;
 import java.net.URL;
@@ -54,6 +55,8 @@ public class CarsCon implements Initializable {
     private TextField g_name_tf;
     @FXML
     private ImageView image_iv;
+    @FXML
+    private Button open_folder;
 
 
     int index = -1;
@@ -141,6 +144,31 @@ public class CarsCon implements Initializable {
 
     @FXML
     private void addcars_btn(){
+        String name = g_name_tf.getText();
+        String info = Info_update_TA.getText();
+        int price = Integer.parseInt(Price_update_TF.getText());
+        String sql = "INSERT INTO `vehicles` (`id`, `car`, `info`, `daily_price`, `image`) VALUES (NULL, ? , ? , ? , ?); ";
+        PreparedStatement pst;
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(open_folder.getScene().getWindow());
+        try {
+            Connection con = DBConnector.getConnection();
+            FileInputStream fis = new FileInputStream(file);
+
+            pst = con.prepareStatement(sql);
+            pst.setString(1, name);
+            pst.setString(2, info);
+            pst.setInt(3, price);
+            pst.setBinaryStream(4, fis, fis.available());
+            pst.execute();
+            Image image = new Image(fis);
+            image_iv.setImage(image);
+            cars_TW.getItems().clear();
+            carstable();
+
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -152,7 +152,7 @@
                                                       <Insets left="20.0" right="20.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <Button layoutX="688.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#update_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3">
+                                                <Button fx:id="open_folder" layoutX="688.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#addcars_btn" prefHeight="25.0" prefWidth="286.0" style="-fx-background-color: green;" text="Hozzáadás" GridPane.columnIndex="3">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
