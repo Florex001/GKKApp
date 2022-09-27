@@ -472,7 +472,7 @@ public class AdminCon implements Initializable {
         try {
             Connection con = DBConnector.getConnection();
 
-            String usersDB = "SELECT * FROM `user`";
+            String usersDB = "SELECT id , username , first_name , last_name , md5(password) , email , phone_number , registration_date , rank FROM `user`;";
 
             ResultSet user = con.createStatement().executeQuery(usersDB);
 
@@ -486,7 +486,7 @@ public class AdminCon implements Initializable {
 
                 ssz++;
 
-                userslist.add(new Users(ssz, user.getString("id"), user.getString("username"), nev, user.getString("password"), user.getString("email"), user.getString("phone_number"), user.getString("registration_date"), user.getString("rank")));
+                userslist.add(new Users(ssz, user.getString("id"), user.getString("username"), nev, user.getString("md5(password)"), user.getString("email"), user.getString("phone_number"), user.getString("registration_date"), user.getString("rank")));
             }
 
             id_tc.setCellValueFactory(new PropertyValueFactory<>("id"));

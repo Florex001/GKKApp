@@ -206,7 +206,7 @@
                                                 <Insets left="200.0" top="10.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#searchbooking_btn" prefHeight="25.0" prefWidth="66.0" text="Keresés">
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#searchbooking_btn" prefHeight="26.0" prefWidth="81.0" text="Keresés">
                                              <font>
                                                 <Font name="Georgia" size="14.0" />
                                              </font>
