@@ -4,6 +4,21 @@
     </div>
 </div>
 
+<?php if ($params['info'] === "regisztracioSikertelen") : ?>
+    <div class="alert alert-danger">
+        Regisztráció sikertelen!
+    </div>
+<?php endif ?>
+<?php if ($params['info'] === "regisztracioSikeres") : ?>
+    <div class="alert alert-success">
+        Sikeres regisztráció!
+    </div>
+<?php endif ?>
+<?php if ($params['info'] === "hibasadatok") : ?>
+    <div class="alert alert-danger">
+        Sikertelen bejelentkezés!
+    </div>
+<?php endif ?>
 
 <?php if ($params['isRegistration']) : ?>
     <form action="/register" method="POST">
@@ -21,7 +36,7 @@
         </label>
         <label class="w-100">
             Jelszó:
-            <input class="form-control" type="text" name="jelszo">
+            <input class="form-control" type="password" name="jelszo">
         </label>
         <label class="w-100">
             Email:
@@ -37,17 +52,6 @@
     <a href="<?= $params['url'] ?>">Bejelentkezés</a>
 
 <?php else : ?>
-    <?php if ($params['info'] === "registrationSuccessful") : ?>
-        <div class="alert alert-success">
-            Regisztráció sikeres
-        </div>
-    <?php endif ?>
-
-    <?php if ($params['info'] === "invalidCredentials") : ?>
-        <div class="alert alert-danger">
-            Helytelen bejelentkezési adatok
-        </div>
-    <?php endif ?>
 
     <form action="/login" method="POST">
         <label class="w-100">
@@ -64,3 +68,4 @@
     Nincs még felhasználói fiókod?
     <a href="<?= $params['url'] ?>&isRegistration=1">Regisztráció</a>
 <?php endif ?>
+

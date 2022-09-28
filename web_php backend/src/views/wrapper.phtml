@@ -7,19 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/bootstrap.min.css">
     <title>Gépjármű kölcsönzés</title>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="/public/fooldalstyle.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Autók</a> 
-    <?php if($params['bejelentkezve']): ?>
-        <form action="/logout" method="POST">
-            <button type="submit" class="btn btn-sm btn-danger m-2">Kijelentkezés</button>
-        </form>
-    <?php endif; ?>      
+    <nav>
+        <div id='cssmenu'>
+            <ul>
+            <li class='active'><a href='/'><span>Autok</span></a></li>
+            <li>
+                <?php if($params['bejelentkezve']): ?>
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-sm btn-danger m-2">Kijelentkezés</button>
+                    </form>
+                <?php endif; ?> 
+            </li>     
+            </ul>
+        </div>
     </nav>
-    <?= $params['content'] ?>
+    <section>
+        <div id="olvasstovább">
+            <img src="/public/picture/olvass.jpg" alt="Fejléc Háttér" style="width: 100%;">
+        </div>
+    </section>
 
+    <?= $params['content'] ?>
+    
+    <script src="/public/fooldal.js"></script>
 </body>
 
 </html>

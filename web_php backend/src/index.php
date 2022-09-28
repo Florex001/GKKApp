@@ -20,17 +20,19 @@ $handlerFunction = $routes[$method][$path] ?? "NotFoundHandler";
 
 $handlerFunction();
 
-function getPathWhitId($url){
+function getPathWhitId($url)
+{
     $parsed = parse_url($url);
-    if(!isset($parsed['query'])) {
+    if (!isset($parsed['query'])) {
         return $url;
     }
-    $queryParams = []; 
+    $queryParams = [];
     parse_str($parsed['query'], $queryParams);
     return $parsed['path'] . "?id=" . $queryParams['id'];
 }
 
-function logoutHandler(){
+function logoutHandler()
+{
 
     session_start();
 
@@ -43,18 +45,19 @@ function logoutHandler(){
     header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']));
 }
 
-function carsPage(){
+function carsPage()
+{
 
-if(!isLoggedIn()){
+    if (!isLoggedIn()) {
         echo compileTemplate("wrapper.phtml", [
             'content' => compileTemplate('subscriptionFrom.phtml', [
                 'info' => $_GET['info'] ?? '',
                 'isRegistration' => isset($_GET['isRegistration']),
-                'url' => getPathWhitId($_SERVER['REQUEST_URI']), 
+                'url' => getPathWhitId($_SERVER['REQUEST_URI']),
             ]),
             'bejelentkezve' => false
         ]);
-    
+
         return;
     }
 
@@ -69,43 +72,54 @@ if(!isLoggedIn()){
             'car' => $car
         ]),
         'bejelentkezve' => true,
+    ]);
+}
+
+function registrationhandler()
+{
+    $rank = "user";
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT username FROM user WHERE username = ?");
+    $statement->execute([$_POST["username"]]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
+        return;
+    }else{
+        $statement = $pdo->prepare("INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`, `password`, `email`, `phone_number`, `registration_date`, `rank`)
+        VALUES (NULL, ? , ? , ? , ? , ? , ? , ? , ?)");
+
+        $statement->execute([
+            $_POST["username"],
+            $_POST["keresztnev"],
+            $_POST["vezeteknev"],
+            $_POST["jelszo"],
+            $_POST["email"],
+            $_POST["telefonszam"],
+            date("Y-m-d"),
+            $rank
         ]);
 
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikeres');
+    }
 }
 
-function registrationhandler(){   
-    $rank = "user"; 
-    $pdo = getConnection();
-    $statement = $pdo->prepare("INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`, `password`, `email`, `phone_number`, `registration_date`, `rank`)
-         VALUES (NULL, ? , ? , ? , ? , ? , ? , ? , ?)");
-
-    $statement->execute([
-        $_POST["username"],
-        $_POST["keresztnev"],
-        $_POST["vezeteknev"],
-        $_POST["jelszo"],
-        $_POST["email"],
-        $_POST["telefonszam"],
-        date("Y-m-d"),
-        $rank
-    ]);
-    
-    header('Location: ' . '/autok');
-}
-
-function loginhandler(){
+function loginhandler()
+{
     $pdo = getConnection();
     $statement = $pdo->prepare("SELECT * FROM user WHERE username = ? ");
     $statement->execute([$_POST["username"]]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if(!$user){
+    if (!$user) {
         header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=hibasadatok');
         return;
     }
-    
 
-    if(!($_POST['password'] === $user["password"])){
+
+    if (!($_POST['password'] === $user["password"])) {
         header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=hibasadatok');
         return;
     }
@@ -114,10 +128,10 @@ function loginhandler(){
     $_SESSION['userID'] = $user['id'];
 
     header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']));
-
 }
 
-function homePage(){
+function homePage()
+{
     $pdo = getConnection();
 
     $statement = $pdo->prepare('SELECT * FROM `vehicles`');
@@ -129,29 +143,31 @@ function homePage(){
         'content' => compileTemplate('cars.phtml', [
             'cars' => $cars
         ]),
-        'bejelentkezve' =>isLoggedIn()
+        'bejelentkezve' => isLoggedIn()
     ]);
 }
 
 
 
-function getConnection(){
+function getConnection()
+{
     return new pdo(
         'mysql:host=' . $_SERVER['DB_HOST'] . ';dbname=' . $_SERVER['DB_NAME'],
         $_SERVER['DB_USER'],
-        $_SERVER['DB_PASSWORD'] 
-        );
+        $_SERVER['DB_PASSWORD']
+    );
 }
 
-function isLoggedIn(): bool{
-    if (!isset($_COOKIE[session_name()])) { 
-        return false; 
+function isLoggedIn(): bool
+{
+    if (!isset($_COOKIE[session_name()])) {
+        return false;
     }
 
     session_start();
 
-    if (!isset($_SESSION['userID'])) { 
-        return false; 
+    if (!isset($_SESSION['userID'])) {
+        return false;
     }
 
     return true;
@@ -160,10 +176,11 @@ function isLoggedIn(): bool{
 function compileTemplate($filePath, $params = []): string
 {
     ob_start();
-    require __DIR__ . "/views/" . $filePath; 
+    require __DIR__ . "/views/" . $filePath;
     return ob_get_clean();
 }
 
-function NotFoundHandler(){
+function NotFoundHandler()
+{
     echo "oldal nem található";
 }
