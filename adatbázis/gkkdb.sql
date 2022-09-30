@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Sze 28. 13:48
+-- Létrehozás ideje: 2022. Sze 30. 16:29
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 8.1.6
 
@@ -92,33 +92,6 @@ INSERT INTO `company` (`id`, `registration_number`, `company_name`, `headquarter
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `message`
---
-
-CREATE TABLE `message` (
-  `id` int(255) NOT NULL,
-  `user_name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `message` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `message`
---
-
-INSERT INTO `message` (`id`, `user_name`, `name`, `message`, `status`) VALUES
-(1, 'imre', 'message', 'ja', 'küldve'),
-(2, 'imre', 'hovaka kálmán', 'levi pöcse kicsi', 'elfogadva'),
-(3, 'kakimaki', 'jár kálmán', 'nagy a faszom', 'elutasitva'),
-(4, 'admin', 'admin admin', 'váradi egy buzi és ezt jobb ha mindenki az eszébe vési.', 'elfogadva'),
-(5, 'tlt03', 'Levente Tarnóczi', 'user jogot szeretnék valentínnek', 'elfogadva'),
-(6, 'gyalogh', 'Dávid Balogh', 'Tarnócsi Leventétől vegyék el az admint!', 'elutasitva'),
-(7, 'admin', 'admin admin', 'levi buzi', 'elfogadva');
-
--- --------------------------------------------------------
-
---
 -- Tábla szerkezet ehhez a táblához `user`
 --
 
@@ -145,7 +118,8 @@ INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`, `password`, `em
 (4, 'alkalmazasbol', 'alkalmazasbol', 'alkalmazasbol', 'alkalmazasbol', 'alkalmazasbol@gkk.app.hu', '+36709312755', '2022-09-17', 'alkalmazasbol'),
 (5, 'tlt03', 'Levente', 'Tarnóczi', 'Macilaci2022', 'tlt03@gkk.app.hu', '+36925874587', '2022-09-22', 'admin'),
 (6, 'vali', 'Valentin', 'Füredel', 'Macilaci2022', 'vali@gkk.app.hu', '+36705826978', '2022-09-22', 'admin'),
-(7, 'gyalogh', 'Dávid', 'Balogh', 'Macilaci2022', 'gyalogh@gkk.app.hu', '+36709312755', '2022-09-22', 'admin');
+(7, 'gyalogh', 'Dávid', 'Balogh', 'Macilaci2022', 'gyalogh@gkk.app.hu', '+36709312755', '2022-09-22', 'admin'),
+(9, 'gyongy', 'Gyöngyi', 'Petercsák', 'hahaha', 'haha@haha.ha', '5689745123', '2022-09-29', 'user');
 
 -- --------------------------------------------------------
 
@@ -158,7 +132,7 @@ CREATE TABLE `vehicles` (
   `car` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `info` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `daily_price` int(255) NOT NULL,
-  `image` blob NOT NULL
+  `image` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
@@ -203,12 +177,6 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`id`);
-
---
 -- A tábla indexei `user`
 --
 ALTER TABLE `user`
@@ -237,22 +205,16 @@ ALTER TABLE `company`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT a táblához `message`
---
-ALTER TABLE `message`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
