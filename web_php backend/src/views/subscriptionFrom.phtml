@@ -4,68 +4,109 @@
     </div>
 </div>
 
-<?php if ($params['info'] === "regisztracioSikertelen") : ?>
-    <div class="alert alert-danger">
-        Regisztráció sikertelen!
-    </div>
-<?php endif ?>
-<?php if ($params['info'] === "regisztracioSikeres") : ?>
-    <div class="alert alert-success">
-        Sikeres regisztráció!
-    </div>
-<?php endif ?>
-<?php if ($params['info'] === "hibasadatok") : ?>
-    <div class="alert alert-danger">
-        Sikertelen bejelentkezés!
-    </div>
-<?php endif ?>
-
 <?php if ($params['isRegistration']) : ?>
+    <div class="reg-card-container">
     <form action="/register" method="POST">
-    <label class="w-100">
-            Felhasználónév:
-            <input class="form-control" type="text" name="username">
-        </label>
-        <label class="w-100">
-            Keresztnév:
-            <input class="form-control" type="text" name="keresztnev">
-        </label>
-        <label class="w-100">
-            Vezeték név:
-            <input class="form-control" type="text" name="vezeteknev">
-        </label>
-        <label class="w-100">
-            Jelszó:
-            <input class="form-control" type="password" name="jelszo">
-        </label>
-        <label class="w-100">
-            Email:
-            <input class="form-control" type="text" name="email">
-        </label>
-        <label class="w-100">
-            Telefonszám:
-            <input class="form-control" type="number" name="telefonszam">
-        </label>
-        <button type="submit" class="btn btn-success form-control">Regisztráció</button>
+    <div class="card">            
+                <div class="card-header">
+                    Regisztráció
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Felhasználónév:
+                            <input class="form-control" type="text" name="username">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Keresztnév:
+                            <input class="form-control" type="text" name="keresztnev">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Vezetéknév:
+                            <input class="form-control" type="text" name="vezeteknev">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Jelszó:
+                            <input class="form-control" type="password" name="jelszo">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Email:
+                            <input class="form-control" type="text" name="email">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <label class="w-100">
+                            Telefonszám:
+                            <input class="form-control" type="number" name="telefonszam">
+                        </label>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="submit" class="btn btn-success form-control">Regisztráció</button>
+                    </li>
+                    <li class="list-group-item">
+                        Van már felhasználói fiókod?
+                        <a href="<?= $params['url'] ?>">Bejelentkezés</a>
+                    </li>
+            
+                </ul>
+            </div>        
     </form>
-    Van már felhasználói fiókod?
-    <a href="<?= $params['url'] ?>">Bejelentkezés</a>
+    </div>
 
 <?php else : ?>
-
+    <div class="login-card-container">
     <form action="/login" method="POST">
-        <label class="w-100">
-            Felhasználónév:
-            <input class="form-control" type="text" name="username">
-        </label>
+            <div class="card">
+                <div class="card-header">
+                    Bejelentkezés
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <?php if ($params['info'] === "hibasadatok") : ?>
+                            <div class="alert alert-danger">
+                                Sikertelen bejelentkezés!
+                            </div>
+                        <?php endif ?>
+                        <?php if ($params['info'] === "regisztracioSikeres") : ?>
+                            <div class="alert alert-success">
+                                Sikeres regisztráció!
+                            </div>
+                        <?php endif ?>
+                        <?php if ($params['info'] === "regisztracioSikertelen") : ?>
+                            <div class="alert alert-danger">
+                                Már létezik ilyen felhasználó!
+                            </div>
+                        <?php endif ?>
+                    </li>
+                <li class="list-group-item">        
+                    <label class="w-100">
+                        Felhasználónév:
+                    <input class="form-control" type="text" name="username">
+                    </label>
+                </li>
+                <li class="list-group-item">        
+                    <label class="w-100">
+                        Jelszó:
+                    <input class="form-control" type="password" name="password">
+                    </label>
+                </li>
+                <li class="list-group-item"><button type="submit" class="btn btn-primary form-control">Bejelentkezés</button></li>
+                <li class="list-group-item">Nincs még felhasználói fiókod?
+                <a href="<?= $params['url'] ?>&isRegistration=1">Regisztráció</a></li>
+                </ul>
+                </div>
+            </form>
+            </div>
 
-        <label class="w-100">
-            Jelszó:
-            <input class="form-control" type="password" name="password">
-        </label>
-        <button type="submit" class="btn btn-primary form-control">Bejelentkezés</button>
-    </form>
-    Nincs még felhasználói fiókod?
-    <a href="<?= $params['url'] ?>&isRegistration=1">Regisztráció</a>
 <?php endif ?>
+
+
 

@@ -1,4 +1,6 @@
-<h1 style='color: white'><?= $params['car']['car'] ?></h1><br>
-<img src="data:image/jpeg;base64,<?php echo base64_encode($params['car']['image']); ?>"><br>
-<small>Leírás: <?= $params['car']['info'] ?> </small><br>
-<strong>Napi ár: <?= $params['car']['daily_price'] ?> Ft </strong>
+<div class = "singlecarbox" style="overflow-x:auto;">
+    <h1><?= $params['car']['car'] ?></h1><br>
+    <img src="data:image/jpeg;base64,<?php echo base64_encode($params['car']['image']); ?>"><br>
+    <small>Leírás: <?= $params['car']['info'] ?> </small><br>
+    <strong>Napi ár: <?= $params['car']['daily_price'] ?> Ft </strong>
+</div>

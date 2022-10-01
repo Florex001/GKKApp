@@ -87,6 +87,9 @@ function registrationhandler()
     if ($user) {
         header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
         return;
+    }else if($_POST["username"] === "" ||  $_POST["keresztnev"] === "" || $_POST["vezeteknev"]==="" || $_POST["jelszo"]==="" ||$_POST["email"] ==="" || $_POST["telefonszam"]===""){
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=regisztracioSikertelen');
+        return;
     }else{
         $statement = $pdo->prepare("INSERT INTO `user` (`id`, `username`, `first_name`, `last_name`, `password`, `email`, `phone_number`, `registration_date`, `rank`)
         VALUES (NULL, ? , ? , ? , ? , ? , ? , ? , ?)");

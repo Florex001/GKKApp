@@ -1,23 +1,24 @@
 
-        <a href="#sec" id="gomb">Ajánlataink</a>    
-
-  <?php foreach ($params['cars'] as $cars) : ?>
-    <a href="/autok?id=<?= $cars['id'] ?>" id="faszeves">
-    <div class="datas-container">
-  <div class="kartya1" style="overflow-x:auto;" id="sec">
-    <div class="keep">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($cars["image"]); ?>">
-                </div>
-                <div class="datas">
-                  <h2><?= $cars['car'] ?></h2><br>
-                  <small>Leírás: <?= $cars["info"] ?> </small>
-                  <hr>
-                  <small>
-                     <strong>Napi ár: <?= $cars["daily_price"] ?> </strong>
-                  </small>
-                  </div>
-                  </div>
-  </div>
-  </a>
+    <div class="row-container">
+    <div class="row">
+ <?php foreach ($params['cars'] as $cars) : ?>
+ 
+  <div class="col-sm-3 cucc">
+  <div class="card" style="width: 18rem; height:600px;">
+        <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($cars["image"]); ?>">
+        <div class="card-body">
+          <h5 class="card-title"><?= $cars['car'] ?></h5>
+          <p class="card-text">Leírás: <?= $cars["info"] ?> </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Napi ár: <?= $cars["daily_price"] ?> </li>
+        </ul>
+        <a href="/autok?id=<?= $cars['id'] ?>" class="btn btn-primary">Foglalás</a>
+      </div>
+    </div>
   <?php endforeach; ?>
+ </div>
+ </div>
+
+
 
