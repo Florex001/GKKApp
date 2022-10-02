@@ -166,3 +166,26 @@ p {
   margin-bottom: 200px;
 }
 /*-------------bejelentkezés és regisztráció-------------*/
+/*-------------kiválasztott autó megjelenítése-----------*/
+.single_card{
+  max-width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.booking_form{
+  margin: 5%;
+}
+.tab {
+  display: inline-block;
+  margin-left: 2%;
+}
+.booking_date{
+  margin: 1%;
+  margin-left: 0;
+}
+.w-100{
+  margin: 1%;
+  margin-left: 0;
+}
+/*-------------kiválasztott autó megjelenítése-----------*/

@@ -12,7 +12,8 @@ $routes = [
     'POST' => [
         "/register" => 'registrationhandler',
         "/login" => 'loginhandler',
-        "/logout" => 'logoutHandler'
+        "/logout" => 'logoutHandler',
+        "/booking" => 'bookingcarHandler'
     ],
 ];
 

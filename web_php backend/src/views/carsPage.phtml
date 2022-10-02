@@ -1,6 +1,37 @@
-<div class = "singlecarbox" style="overflow-x:auto;">
-    <h1><?= $params['car']['car'] ?></h1><br>
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($params['car']['image']); ?>"><br>
-    <small>Leírás: <?= $params['car']['info'] ?> </small><br>
-    <strong>Napi ár: <?= $params['car']['daily_price'] ?> Ft </strong>
-</div>
+    <div class="single_card">
+        <div class="card mb-4" style="height: 100%;" >
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img class="img-fluid rounded-start" style="border-radius: 6px;" src="data:image/jpeg;base64,<?php echo base64_encode($params['car']['image']); ?>">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Autó neve: <?= $params['car']['car'] ?></h5>
+                        <p class="card-header">Lerírás: <?= $params['car']['info'] ?></p>
+
+
+                        <p class="card-header">Napi ár: <?= $params['car']['daily_price'] ?> Ft</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+            <form action="/action_page.php" class="booking_form">
+                <div class="booking_date">
+                    <label for="booking">Kezdet:</label>
+                    <input type="date" id="start_booking" name="start_booking">
+                    <span class="tab"></span>
+                    <label for="booking">Vége:</label>
+                    <input type="date" id="end_booking" name="end_booking">
+                </div>
+                    <label class="w-100">
+                        Vezetői engedélyszám:
+                        <input class="form-control" type="text"
+                            name="vezeteknev">
+                    </label>
+                    <button type="submit" class="btn
+                            btn-primary">Foglalás</button>
+
+            </form>
+            </div>
+        </div>
+    </div>
