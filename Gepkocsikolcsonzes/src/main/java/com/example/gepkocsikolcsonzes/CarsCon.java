@@ -150,7 +150,7 @@ public class CarsCon implements Initializable {
         String name = g_name_tf.getText();
         String info = Info_update_TA.getText();
         int price = Integer.parseInt(Price_update_TF.getText());
-        String sql = "INSERT INTO `vehicles` (`id`, `car`, `info`, `daily_price`, `image`) VALUES (NULL, ? , ? , ? , ?); ";
+        String sql = "INSERT INTO `vehicles` (`id`, `car`, `info`, `daily_price`, `image`, `status`) VALUES (NULL, ? , ? , ? , ?, ?); ";
         PreparedStatement pst;
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(open_folder.getScene().getWindow());
@@ -170,6 +170,7 @@ public class CarsCon implements Initializable {
                 pst.setString(2, info);
                 pst.setInt(3, price);
                 pst.setBinaryStream(4, fis, fis.available());
+                pst.setString(5, "elerheto");
                 pst.execute();
                 Image image = new Image(fis);
                 image_iv.setImage(image);
@@ -190,6 +191,7 @@ public class CarsCon implements Initializable {
             error_update_alert.setContentText("Próbálja újra!");
             error_update_alert.initOwner(WelcomeCon.cars_window);
             error_update_alert.show();
+            e.printStackTrace();
         }
         g_name_tf.setText("");
         Info_update_TA.setText("");

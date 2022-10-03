@@ -59,6 +59,7 @@ public class MessageCon {
             no_connection.setContentText("Ellenőrizze az internet kapcsolatot.");
             no_connection.initOwner(GKKApp.login_window);
             no_connection.show();
+            e.printStackTrace();
         }
 
         message_ta.setText("");

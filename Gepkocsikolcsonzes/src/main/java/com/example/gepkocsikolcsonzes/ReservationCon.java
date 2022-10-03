@@ -422,6 +422,18 @@ public class ReservationCon implements Initializable {
             Connection con = DBConnector.getConnection();
 
             String finish = "UPDATE `bookings` SET `status` = 'teljesitve' WHERE `bookings`.`id` = "+ id +";";
+            String carid = "SELECT borrowed_vehicle_id FROM `bookings` WHERE id = "+id+";";
+
+            ResultSet cars = con.createStatement().executeQuery(carid);
+
+            if (cars.next()){
+                String car = cars.getString("borrowed_vehicle_id");
+
+                String statusupdate = "UPDATE `vehicles` SET `status` = 'elerheto' WHERE `vehicles`.`id` = "+car+";";
+
+                pst = con.prepareStatement(statusupdate);
+                pst.execute();
+            }
 
             pst = con.prepareStatement(finish);
             pst.execute();
