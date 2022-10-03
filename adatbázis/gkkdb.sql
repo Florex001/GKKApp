@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Okt 03. 20:37
+-- Létrehozás ideje: 2022. Okt 03. 20:50
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 8.1.6
 
@@ -67,6 +67,29 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`id`, `registration_number`, `company_name`, `headquarter`, `tax_number`) VALUES
 (1, '86 49 473538', 'Balogh és társai nyrt. Személygépjármű bérlés', 'Sárospatak, Wesselényi út 26, 3950', '77974667-7-25');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(255) NOT NULL,
+  `user_name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `message`
+--
+
+INSERT INTO `message` (`id`, `user_name`, `name`, `message`, `status`) VALUES
+(1, 'admin', 'admin admin', 'asdasd1', 'elfogadva'),
+(2, 'admin', 'admin admin', 'asdasd2', 'elutasitva'),
+(3, 'admin', 'admin admin', 'asdasd3', 'küldve');
 
 -- --------------------------------------------------------
 
@@ -157,6 +180,12 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
+-- A tábla indexei `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `user`
 --
 ALTER TABLE `user`
@@ -183,6 +212,12 @@ ALTER TABLE `bookings`
 --
 ALTER TABLE `company`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT a táblához `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `user`
