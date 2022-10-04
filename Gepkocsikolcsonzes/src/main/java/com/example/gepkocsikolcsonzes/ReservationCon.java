@@ -218,6 +218,11 @@ public class ReservationCon implements Initializable {
 
                 String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `driver_license_number`, `price`, `status`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"', 'foglalva');";
 
+                String carstatusupdate = "UPDATE `vehicles` SET `status` = 'nem_elerheto' WHERE `vehicles`.`id` = "+car_id_add+"";
+
+                pst = con.prepareStatement(carstatusupdate);
+                pst.execute();
+
                 pst = con.prepareStatement(sql);
                 pst.execute();
                 booking_TW.getItems().clear();
@@ -255,18 +260,28 @@ public class ReservationCon implements Initializable {
         try {
             Connection con = DBConnector.getConnection();
 
-            String sql = "DELETE FROM bookings WHERE `bookings`.`id` = "+ car_id_del +";";
+            ResultSet selectbookings = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE id = "+car_id_del+";");
 
-            pst = con.prepareStatement(sql);
-            pst.execute();
-            booking_TW.getItems().clear();
-            bookingtableRES();
+            if (selectbookings.next()){
+                String carid = selectbookings.getString("borrowed_vehicle_id");
+                String carstatusupdate = "UPDATE `vehicles` SET `status` = 'elerheto' WHERE `vehicles`.`id` = "+carid+"";
 
-            Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            apply_del_alert.setTitle("Sikeres törlés.");
-            apply_del_alert.setHeaderText("Sikeresen törölte az adatokat!");
-            apply_del_alert.initOwner(WelcomeCon.reservation_window);
-            apply_del_alert.show();
+                pst = con.prepareStatement(carstatusupdate);
+                pst.execute();
+
+                String sql = "DELETE FROM bookings WHERE `bookings`.`id` = "+ car_id_del +";";
+
+                pst = con.prepareStatement(sql);
+                pst.execute();
+                booking_TW.getItems().clear();
+                bookingtableRES();
+
+                Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                apply_del_alert.setTitle("Sikeres törlés.");
+                apply_del_alert.setHeaderText("Sikeresen törölte az adatokat!");
+                apply_del_alert.initOwner(WelcomeCon.reservation_window);
+                apply_del_alert.show();
+            }
 
         } catch (SQLException e) {
             Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);

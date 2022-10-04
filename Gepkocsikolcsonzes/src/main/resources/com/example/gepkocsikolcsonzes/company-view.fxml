@@ -21,22 +21,22 @@
          </font></Button>
       <VBox layoutX="150.0" layoutY="49.0" prefHeight="546.0" prefWidth="881.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="registration_num" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" prefHeight="62.0" prefWidth="940.0" text="valami" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" prefHeight="62.0" prefWidth="940.0" text="Regisztrációs szám: 86 49 473538" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Georgia" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="company_name" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="100.0" prefHeight="62.0" prefWidth="934.0" text="valami" textAlignment="JUSTIFY">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="100.0" prefHeight="62.0" prefWidth="934.0" text="Cégnév: Balogh és társai Nyrt. Személygépjármű bérlés" textAlignment="JUSTIFY">
                <font>
                   <Font name="Georgia" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="hq_lab" alignment="CENTER" layoutX="10.0" layoutY="71.0" maxHeight="100.0" prefHeight="62.0" prefWidth="930.0" text="valami" textAlignment="JUSTIFY">
+            <Label alignment="CENTER" layoutX="10.0" layoutY="71.0" maxHeight="100.0" prefHeight="62.0" prefWidth="930.0" text="Székhely: Sárospatak, Wesselényi út 26. 3950" textAlignment="JUSTIFY">
                <font>
                   <Font name="Georgia" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="tax_number" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="40.0" maxHeight="100.0" prefHeight="62.0" prefWidth="959.0" text="valami" textAlignment="JUSTIFY" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="40.0" maxHeight="100.0" prefHeight="62.0" prefWidth="959.0" text="Adószám: 77974667-7-25" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font name="Georgia" size="24.0" />
                </font>
