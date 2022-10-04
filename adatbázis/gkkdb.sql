@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Okt 03. 20:50
+-- Létrehozás ideje: 2022. Okt 04. 16:21
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 8.1.6
 
@@ -43,30 +43,8 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `driver_license_number`, `price`, `status`) VALUES
-(1, 1, 50, '2022-10-04', '2022-10-07', 'asdasdasd12', 79996, 'teljesitve'),
-(2, 7, 57, '2022-10-04', '2022-10-12', '456258CC', 179991, 'teljesitve'),
-(3, 7, 55, '2022-10-04', '2022-10-06', 'asdasdasd', 65997, 'teljesitve');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `company`
---
-
-CREATE TABLE `company` (
-  `id` int(255) NOT NULL,
-  `registration_number` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `company_name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `headquarter` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `tax_number` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `company`
---
-
-INSERT INTO `company` (`id`, `registration_number`, `company_name`, `headquarter`, `tax_number`) VALUES
-(1, '86 49 473538', 'Balogh és társai nyrt. Személygépjármű bérlés', 'Sárospatak, Wesselényi út 26, 3950', '77974667-7-25');
+(1, 4, 51, '2022-10-10', '2022-10-11', 'asdasdasd', 31998, 'teljesitve'),
+(2, 4, 51, '2022-10-10', '2022-10-11', 'asdasdasd', 31998, 'teljesitve');
 
 -- --------------------------------------------------------
 
@@ -89,7 +67,8 @@ CREATE TABLE `message` (
 INSERT INTO `message` (`id`, `user_name`, `name`, `message`, `status`) VALUES
 (1, 'admin', 'admin admin', 'asdasd1', 'elfogadva'),
 (2, 'admin', 'admin admin', 'asdasd2', 'elutasitva'),
-(3, 'admin', 'admin admin', 'asdasd3', 'küldve');
+(3, 'admin', 'admin admin', 'asdasd3', 'küldve'),
+(4, 'admin', 'admin admin', 'uj üzi', 'elfogadva');
 
 -- --------------------------------------------------------
 
@@ -174,12 +153,6 @@ ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
 -- A tábla indexei `message`
 --
 ALTER TABLE `message`
@@ -205,19 +178,13 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT a táblához `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT a táblához `company`
---
-ALTER TABLE `company`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `user`
