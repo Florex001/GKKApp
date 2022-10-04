@@ -1,0 +1,34 @@
+    <div class="bookings">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+<?php foreach ($params['mybookings'] as $mybooking) : ?>
+
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Azonosító: <?= $mybooking['id'] ?>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <ul class="list-group list-group-flush">
+                        <?php
+                         $pdo = getConnection();
+                         $statement = $pdo->prepare('SELECT * FROM `vehicles` WHERE id = ?');
+                         $statement->execute([$mybooking['borrowed_vehicle_id']]);
+                         $bookingvehicle = $statement->fetch(PDO::FETCH_ASSOC);
+                        
+                        ?>
+                        <li class="list-group-item">Gépjármű: <?= $bookingvehicle['car'] ?></li>
+                        <li class="list-group-item">Foglalás Kezdete: <?= $mybooking['borrow_start'] ?></li>
+                        <li class="list-group-item">Foglalás Vége: <?= $mybooking['borrow_end'] ?></li>
+                        <li class="list-group-item">Ár: <?= $mybooking['price'] ?> Ft</li>
+                        <button type="button" class="btn btn-danger">Törlés</button>
+                    </ul> 
+                </div>
+            </div>
+
+
+<?php endforeach; ?>
+</div>
+        </div>
+    </div>

@@ -15,6 +15,21 @@
                     <div class="card-text-container">
             <div class="card-booking">
             <form action="/booking?id=<?= $params['car']['id'] ?>" method="POST" class="booking_form">
+                        <?php if ($params['info'] === "invaliddate") : ?>
+                            <div class="alert alert-danger">
+                                Mai dátumnál nem foglalhat hamarabb.
+                            </div>
+                        <?php endif ?>
+                        <?php if ($params['info'] === "invaliddate1") : ?>
+                            <div class="alert alert-danger">
+                                Nem hozhatja vissza hamarabb az utót,ha még el se vitte.
+                            </div>
+                        <?php endif ?>
+                        <?php if ($params['info'] === "invaliddriverlicense") : ?>
+                            <div class="alert alert-danger">
+                                Adja meg a vezetői engedély számát.
+                            </div>
+                        <?php endif ?>
                 <div class="booking_date">
                     <label for="booking">Bérlés kezdete:</label>
                     <input type="date" id="start_booking" name="start_booking">

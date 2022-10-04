@@ -7,7 +7,9 @@ $path = $parsed['path'];
 $routes = [
     'GET' => [
         "/" => 'homePage',
-        "/autok" => 'carsPage'
+        "/autok" => 'carsPage',
+        "/foglalasaim" => 'bookingPage',
+        "/profil" => 'profilePage'
     ],
     'POST' => [
         "/register" => 'registrationhandler',
@@ -48,6 +50,71 @@ function logoutHandler()
     header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']));
 }
 
+function profilePage(){
+    if (!isLoggedIn()) {
+        echo compileTemplate("wrapper.phtml", [
+            'content' => compileTemplate('subscriptionFrom.phtml', [
+                'info' => $_GET['info'] ?? '',
+                'isRegistration' => isset($_GET['isRegistration']),
+                'url' => getPathWhitId($_SERVER['REQUEST_URI']),
+            ]),
+            'bejelentkezve' => false
+        ]);
+
+        return;
+    }
+
+    $usrid = $_SESSION['userID'];
+    $pdo = getConnection();
+    $statement = $pdo->prepare('SELECT * FROM `user` WHERE id = ?');
+    $statement->execute([$usrid]);
+    $usr = $statement->fetch(PDO::FETCH_ASSOC);
+
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('profilePage.phtml', [
+            'usr' => $usr
+        ]),
+        'bejelentkezve' => true,
+    ]);
+}
+
+function bookingPage(){
+    if (!isLoggedIn()) {
+        echo compileTemplate("wrapper.phtml", [
+            'content' => compileTemplate('subscriptionFrom.phtml', [
+                'info' => $_GET['info'] ?? '',
+                'isRegistration' => isset($_GET['isRegistration']),
+                'url' => getPathWhitId($_SERVER['REQUEST_URI']),
+            ]),
+            'bejelentkezve' => false
+        ]);
+
+        return;
+    }
+
+    //SELECT * FROM `bookings` WHERE user_id = 7
+    $useridbooking = $_SESSION['userID'];
+    $status = 'foglalva';
+    $pdo = getConnection();
+    $statement = $pdo->prepare('SELECT * FROM `bookings` WHERE user_id = ? AND status = ?');
+    $statement->execute([$useridbooking,
+                         $status]);
+    $mybookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    
+    
+
+    
+
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('bookingPage.phtml', [
+            'mybookings' => $mybookings
+        ]),
+        'bejelentkezve' => true
+    ]);
+
+}
+
 function carsPage()
 {
 
@@ -72,6 +139,7 @@ function carsPage()
 
     echo compileTemplate('wrapper.phtml', [
         'content' => compileTemplate('carsPage.phtml', [
+            'info' => $_GET['info'] ?? '',
             'car' => $car
         ]),
         'bejelentkezve' => true,
@@ -169,7 +237,7 @@ function bookingcarHandler(){
         $singlecarid
     ]);
 
-    header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=sikeresfoglalas');//sikeres foglalás
+    header('Location: ' . '/foglalasaim');//sikeres foglalás
     
 }
 
@@ -192,6 +260,7 @@ function loginhandler()
     }
 
     $_SESSION['userID'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
 
     header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']));
 }
@@ -247,6 +316,10 @@ function compileTemplate($filePath, $params = []): string
 
 function NotFoundHandler()
 {
-    echo "oldal nem található";
+    
+    echo compileTemplate("wrapper.phtml", [
+        'content' => compileTemplate('notfoundPage.phtml'),
+        'bejelentkezve' => isLoggedIn()
+    ]);
 }
 

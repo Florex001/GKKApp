@@ -13,14 +13,25 @@
         <ul>
            <li class='active'><a href='/'><span>Kezdőlap</span></a></li>
            <li><a href='#'><span>Rólunk</span></a></li>
-           <li class='last'><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
-           <li style="float: right;">
+           <li><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
+           <li>
+                <?php if($params['bejelentkezve']): ?>
+                  <li><a href='/foglalasaim'><span>Foglalásaim</span></a></li>
+                <?php endif; ?> 
+            </li>  
+            <li style="float: right;">
                 <?php if($params['bejelentkezve']): ?>
                     <form action="/logout" method="POST">
                         <button type="submit" class="btn btn-sm btn-danger m-2">Kijelentkezés</button>
                     </form>
                 <?php endif; ?> 
+            </li>   
+            <li style="float: right;">
+                <?php if($params['bejelentkezve']): ?>
+                  <a href='/profil?id=<?= $_SESSION['userID'] ?>'><span><?=$_SESSION['username']?></span></a>
+                <?php endif; ?> 
             </li>  
+ 
         </ul>
     </div>
     <!--NAV-->

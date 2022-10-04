@@ -212,3 +212,21 @@ p {
 }
 
 /*-------------kiválasztott autó megjelenítése-----------*/
+/*-------------foglalásaim-------------------------------*/
+.bookings{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.accordion{
+  display: flex;
+  justify-content: center;
+}
+.accordion-item{
+  width: 60%;
+}
+@media screen and (max-width: 540px) {
+  .accordion-item{
+    width: 100%;
+  }
+}
+/*-------------foglalásaim-------------------------------*/
