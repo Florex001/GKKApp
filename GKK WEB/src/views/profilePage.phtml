@@ -1,5 +1,57 @@
-<h1><?= $params['usr']['username'] ?></h1>
-<h2><?= $params['usr']['last_name'] ?> <?= $params['usr']['first_name'] ?></h2>
-<h3><?= $params['usr']['email'] ?></h3>
-<h4><?= $params['usr']['phone_number'] ?></h4>
-<h5><?= $params['usr']['registration_date'] ?></h5>
+
+
+<section class="profile">
+        <header class="header">
+          <div class="details">
+            <img src="/public/picture/profile.png" alt="John Doe" class="profile-pic">
+            <h1 class="heading"><?= $params['usr']['username'] ?></h1>
+
+              <p class="heading"><?= $params['usr']['last_name'] ?> <?= $params['usr']['first_name'] ?></p>
+              <p class="heading"><?= $params['usr']['email'] ?></p>
+              <p class="heading"><?= $params['usr']['phone_number'] ?></p>
+              <p class="heading"><?= $params['usr']['registration_date'] ?></p>
+            
+            <div class="stats">
+              <div class="col-4">
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Módosítás</button>
+
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" style="color: black ;" id="offcanvasTopLabel">Adatok módosítása</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <div class="update_items">
+                      <div class="username_update">
+                        <label style="color: black ;">Felhasználónév:  </label>
+                        <input type="text" name="usernameupdate">
+                        <button type="button" class="btn btn-success">Módosítás</button>
+                      </div>
+                      <div class="email_update">
+                        <label style="color: black ;">Email:  </label>
+                        <input type="email" name="emailupdate">
+                        <button type="button" class="btn btn-success">Módosítás</button>
+                      </div>
+                      <div class="phonenum_update">
+                        <label style="color: black ;">Telefonszám:  </label>
+                        <input type="number" name="phoneupdate">
+                        <button type="button" class="btn btn-success">Módosítás</button>
+                      </div>
+                      <div class="pass_update">
+                        <label style="color: black ;">Jelszó:  </label>
+                        <input type="password" name="passupdate">
+                        <button type="button" class="btn btn-success">Módosítás</button>
+                      </div>
+                    </div>
+                  </div>
+                   
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </header>
+      </section>

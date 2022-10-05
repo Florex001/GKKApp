@@ -129,16 +129,22 @@ function profilePage()
 function homePage()
 {
     $elerheto = 'elerheto';
+    $nemelerheto = 'nem_elerheto';
     $pdo = getConnection();
 
     $statement = $pdo->prepare('SELECT * FROM `vehicles` WHERE status = ?');
     $statement->execute([$elerheto]);
     $cars = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    $statement = $pdo->prepare('SELECT * FROM `vehicles` WHERE status = ?');
+    $statement->execute([$nemelerheto]);
+    $nocars = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 
     echo compileTemplate("wrapper.phtml", [
         'content' => compileTemplate('cars.phtml', [
-            'cars' => $cars
+            'cars' => $cars,
+            'nocars' => $nocars
         ]),
         'bejelentkezve' => isLoggedIn()
     ]);

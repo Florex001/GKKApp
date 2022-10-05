@@ -1,5 +1,5 @@
-body {
-    background-color: rgb(46, 47, 47);
+body{
+  background-image: linear-gradient(to left, #051937, #0b2040, #12284a, #192f54, #1f375e);
 }
 
 /*----------NAV----------*/
@@ -126,7 +126,7 @@ body {
 /*--------------NAV-----------*/
 /*--------------FOOTER--------*/
 footer{
-    background-color: #999A9B;
+  background-image: linear-gradient(to left top, #051937, #0b2040, #12284a, #192f54, #1f375e);
 }
 iframe{
     margin-left: 30px;
@@ -231,3 +231,123 @@ p {
   }
 }
 /*-------------foglalásaim-------------------------------*/
+/*--------------PROFIL--------*/
+.header {
+  min-height: 60vh;
+  background: #009FFF;
+  background-image: linear-gradient(to left top, #051937, #132647, #203557, #2e4467, #3b5378);
+  color: white;
+  clip-path: ellipse(100vw 60vh at 50% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details {
+  text-align: center;
+}
+
+.profile-pic {
+  height: 6rem;
+  width: 6rem;
+  object-fit: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.location p {
+  display: inline-block;
+}
+
+.location svg {
+  vertical-align: middle;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats .col-4 {
+  width: 10rem;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.username_update{
+  display: flex;
+}
+.username_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.username_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.email_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+}
+.email_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.email_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+
+.phonenum_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+}
+.phonenum_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.phonenum_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.pass_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+}
+.pass_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.pass_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+/*--------------PROFIL--------*/
