@@ -111,32 +111,41 @@ public class CarsCon implements Initializable {
         String info = Info_update_TA.getText();
         String price = Price_update_TF.getText();
 
-
         try {
-            Connection con = DBConnector.getConnection();
+            Integer.parseInt(price);
 
-            String update = "UPDATE `vehicles` SET car = '"+name+"',  `info` = '"+info+"', `daily_price` = '"+price+"' WHERE `vehicles`.`id` = "+id+";";
+            try {
+                Connection con = DBConnector.getConnection();
 
-            pst = con.prepareStatement(update);
-            pst.execute();
-            cars_TW.getItems().clear();
-            carstable();
+                String update = "UPDATE `vehicles` SET car = '"+name+"',  `info` = '"+info+"', `daily_price` = '"+price+"' WHERE `vehicles`.`id` = "+id+";";
 
-            Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            done_update_alert.setTitle("Sikeres frissítés!");
-            done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
-            done_update_alert.initOwner(WelcomeCon.reservation_window);
-            done_update_alert.show();
+                pst = con.prepareStatement(update);
+                pst.execute();
+                cars_TW.getItems().clear();
+                carstable();
 
-        } catch (SQLException e) {
-            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            error_update_alert.setTitle("Hiba");
-            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
-            error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
-            error_update_alert.initOwner(WelcomeCon.reservation_window);
-            error_update_alert.show();
-            e.printStackTrace();
+                Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                done_update_alert.setTitle("Sikeres frissítés!");
+                done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
+                done_update_alert.initOwner(WelcomeCon.reservation_window);
+                done_update_alert.show();
+
+            } catch (SQLException e) {
+                Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                error_update_alert.setTitle("Hiba");
+                error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+                error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+                error_update_alert.initOwner(WelcomeCon.reservation_window);
+                error_update_alert.show();
+                e.printStackTrace();
+            }
+        } catch (NumberFormatException e) {
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("A napi árnak számot adjon meg!");
+            error_alert.show();
         }
+
 
         Info_update_TA.setText("");
         Price_update_TF.setText("");
@@ -149,50 +158,63 @@ public class CarsCon implements Initializable {
     private void addcars_btn(){
         String name = g_name_tf.getText();
         String info = Info_update_TA.getText();
-        int price = Integer.parseInt(Price_update_TF.getText());
+        String price = Price_update_TF.getText();
         String sql = "INSERT INTO `vehicles` (`id`, `car`, `info`, `daily_price`, `image`, `status`) VALUES (NULL, ? , ? , ? , ?, ?); ";
         PreparedStatement pst;
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(open_folder.getScene().getWindow());
-        try {
-            if (name.equals("") || info.equals("")){
-                Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
-                error_alert.setTitle("Hiba");
-                error_alert.setHeaderText("Töltse ki az összes mezőt!");
-                error_alert.initOwner(WelcomeCon.reservation_window);
-                error_alert.show();
-            }else {
-                Connection con = DBConnector.getConnection();
-                FileInputStream fis = new FileInputStream(file);
 
-                pst = con.prepareStatement(sql);
-                pst.setString(1, name);
-                pst.setString(2, info);
-                pst.setInt(3, price);
-                pst.setBinaryStream(4, fis, fis.available());
-                pst.setString(5, "elerheto");
-                pst.execute();
-                Image image = new Image(fis);
-                image_iv.setImage(image);
-                cars_TW.getItems().clear();
-                carstable();
 
-                Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
-                apply_del_alert.setTitle("Sikeres gépjármű hozzáadás..");
-                apply_del_alert.setHeaderText("Ellenőrizze a hozzáadott elemet.");
-                apply_del_alert.initOwner(WelcomeCon.cars_window);
-                apply_del_alert.show();
+            try {
+                if (name.equals("") || info.equals("")){
+                    Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    error_alert.setTitle("Hiba");
+                    error_alert.setHeaderText("Töltse ki az összes mezőt!");
+                    error_alert.initOwner(WelcomeCon.reservation_window);
+                    error_alert.show();
+                }else {
+                    try {
+                        Integer.parseInt(price);
+
+                        Connection con = DBConnector.getConnection();
+                        FileInputStream fis = new FileInputStream(file);
+                        System.out.println(fis);
+
+                        pst = con.prepareStatement(sql);
+                        pst.setString(1, name);
+                        pst.setString(2, info);
+                        pst.setInt(3, Integer.parseInt(price));
+                        pst.setBinaryStream(4, fis, fis.available());
+                        pst.setString(5, "elerheto");
+                        pst.execute();
+                        Image image = new Image(fis);
+                        image_iv.setImage(image);
+                        cars_TW.getItems().clear();
+                        carstable();
+
+                        Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        apply_del_alert.setTitle("Sikeres gépjármű hozzáadás..");
+                        apply_del_alert.setHeaderText("Ellenőrizze a hozzáadott elemet.");
+                        apply_del_alert.initOwner(WelcomeCon.cars_window);
+                        apply_del_alert.show();
+                    }
+                    catch (NumberFormatException e) {
+                    Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                    error_alert.setTitle("Hiba");
+                    error_alert.setHeaderText("A napi árnak számot adjon meg!");
+                    error_alert.show();
+                }
+
+            } }catch (SQLException | IOException e) {
+                Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                error_update_alert.setTitle("Hiba");
+                error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+                error_update_alert.setContentText("Próbálja újra!");
+                error_update_alert.initOwner(WelcomeCon.cars_window);
+                error_update_alert.show();
+                e.printStackTrace();
             }
 
-        } catch (SQLException | IOException e) {
-            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            error_update_alert.setTitle("Hiba");
-            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
-            error_update_alert.setContentText("Próbálja újra!");
-            error_update_alert.initOwner(WelcomeCon.cars_window);
-            error_update_alert.show();
-            e.printStackTrace();
-        }
         g_name_tf.setText("");
         Info_update_TA.setText("");
         Price_update_TF.setText("");

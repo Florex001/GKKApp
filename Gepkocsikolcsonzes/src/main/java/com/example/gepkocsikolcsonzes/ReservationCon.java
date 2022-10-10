@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ReservationCon implements Initializable {
@@ -117,7 +120,7 @@ public class ReservationCon implements Initializable {
     ObservableList<Booking> bookinglist3 = FXCollections.observableArrayList();
 
     @FXML
-    private void help_btn(){
+    private void help_btn() {
         Alert help_alert = new Alert(Alert.AlertType.INFORMATION);
         help_alert.setTitle("Help");
         help_alert.setHeaderText("Olvass el!");
@@ -129,7 +132,7 @@ public class ReservationCon implements Initializable {
     }//a help button a felhasználónak nyújt segítséget
 
     @FXML
-    private void back_btn(){
+    private void back_btn() {
         WelcomeCon.reservation_window.close();
         LoginCon.welcome_window.show();
     }//vissza a főoldalra
@@ -137,7 +140,7 @@ public class ReservationCon implements Initializable {
     @FXML
     private void booking_selected() {
         index = booking_TW.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
+        if (index <= -1) {
             return;
         }
 
@@ -158,7 +161,7 @@ public class ReservationCon implements Initializable {
     @FXML
     private void booking_selected1() {
         index = booking_TW1.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
+        if (index <= -1) {
             return;
         }
 
@@ -179,7 +182,7 @@ public class ReservationCon implements Initializable {
     @FXML
     private void booking_selected2() {
         index = booking_TW11.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
+        if (index <= -1) {
             return;
         }
 
@@ -198,50 +201,111 @@ public class ReservationCon implements Initializable {
     }//az teljesített gépjárművek foglalása táblábol való kiválasztás
 
     @FXML
-    private void booking_add(){
-        String car_id_add  = car_id_TF.getText();
+    private void booking_add() {
+        String car_id_add = car_id_TF.getText();
         String start_add = start_tf.getText();
         String end_add = end_TF.getText();
         String pid_add = pid_TF.getText();
         String price_add = price_TF.getText();
 
-        if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("")){
+
+        if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("")) {
             Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
             error_alert.setTitle("Hiba");
             error_alert.setHeaderText("Töltse ki az összes mezőt!");
             error_alert.initOwner(WelcomeCon.reservation_window);
             error_alert.show();
-        }else{
-            PreparedStatement pst = null;
+        } else {
+
+            String pid_numbers = pid_add.substring(0, 6);
+
             try {
-                Connection con = DBConnector.getConnection();
+                Integer.parseInt(pid_numbers);
 
-                String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `driver_license_number`, `price`, `status`) VALUES (NULL, '4', '"+ car_id_add +"', '"+start_add+"', '"+ end_add +"', '"+ pid_add +"', '"+ price_add +"', 'foglalva');";
 
-                String carstatusupdate = "UPDATE `vehicles` SET `status` = 'nem_elerheto' WHERE `vehicles`.`id` = "+car_id_add+"";
+                System.out.println(pid_numbers.length());
+                String pid_chars = pid_add.substring(6, 8);
+                System.out.println(pid_chars);
+                System.out.print(pid_add.length() + "" + pid_chars.length());
+                if ((pid_chars.length() == 2) && (pid_add.length() == 8) || (pid_numbers.length() == 6)) {
 
-                pst = con.prepareStatement(carstatusupdate);
-                pst.execute();
+                    try {
+                        SimpleDateFormat dateInput = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = dateInput.parse(end_add);
 
-                pst = con.prepareStatement(sql);
-                pst.execute();
-                booking_TW.getItems().clear();
-                bookingtableRES();
+                        try {
+                            Date date1 = dateInput.parse(start_add);
 
-                Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
-                apply_del_alert.setTitle("Sikeres foglalás hozzáadás..");
-                apply_del_alert.setHeaderText("Sikeresen feltöltötte a foglalást!!");
-                apply_del_alert.initOwner(WelcomeCon.reservation_window);
-                apply_del_alert.show();
+                            try {
+                                Integer.parseInt(price_add);
+                                Integer.parseInt(car_id_add);
 
-            } catch (SQLException e) {
-                Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-                error_update_alert.setTitle("Hiba");
-                error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
-                error_update_alert.setContentText("Próbálja újra!");
-                error_update_alert.initOwner(WelcomeCon.reservation_window);
-                error_update_alert.show();
+                                PreparedStatement pst = null;
+                                try {
+                                    Connection con = DBConnector.getConnection();
+
+                                    String sql = "INSERT INTO `bookings` (`id`, `user_id`, `borrowed_vehicle_id`, `borrow_start`, `borrow_end`, `driver_license_number`, `price`, `status`) VALUES (NULL, '4', '" + car_id_add + "', '" + start_add + "', '" + end_add + "', '" + pid_add + "', '" + price_add + "', 'foglalva');";
+
+                                    String carstatusupdate = "UPDATE `vehicles` SET `status` = 'nem_elerheto' WHERE `vehicles`.`id` = " + car_id_add + "";
+
+                                    pst = con.prepareStatement(carstatusupdate);
+                                    pst.execute();
+
+                                    pst = con.prepareStatement(sql);
+                                    pst.execute();
+                                    booking_TW.getItems().clear();
+                                    bookingtableRES();
+
+                                    Alert apply_del_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                    apply_del_alert.setTitle("Sikeres foglalás hozzáadás..");
+                                    apply_del_alert.setHeaderText("Sikeresen feltöltötte a foglalást!!");
+                                    apply_del_alert.initOwner(WelcomeCon.reservation_window);
+                                    apply_del_alert.show();
+
+                                } catch (SQLException e) {
+                                    Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                    error_update_alert.setTitle("Hiba");
+                                    error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+                                    error_update_alert.setContentText("Próbálja újra!");
+                                    error_update_alert.initOwner(WelcomeCon.reservation_window);
+                                    error_update_alert.show();
+                                }
+                            } catch (NumberFormatException e) {
+                                Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                                error_alert.setTitle("Hiba");
+                                error_alert.setHeaderText("Az árhoz meg az azonosítóhoz csak számot adhat meg!");
+                                error_alert.initOwner(WelcomeCon.reservation_window);
+                                error_alert.show();
+                            }
+                        } catch (ParseException e) {
+                            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                            error_alert.setTitle("Hiba");
+                            error_alert.setHeaderText("A dátumot csak ebben a formátumban adhatja meg: éééé-hh-nn");
+                            error_alert.initOwner(WelcomeCon.reservation_window);
+                            error_alert.show();
+                        }
+                    } catch (ParseException e) {
+                        Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                        error_alert.setTitle("Hiba");
+                        error_alert.setHeaderText("A dátumot csak ebben a formátumban adhatja meg: éééé-hh-nn");
+                        error_alert.initOwner(WelcomeCon.reservation_window);
+                        error_alert.show();
+                    }
+                } else {
+                    Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                    error_alert.setTitle("Hiba");
+                    error_alert.setHeaderText("A vezetőiengedélyszáma a következő furmátumunak kell lennie : 000000AA");
+                    error_alert.initOwner(WelcomeCon.reservation_window);
+                    error_alert.show();
+                }
+            } catch (NumberFormatException e) {
+                Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                error_alert.setTitle("Hiba");
+                error_alert.setHeaderText("A vezetőiengedélyszáma a következő furmátumunak kell lennie : 000000AA");
+                error_alert.initOwner(WelcomeCon.reservation_window);
+                error_alert.show();
             }
+
         }
         car_id_TF.setText("");
         start_tf.setText("");
@@ -251,25 +315,26 @@ public class ReservationCon implements Initializable {
     }//a dolgozó e programkód által tud majd hozzá adni helyben foglalást
 
     @FXML
-    private void booking_del(){
+    private void booking_del() {
 
         String car_id_del = id_TC.getCellData(index);
 
         PreparedStatement pst = null;
 
+
         try {
             Connection con = DBConnector.getConnection();
 
-            ResultSet selectbookings = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE id = "+car_id_del+";");
+            ResultSet selectbookings = con.createStatement().executeQuery("SELECT * FROM `bookings` WHERE id = " + car_id_del + ";");
 
-            if (selectbookings.next()){
+            if (selectbookings.next()) {
                 String carid = selectbookings.getString("borrowed_vehicle_id");
-                String carstatusupdate = "UPDATE `vehicles` SET `status` = 'elerheto' WHERE `vehicles`.`id` = "+carid+"";
+                String carstatusupdate = "UPDATE `vehicles` SET `status` = 'elerheto' WHERE `vehicles`.`id` = " + carid + "";
 
                 pst = con.prepareStatement(carstatusupdate);
                 pst.execute();
 
-                String sql = "DELETE FROM bookings WHERE `bookings`.`id` = "+ car_id_del +";";
+                String sql = "DELETE FROM bookings WHERE `bookings`.`id` = " + car_id_del + ";";
 
                 pst = con.prepareStatement(sql);
                 pst.execute();
@@ -301,9 +366,9 @@ public class ReservationCon implements Initializable {
     }//foglalás törlése
 
     @FXML
-    private void booking_update(){
+    private void booking_update() {
 
-        PreparedStatement pst = null;
+
 
         String id = id_TC.getCellData(index);
         String start = start_tf.getText();
@@ -312,38 +377,100 @@ public class ReservationCon implements Initializable {
         String price = price_TF.getText();
 
 
+        String pid_numbers = pid.substring(0, 6);
+
         try {
-            Connection con = DBConnector.getConnection();
+            Integer.parseInt(pid_numbers);
 
-            String sql = "UPDATE `bookings` SET `borrow_start` = '"+start+"', `borrow_end` = '"+end+"', `driver_license_number` = '"+pid+"', `price` = '"+price+"' WHERE `bookings`.`id` = "+id+";";
 
-            pst = con.prepareStatement(sql);
-            pst.execute();
-            booking_TW.getItems().clear();
-            bookingtableRES();
+            System.out.println(pid_numbers.length());
+            String pid_chars = pid.substring(6, 8);
+            System.out.println(pid_chars);
+            System.out.print(pid.length() + "" + pid_chars.length());
+            if ((pid_chars.length() == 2) && (pid.length() == 8) || (pid_numbers.length() == 6)) {
 
-            Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            done_update_alert.setTitle("Sikeres frissítés!");
-            done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
-            done_update_alert.initOwner(WelcomeCon.reservation_window);
-            done_update_alert.show();
+                try {
+                    SimpleDateFormat dateInput = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = dateInput.parse(end);
 
-        } catch (SQLException e) {
-            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            error_update_alert.setTitle("Hiba");
-            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
-            error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
-            error_update_alert.initOwner(WelcomeCon.reservation_window);
-            error_update_alert.show();
+                    try {
+                        Date date1 = dateInput.parse(start);
+
+                        try {
+                            Integer.parseInt(price);
+                            Integer.parseInt(id);
+
+                            PreparedStatement pst = null;
+                            try {
+                                Connection con = DBConnector.getConnection();
+
+                                String sql = "UPDATE `bookings` SET `borrow_start` = '" + start + "', `borrow_end` = '" + end + "', `driver_license_number` = '" + pid + "', `price` = '" + price + "' WHERE `bookings`.`id` = " + id + ";";
+
+                                pst = con.prepareStatement(sql);
+                                pst.execute();
+                                booking_TW.getItems().clear();
+                                bookingtableRES();
+
+                                Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                done_update_alert.setTitle("Sikeres frissítés!");
+                                done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
+                                done_update_alert.initOwner(WelcomeCon.reservation_window);
+                                done_update_alert.show();
+
+                            } catch (SQLException e) {
+                                Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                error_update_alert.setTitle("Hiba");
+                                error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+                                error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+                                error_update_alert.initOwner(WelcomeCon.reservation_window);
+                                error_update_alert.show();
+                            }
+
+                        } catch (NumberFormatException e) {
+                            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                            error_alert.setTitle("Hiba");
+                            error_alert.setHeaderText("Az árhoz meg az azonosítóhoz csak számot adhat meg!");
+                            error_alert.initOwner(WelcomeCon.reservation_window);
+                            error_alert.show();
+                        }
+                    } catch (ParseException e) {
+                        Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                        error_alert.setTitle("Hiba");
+                        error_alert.setHeaderText("A dátumot csak ebben a formátumban adhatja meg: éééé-hh-nn");
+                        error_alert.initOwner(WelcomeCon.reservation_window);
+                        error_alert.show();
+                    }
+                } catch (ParseException e) {
+                    Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                    error_alert.setTitle("Hiba");
+                    error_alert.setHeaderText("A dátumot csak ebben a formátumban adhatja meg: éééé-hh-nn");
+                    error_alert.initOwner(WelcomeCon.reservation_window);
+                    error_alert.show();
+                }
+            }else{
+                Alert error_alert = new Alert(Alert.AlertType.ERROR);
+                error_alert.setTitle("Hiba");
+                error_alert.setHeaderText("A vezetőiengedélyszáma a következő furmátumunak kell lennie : 000000AA");
+                error_alert.initOwner(WelcomeCon.reservation_window);
+                error_alert.show();
+                }
+        }catch (NumberFormatException e) {
+            Alert error_alert = new Alert(Alert.AlertType.ERROR);
+            error_alert.setTitle("Hiba");
+            error_alert.setHeaderText("A vezetőiengedélyszáma a következő furmátumunak kell lennie : 000000AA");
+            error_alert.initOwner(WelcomeCon.reservation_window);
+            error_alert.show();
         }
+
+
 
         car_id_TF.setText("");
         start_tf.setText("");
         end_TF.setText("");
         pid_TF.setText("");
         price_TF.setText("");
-
-    }//Adatokat lehet módosítani
+}
+    //Adatokat lehet módosítani
 
     @FXML
     private void booking_next_step(){

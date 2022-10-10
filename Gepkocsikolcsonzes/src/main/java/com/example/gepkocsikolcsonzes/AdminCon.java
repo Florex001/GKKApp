@@ -309,31 +309,40 @@ public class AdminCon implements Initializable {
         String[] name_destroy = name.split(" ");
         String first_name = name_destroy[0];
         String last_name = name_destroy[1];
+        if ((rank.equals("worker"))||(rank.equals("admin"))||(rank.equals("user"))) {
 
-        String update_user = "UPDATE `user` SET `username` = '"+username+"', `first_name` = '"+last_name+"', `last_name` = '"+first_name+"', `password` = '"+password+"'," +
-                " `email` = '"+email+"', `phone_number` = '"+phone_num+"', `rank` = '"+rank+"' WHERE `user`.`id` = "+id+";";
+            String update_user = "UPDATE `user` SET `username` = '" + username + "', `first_name` = '" + last_name + "', `last_name` = '" + first_name + "', `password` = '" + password + "'," +
+                    " `email` = '" + email + "', `phone_number` = '" + phone_num + "', `rank` = '" + rank + "' WHERE `user`.`id` = " + id + ";";
 
-        PreparedStatement pst = null;
+            PreparedStatement pst = null;
 
-        try {
-            Connection con = DBConnector.getConnection();
+            try {
+                Connection con = DBConnector.getConnection();
 
-            pst = con.prepareStatement(update_user);
-            pst.execute();
-            users_table.getItems().clear();
-            usertable();
+                pst = con.prepareStatement(update_user);
+                pst.execute();
+                users_table.getItems().clear();
+                usertable();
 
-            Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
-            done_update_alert.setTitle("Sikeres frissítés!");
-            done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
-            done_update_alert.initOwner(ProfileCon.admin_window);
-            done_update_alert.show();
+                Alert done_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                done_update_alert.setTitle("Sikeres frissítés!");
+                done_update_alert.setHeaderText("Az adatbázis sikeresen frissült!");
+                done_update_alert.initOwner(ProfileCon.admin_window);
+                done_update_alert.show();
 
-        } catch (SQLException e) {
-            Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+            } catch (SQLException e) {
+                Alert error_update_alert = new Alert(Alert.AlertType.CONFIRMATION);
+                error_update_alert.setTitle("Hiba");
+                error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
+                error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+                error_update_alert.initOwner(ProfileCon.admin_window);
+                error_update_alert.show();
+            }
+        }else {
+            Alert error_update_alert = new Alert(Alert.AlertType.ERROR);
             error_update_alert.setTitle("Hiba");
-            error_update_alert.setHeaderText("Az adatbázis nem tud csatlakozni!");
-            error_update_alert.setContentText("Próbálja újra, vagy tegyen bejelentést! +36709312755");
+            error_update_alert.setHeaderText("Nem megfelelő jogosúlttságot adott meg.");
+            error_update_alert.setContentText("Jogosultságok: user, worker, admin");
             error_update_alert.initOwner(ProfileCon.admin_window);
             error_update_alert.show();
         }
