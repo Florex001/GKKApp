@@ -1,0 +1,403 @@
+body{
+  background-image: linear-gradient(to left, #051937, #0b2040, #12284a, #192f54, #1f375e);
+}
+
+/*----------NAV----------*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+#cssmenu {
+  background: black;
+  width: auto;
+}
+#cssmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: block;
+  zoom: 1;
+}
+#cssmenu ul:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#cssmenu ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+#cssmenu.align-right ul li {
+  float: right;
+}
+#cssmenu.align-center ul {
+  text-align: center;
+}
+#cssmenu ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+#cssmenu ul li a:hover {
+  color: #72C7F8;
+}
+#cssmenu ul li a:hover:before {
+  width: 100%;
+}
+#cssmenu ul li a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 19px;
+  height: 6px;
+  width: 6px;
+  background: #ffffff;
+  opacity: .5;
+}
+#cssmenu ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #72C7F8;
+  -webkit-transition: width .25s;
+  -moz-transition: width .25s;
+  -ms-transition: width .25s;
+  -o-transition: width .25s;
+  transition: width .25s;
+}
+#cssmenu ul li.last > a:after,
+#cssmenu ul li:last-child > a:after {
+  display: none;
+}
+#cssmenu ul li.active a {
+  color: #72C7F8;
+}
+#cssmenu ul li.active a:before {
+  width: 100%;
+}
+#cssmenu.align-right li.last > a:after,
+#cssmenu.align-right li:last-child > a:after {
+  display: block;
+}
+#cssmenu.align-right li:first-child a:after {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  #cssmenu ul li {
+    float: none;
+    display: block;
+  }
+  #cssmenu ul li a {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #fb998c;
+  }
+  #cssmenu ul li.last > a,
+  #cssmenu ul li:last-child > a {
+    border: 0;
+  }
+  #cssmenu ul li a:after {
+    display: none;
+  }
+  #cssmenu ul li a:before {
+    display: none;
+  }
+}
+/*--------------NAV-----------*/
+/*--------------FOOTER--------*/
+footer{
+  background-image: linear-gradient(to left top, #051937, #0b2040, #12284a, #192f54, #1f375e);
+}
+iframe{
+    margin-left: 30px;
+    width: 50%;
+    height: 400px;
+    
+}
+.cucc {
+    display:flex;
+}
+p {
+    margin-left:30px;
+}
+/*--------------FOOTER--------*/
+.row-container {
+  margin:0 auto;
+  width:90%;
+  margin-top:40px;
+}
+.cucc {
+  padding-bottom:40px;
+}
+@media (max-width:671px) {
+  .cucc {
+    display: block;
+    margin:0 auto;
+  }
+  .cuccok {
+    text-align: center;
+  }
+  iframe {
+    width:90%;
+    display: flex;
+    justify-content: center;
+    margin-bottom:30px;
+  }
+}
+/*--------------FOOTER--------*/
+/*-------------bejelentkezés és regisztráció-------------*/
+.login-card{
+  width:400px;
+  margin:30px 0px;
+}
+.reg-card{
+  width:400px;
+  margin:30px 0px;
+}
+.reg-card-container {
+  display: flex;
+  justify-content: center;
+}
+.login-card-container {
+  display:flex;
+  justify-content: center;
+}
+/*-------------bejelentkezés és regisztráció-------------*/
+/*-------------kiválasztott autó megjelenítése-----------*/
+.single_card{
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.booking_form{
+  margin: 5%;
+}
+.booking_date{
+  margin: 1%;
+  margin-left: 0;
+}
+.w-100{
+  margin: 1%;
+  margin-left: 0;
+}
+#start_booking {
+  margin-right:30px;
+}
+.card-booking {
+  width:600px;
+}
+.card-text-container {
+  display: flex;
+  justify-content: center;
+}
+
+/*-------------kiválasztott autó megjelenítése-----------*/
+/*-------------foglalásaim-------------------------------*/
+.bookings{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.accordion{
+  display: flex;
+  justify-content: center;
+}
+.accordion-item{
+  width: 60%;
+}
+@media screen and (max-width: 540px) {
+  .accordion-item{
+    width: 100%;
+  }
+}
+/*-------------foglalásaim-------------------------------*/
+/*--------------PROFIL--------*/
+.header {
+  min-height: 60vh;
+  color: white;
+  clip-path: ellipse(100vw 60vh at 50% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.details {
+  text-align: center;
+}
+
+.profile-pic {
+  height: 6rem;
+  width: 6rem;
+  object-fit: center;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.location p {
+  display: inline-block;
+}
+
+.location svg {
+  vertical-align: middle;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats .col-4 {
+  width: 10rem;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.username_update{
+  display: flex;
+}
+.username_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.username_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.email_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+} 
+.email_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.email_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+
+.phonenum_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+}
+.phonenum_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.phonenum_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.pass_update{
+  display: flex;
+  margin-top: 10px;
+  bottom: 10px;
+}
+.pass_update input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.pass_update button{
+  display: flex;
+  margin-right: 10px;
+  height: 25px;
+}
+.update_name{
+  width: 120px;
+}
+.btn-success{
+  padding: 0 ;
+}
+
+
+@media (max-width:470px) {
+  .update_name{
+      margin-top: 3px;
+  }
+  #offcanvasTop.offcanvas.offcanvas-top.show{
+
+  }
+  .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm,
+.offcanvas-xl, .offcanvas-xxl{
+      --bs-offcanvas-padding-x: 0;
+  }
+  .offcanvas-header{
+      padding:0;
+  }
+  .update_input{
+  width: 130px;
+}
+
+}
+@media (max-width:870px) {
+  .offcanvas.offcanvas-top{
+      top: auto;
+  }
+  .pass_update2{
+    margin-top: 10px;
+  }
+  .header{
+    clip-path:none;
+  }
+}
+.update_items{
+  float: left;
+  display: inline-block;
+}
+.update_items2{
+  float: left;
+}
+.pass_update2{
+  display: flex;
+}
+.pass_update2 input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
+/*--------------PROFIL--------*/
