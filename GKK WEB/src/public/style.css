@@ -234,8 +234,6 @@ p {
 /*--------------PROFIL--------*/
 .header {
   min-height: 60vh;
-  background: #009FFF;
-  background-image: linear-gradient(to left top, #051937, #132647, #203557, #2e4467, #3b5378);
   color: white;
   clip-path: ellipse(100vw 60vh at 50% 50%);
   display: flex;
@@ -299,7 +297,7 @@ p {
   display: flex;
   margin-top: 10px;
   bottom: 10px;
-}
+} 
 .email_update input{
   display: flex;
   margin-right: 10px;
@@ -349,5 +347,40 @@ p {
   margin-right: 10px;
   height: 25px;
 }
+
+.update_name{
+  width: 120px;
+}
+.btn-success{
+  padding: 0 ;
+}
+
+
+@media (max-width:470px) {
+  .update_name{
+      width: 100%;
+      margin-top: 3px;
+  }
+  #offcanvasTop.offcanvas.offcanvas-top.show{
+
+  }
+  .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm,
+.offcanvas-xl, .offcanvas-xxl{
+      --bs-offcanvas-padding-x: 0;
+  }
+  .offcanvas-header{
+      padding:0;
+  }
+  .update_input{
+  width: 130px;
+}
+
+}
+@media (max-width:770px) {
+  .offcanvas.offcanvas-top{
+      top: auto;
+  }
+}
+
 
 /*--------------PROFIL--------*/

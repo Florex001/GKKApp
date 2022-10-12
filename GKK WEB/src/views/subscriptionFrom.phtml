@@ -1,3 +1,4 @@
+
 <div class="card p-3 m-2"> 
     <div class="jumbotron text-center">
         <h2>A tartalom megtekintéséhez bejelentkezés szükséges</h2>
@@ -72,6 +73,7 @@
                     Bejelentkezés
                 </div>
                 <ul class="list-group list-group-flush">
+                <?php if ($params['info'] === "hibasadatok" || $params['info'] === "regisztracioSikeres" || $params['info'] === "regisztracioSikertelen") : ?>
                     <li class="list-group-item">
                         <?php if ($params['info'] === "hibasadatok") : ?>
                             <div class="alert alert-danger">
@@ -89,6 +91,7 @@
                             </div>
                         <?php endif ?>
                     </li>
+                <?php endif ?>
                 <li class="list-group-item">        
                     <label class="w-100">
                         Felhasználónév:
@@ -111,6 +114,7 @@
             </div>
 
 <?php endif ?>
+
 
 
 
