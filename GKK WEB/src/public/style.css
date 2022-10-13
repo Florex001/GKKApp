@@ -240,7 +240,6 @@ p {
   align-items: center;
   justify-content: center;
 }
-
 .details {
   text-align: center;
 }
@@ -250,7 +249,7 @@ p {
   width: 6rem;
   object-fit: center;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid black;
 }
 
 .location p {
@@ -347,7 +346,6 @@ p {
   margin-right: 10px;
   height: 25px;
 }
-
 .update_name{
   width: 120px;
 }
@@ -358,7 +356,6 @@ p {
 
 @media (max-width:470px) {
   .update_name{
-      width: 100%;
       margin-top: 3px;
   }
   #offcanvasTop.offcanvas.offcanvas-top.show{
@@ -376,11 +373,31 @@ p {
 }
 
 }
-@media (max-width:770px) {
+@media (max-width:870px) {
   .offcanvas.offcanvas-top{
       top: auto;
   }
+  .pass_update2{
+    margin-top: 10px;
+  }
+  .header{
+    clip-path:none;
+  }
 }
-
-
+.update_items{
+  float: left;
+  display: inline-block;
+}
+.update_items2{
+  float: left;
+}
+.pass_update2{
+  display: flex;
+}
+.pass_update2 input{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 25px;
+}
 /*--------------PROFIL--------*/
