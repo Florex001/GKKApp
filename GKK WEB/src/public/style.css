@@ -134,27 +134,26 @@ iframe{
     height: 400px;
     
 }
-.cucc {
-    display:flex;
-}
 p {
     margin-left:30px;
 }
-/*--------------FOOTER--------*/
+.footer_container{
+  display: flex;
+}
 .row-container {
   margin:0 auto;
   width:90%;
   margin-top:40px;
 }
-.cucc {
+.col-md.cars_card {
   padding-bottom:40px;
 }
 @media (max-width:671px) {
-  .cucc {
+  .col-md.cars_card {
     display: block;
     margin:0 auto;
   }
-  .cuccok {
+  .footer_row {
     text-align: center;
   }
   iframe {
@@ -166,6 +165,11 @@ p {
 }
 /*--------------FOOTER--------*/
 /*-------------bejelentkezés és regisztráció-------------*/
+@media (max-width:1400px) {
+  .row{
+    justify-content: center;
+  }
+}
 .login-card{
   width:400px;
   margin:30px 0px;
@@ -194,16 +198,29 @@ p {
   margin: 5%;
 }
 .booking_date{
-  margin: 1%;
-  margin-left: 0;
+  float: left;
+}
+.booking_date2{
+  
+  float: right;
+}
+@media (max-width:1100px) {
+  .booking_date{
+    float: none;
+  }
+  .booking_date2{
+    float: none;
+    margin-top: 10px;
+  }
+}
+.booking_date_label{
+  width: 110px;
 }
 .w-100{
   margin: 1%;
   margin-left: 0;
 }
-#start_booking {
-  margin-right:30px;
-}
+
 .card-booking {
   width:600px;
 }
@@ -401,3 +418,16 @@ p {
   height: 25px;
 }
 /*--------------PROFIL--------*/
+/*--------------Auctók---*/
+.col-md.cars_card {
+  display:flex;
+  width: 286px;
+}
+.col-md.cars_card{
+width: 286px;
+}
+.col-md.cars_card {
+     flex:none; 
+}
+
+/*-------------Autók------------*/

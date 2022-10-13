@@ -10,7 +10,7 @@
       <div class="row">
   <?php foreach ($params['cars'] as $cars) : ?>
   
-        <div class="col-sm-3 cucc">
+        <div class="col-md cars_card">
         <div class="card" style="width: 18rem; height:100%;">
           <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($cars["image"]); ?>">
           <div class="card-body">
@@ -26,13 +26,19 @@
     <?php endforeach; ?>
     </div>
   </div>
+    
+  <div class="card p-3 m-2"> 
+    <div class="jumbotron text-center">
+        <h2>A jelenleg nem elérhető autók</h2>
+    </div>
+</div>
 
 
     <div class="row-container">
       <div class="row">
   <?php foreach ($params['nocars'] as $nocars) : ?>
   
-        <div class="col-sm-3 cucc">
+        <div class="col-md cars_card">
         <div class="card" style="width: 18rem; height:100%;">
           <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($nocars["image"]); ?>">
           <div class="card-body">
