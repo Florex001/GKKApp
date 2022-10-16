@@ -162,6 +162,9 @@ p {
     justify-content: center;
     margin-bottom:30px;
   }
+  .footer_container{
+    display: block;
+  }
 }
 /*--------------FOOTER--------*/
 /*-------------bejelentkezés és regisztráció-------------*/

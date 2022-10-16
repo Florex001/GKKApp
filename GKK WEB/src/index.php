@@ -15,7 +15,11 @@ $routes = [
         "/register" => 'registrationhandler',
         "/login" => 'loginhandler',
         "/logout" => 'logoutHandler',
-        "/booking" => 'bookingcarHandler'
+        "/booking" => 'bookingcarHandler',
+        "/updatepassword" => 'updatepassHandler',
+        "/updateusername" => 'updateusernameHandler',
+        "/updateemail" => 'updateemailHandler',
+        "/updatephonenumber" => 'updatephonenumHandler'
     ],
 ];
 
@@ -120,11 +124,110 @@ function profilePage()
 
     echo compileTemplate('wrapper.phtml', [
         'content' => compileTemplate('profilePage.phtml', [
+            'info' => $_GET['info'] ?? '',
             'usr' => $usr
         ]),
         'bejelentkezve' => true,
     ]);
 }//megjelennek az adott profil adatai és azokat lehet módosítani
+
+function updatepassHandler(){
+    $oldpassword = $_POST["oldpass"];
+    $newpass1 = $_POST["passupdate"]; 
+    $newpass2 = $_POST["passupdate2"];
+    $usrid = $_SESSION['userID'];
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT password FROM user WHERE id = ?");
+    $statement->execute([$usrid]);
+    $pass = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if($oldpassword === "" || $newpass1 === "" || $newpass2 == ""){
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=emptydata');
+        return;
+    }else{
+        if(implode($pass) === $oldpassword){
+            if($newpass1 === $newpass2){
+                $statement = $pdo->prepare("UPDATE user SET password = ? WHERE id = ?");
+                $statement->execute([$newpass1, $usrid]);
+                header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=sikeresJelszovaltoztatas');
+            }else{
+                header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=badnewpassword');
+                return;
+            }
+        }else{
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=badpassword');
+            return;
+        }
+    }
+}//a profil oldalon jelszót lehet módosítani
+
+function updateusernameHandler(){
+    $newusername = $_POST["usernameupdate"];
+    $usrid = $_SESSION['userID'];
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT username FROM user WHERE username = ?");
+    $statement->execute([$newusername]);
+    $uname = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if($newusername === ""){
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=emptydata');
+        return;
+    }else{
+        if($uname){
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=baddata');
+            return;
+        }else{
+            $statement = $pdo->prepare("UPDATE user SET username = ? WHERE id = ?");
+            $statement->execute([$newusername, $usrid]);
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=sikeresFelhasznalonevvaltoztatas');
+        }
+    }
+}//profil oldalon felhasználónév változtatás
+
+function updateemailHandler(){
+    $newemail = $_POST["emailupdate"];
+    $usrid = $_SESSION['userID'];
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT email FROM user WHERE email = ?");
+    $statement->execute([$newemail]);
+    $email = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if($newemail === ""){
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=emptydata');
+        return;
+    }else{
+        if($email){
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=bademail');
+            return;
+        }else{
+            $statement = $pdo->prepare("UPDATE user SET email = ? WHERE id = ?");
+            $statement->execute([$newemail, $usrid]);
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=sikeresEmailvaltoztatas');
+        }
+    }
+}//profil oldalon email változtatás
+
+function updatephonenumHandler(){
+    $newphonenum = $_POST["phoneupdate"];
+    $usrid = $_SESSION['userID'];
+
+    $pdo = getConnection();
+
+    if($newphonenum === ""){
+        header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=emptydata');
+        return;
+    }else{
+            $statement = $pdo->prepare("UPDATE user SET phone_number = ? WHERE id = ?");
+            $statement->execute([$newphonenum, $usrid]);
+            header('Location: ' . getPathWhitId($_SERVER['HTTP_REFERER']) . '&info=sikeresTelefonszamvaltoztatas');
+    }
+}//telefonszám változtatás
 
 function homePage()
 {
@@ -267,6 +370,7 @@ function bookingcarHandler()
         $allprice,
         $status
     ]);
+
     $statement =  $pdo->prepare("UPDATE `vehicles` SET `status` = 'nem_elerheto' WHERE `vehicles`.`id` = ?");
     $statement->execute([
         $singlecarid

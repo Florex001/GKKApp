@@ -3,6 +3,64 @@
 <section class="profile">
   <header class="header">
     <div class="details">
+
+    <?php if ($params['info'] === "badnewpassword" || $params['info'] === "sikeresJelszovaltoztatas" || $params['info'] === "badpassword" || $params['info'] === "emptydata" || $params['info'] === "baddata" || $params['info'] === "sikeresFelhasznalonevvaltoztatas" || $params['info'] === "sikeresEmailvaltoztatas" || $params['info'] === "bademail" || $params['info'] === "sikeresTelefonszamvaltoztatas") : ?>
+                        
+                        <?php if ($params['info'] === "badnewpassword") : ?>
+                            <div class="alert alert-danger">
+                                A két jelszó nem egyezik!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "sikeresJelszovaltoztatas") : ?>
+                            <div class="alert alert-success">
+                                Sikeres jelszó változtatás!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "badpassword") : ?>
+                            <div class="alert alert-danger">
+                                Rosszul megadott régi jelszó!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "emptydata") : ?>
+                            <div class="alert alert-danger">
+                                Töltse ki az üres mezőket.
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "baddata") : ?>
+                            <div class="alert alert-danger">
+                                Már létezik ilyen felhasználó.
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "sikeresFelhasznalonevvaltoztatas") : ?>
+                            <div class="alert alert-success">
+                                Sikeres felhasználónév módosítás!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "sikeresEmailvaltoztatas") : ?>
+                            <div class="alert alert-success">
+                                Sikeres email módosítás!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "sikeresTelefonszamvaltoztatas") : ?>
+                            <div class="alert alert-success">
+                                Sikeres telefon szám módosítás!
+                            </div>
+                        <?php endif ?>
+
+                        <?php if ($params['info'] === "bademail") : ?>
+                            <div class="alert alert-danger">
+                                Már létezik ilyen email címmel felhasználó.
+                            </div>
+                        <?php endif ?>
+                <?php endif ?>
+
       <img src="/public/picture/profile.png" alt="John Doe" class="profile-pic">
       <h1 class="heading"><?= $params['usr']['username'] ?></h1>
 
@@ -22,37 +80,51 @@
             </div>
             <div class="offcanvas-body">
               <div class="update_items">
-                <div class="username_update">
-                  <label class="update_name" style="color: black;">Felhasználónév:  </label>
-                  <input type="text" name="usernameupdate" class="update_input">
-                  <button type="button" class="btn btn-success">Módosítás</button>
+
+                <form action="/updateusername" method="POST">
+                  <div class="username_update">
+                    <label class="update_name" style="color: black;">Felhasználónév:  </label>
+                    <input type="text" name="usernameupdate" class="update_input">
+                    <button type="submit" class="btn btn-success">Módosítás</button>
+                  </div>
+                </form>
+
+                <form action="/updateemail" method="POST">
+                  <div class="email_update">
+                    <label class="update_name" style="color: black;">Email:  </label>
+                    <input type="email" name="emailupdate" class="update_input">
+                    <button type="submit" class="btn btn-success">Módosítás</button>
+                  </div>
+                </form>
+
+                <form action="/updatephonenumber" method="POST">
+                  <div class="phonenum_update">
+                    <label class="update_name" style="color: black;">Telefonszám:  </label>
+                    <input type="number" name="phoneupdate" class="update_input">
+                    <button type="submit" class="btn btn-success">Módosítás</button>
+                  </div>
+                </form>
+
+
                 </div>
-                <div class="email_update">
-                  <label class="update_name" style="color: black;">Email:  </label>
-                  <input type="email" name="emailupdate" class="update_input">
-                  <button type="button" class="btn btn-success">Módosítás</button>
-                </div>
-                <div class="phonenum_update">
-                  <label class="update_name" style="color: black;">Telefonszám:  </label>
-                  <input type="number" name="phoneupdate" class="update_input">
-                  <button type="button" class="btn btn-success">Módosítás</button>
-                </div>
-                </div>
+
                 <div class="update_items2">
-                <div class="pass_update2">
-                  <label class="update_name" style="color: black;">Régi jelszó:  </label>
-                  <input type="password" name="oldpass" class="update_input">
-                </div>
-                <div class="pass_update">
-                  <label class="update_name" style="color: black;">Új jelszó:  </label>
-                  <input type="password" name="passupdate" class="update_input">
-                </div>
-                <div class="pass_update">
-                  <label class="update_name" style="color: black;">Újra:  </label>
-                  <input type="password" name="passupdate" class="update_input">
-                  <button type="button" class="btn btn-success">Módosítás</button>
-                </div>
-                </div>
+                  <form action="/updatepassword" method="POST">
+                    <div class="pass_update2">
+                      <label class="update_name" style="color: black;">Régi jelszó:  </label>
+                      <input type="password" name="oldpass" class="update_input">
+                    </div>
+                    <div class="pass_update">
+                      <label class="update_name" style="color: black;">Új jelszó:  </label>
+                      <input type="password" name="passupdate" class="update_input">
+                    </div>
+                    <div class="pass_update">
+                      <label class="update_name" style="color: black;">Újra:  </label>
+                      <input type="password" name="passupdate2" class="update_input">
+                      <button type="submit" class="btn btn-success">Módosítás</button>
+                    </div>
+                  </form>
+                </div>       
               </div>
             </div>
 

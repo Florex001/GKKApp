@@ -26,12 +26,18 @@
     <?php endforeach; ?>
     </div>
   </div>
-    
-  <div class="card p-3 m-2"> 
-    <div class="jumbotron text-center">
-        <h2>A jelenleg nem elérhető autók</h2>
+
+
+  <?php if (!$params['nocars']) : ?>
+
+
+  <?php else : ?>
+    <div class="card p-3 m-2"> 
+      <div class="jumbotron text-center">
+          <h2>A jelenleg nem elérhető autók</h2>
+      </div>
     </div>
-</div>
+  
 
 
     <div class="row-container">
@@ -54,6 +60,7 @@
     <?php endforeach; ?>
       </div>
     </div>
+    <?php endif ?>
  <?php endif ?>
 
 
