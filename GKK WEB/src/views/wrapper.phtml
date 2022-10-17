@@ -9,16 +9,29 @@
   </head>
   <body>
     <!--NAV-->
-    <div id='cssmenu'>
-        <ul>
-           <li class='active'><a href='/'><span>Kezdőlap</span></a></li>
-           <li><a href='#'><span>Rólunk</span></a></li>
-           <li><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
-           <li>
+    <nav class="navbar">
+    <div class="brand-title"><img style="width: 40px;" src="/public/picture/companylogo.png" alt="cég logo"></div>
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+            <ul>
+              <li class='active'><a href='/'><span>Kezdőlap</span></a></li>
+              <li><a href='#'><span>Rólunk</span></a></li>
+              <li><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
+              <li>
                 <?php if($params['bejelentkezve']): ?>
                   <li><a href='/foglalasaim'><span>Foglalásaim</span></a></li>
                 <?php endif; ?> 
             </li>  
+            <li style="float: right;">
+                <?php if($params['bejelentkezve']): ?>
+                  <a href='/profil?id=<?= $_SESSION['userID'] ?>'><span><?=$_SESSION['username']?></span></a>
+                <?php endif; ?> 
+            </li>  
+
             <li style="float: right;">
                 <?php if($params['bejelentkezve']): ?>
                     <form action="/logout" method="POST">
@@ -26,14 +39,9 @@
                     </form>
                 <?php endif; ?> 
             </li>   
-            <li style="float: right;">
-                <?php if($params['bejelentkezve']): ?>
-                  <a href='/profil?id=<?= $_SESSION['userID'] ?>'><span><?=$_SESSION['username']?></span></a>
-                <?php endif; ?> 
-            </li>  
- 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    </nav>
     <!--NAV-->
     <main>
       <div class="container">
@@ -62,6 +70,7 @@
           </div>
     </footer>
     <!--FOOTER-->
+    <script src="/public/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
