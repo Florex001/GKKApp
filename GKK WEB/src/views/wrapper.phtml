@@ -19,20 +19,22 @@
         <div class="navbar-links">
             <ul>
               <li class='active'><a href='/'><span>Kezdőlap</span></a></li>
-              <li><a href='#'><span>Rólunk</span></a></li>
-              <li><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
-              <li>
+              <li class="left"><a href='#'><span>Rólunk</span></a></li>
+              <li class="left"><a href='#elerhetosegek'><span>Elérhetőségek</span></a></li>
+              <li class="left">
                 <?php if($params['bejelentkezve']): ?>
                   <li><a href='/foglalasaim'><span>Foglalásaim</span></a></li>
                 <?php endif; ?> 
-            </li>  
-            <li style="float: right;">
+            </li>
+        </div>
+        <div class="navbar-links2">  
+            <li>
                 <?php if($params['bejelentkezve']): ?>
                   <a href='/profil?id=<?= $_SESSION['userID'] ?>'><span><?=$_SESSION['username']?></span></a>
                 <?php endif; ?> 
             </li>  
 
-            <li style="float: right;">
+            <li class="logout_button">
                 <?php if($params['bejelentkezve']): ?>
                     <form action="/logout" method="POST">
                         <button type="submit" class="btn btn-sm btn-danger m-2">Kijelentkezés</button>
