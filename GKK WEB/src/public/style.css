@@ -249,8 +249,21 @@ p {
 .accordion-item{
   width: 60%;
 }
+.booking_card{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 500px;
+}
+.booking_buttons{
+  margin-left: 20px;
+}
 @media screen and (max-width: 540px) {
   .accordion-item{
+    width: 100%;
+  }
+  .booking_card{
     width: 100%;
   }
 }
