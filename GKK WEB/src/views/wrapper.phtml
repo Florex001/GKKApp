@@ -28,7 +28,7 @@
             </li>
         </div>
         <div class="navbar-links2">  
-            <li>
+            <li id="username_name">
                 <?php if($params['bejelentkezve']): ?>
                   <a href='/profil?id=<?= $_SESSION['userID'] ?>'><span><?=$_SESSION['username']?></span></a>
                 <?php endif; ?> 
