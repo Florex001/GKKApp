@@ -9,7 +9,8 @@ $routes = [
         "/" => 'homePage',
         "/autok" => 'carsPage',
         "/foglalasaim" => 'bookingPage',
-        "/profil" => 'profilePage'
+        "/profil" => 'profilePage',
+        "/kereses" => 'searchPage'
     ],
     'POST' => [
         "/register" => 'registrationhandler',
@@ -316,6 +317,26 @@ function bookingPage()
     ]);
 
 }//az user megtudja nézni az életben lévő foglalásait majd ha már a bérelt autót átadásra került az ügyfél részére akkor eltünik
+
+function searchPage(){
+
+    $search = $_GET['search'];
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT * FROM `vehicles` WHERE car LIKE '%$search%'");
+    $statement->execute();
+    $searchcar = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+    
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('searchPage.phtml', [
+            'searchcar' => $searchcar
+        ]),
+        'bejelentkezve' => true
+    ]);
+}
 
 function bookingcarHandler()
 {
