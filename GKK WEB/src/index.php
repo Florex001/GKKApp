@@ -19,7 +19,8 @@ $routes = [
         "/updatepassword" => 'updatepassHandler',
         "/updateusername" => 'updateusernameHandler',
         "/updateemail" => 'updateemailHandler',
-        "/updatephonenumber" => 'updatephonenumHandler'
+        "/updatephonenumber" => 'updatephonenumHandler',
+        "/foglalasaim" => 'deletebookingHandler'
     ],
 ];
 
@@ -379,6 +380,30 @@ function bookingcarHandler()
     header('Location: ' . '/foglalasaim');//sikeres foglalás
     
 }//megvizsgálja az összes bevitelimezőt ami kell a foglaláshoz, és ha teljesülnek a feltételek akkor feltöltésre kerül a foglalás
+
+function deletebookingHandler(){
+        $bookingid = $_GET['id'];
+        $elerheto = 'elerheto';
+        $torolve = 'torolve';
+
+        $pdo = getConnection();
+        $statement = $pdo->prepare('SELECT * FROM `bookings` WHERE id = ?');
+        $statement->execute([$bookingid]);
+        $booking = $statement->fetch(PDO::FETCH_ASSOC);
+        $car = $booking['borrowed_vehicle_id'];
+
+        if($booking){
+            $statement = $pdo->prepare('UPDATE `vehicles` SET `status` = ? WHERE `vehicles`.`id` = ?');
+            $statement->execute([$elerheto, $car]);
+
+            $statement = $pdo->prepare('UPDATE `bookings` SET `status` = ? WHERE `bookings`.`id` = ?');
+            $statement->execute([$torolve, $bookingid]);
+        }
+
+    
+
+
+}
 
 
 
