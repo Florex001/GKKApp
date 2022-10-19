@@ -244,7 +244,6 @@ function homePage()
     $statement->execute([$nemelerheto]);
     $nocars = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-
     echo compileTemplate("wrapper.phtml", [
         'content' => compileTemplate('cars.phtml', [
             'cars' => $cars,
@@ -398,14 +397,15 @@ function deletebookingHandler(){
 
             $statement = $pdo->prepare('UPDATE `bookings` SET `status` = ? WHERE `bookings`.`id` = ?');
             $statement->execute([$torolve, $bookingid]);
+
+            header('Location: ' . '/foglalasaim');
+
         }
 
     
 
 
 }
-
-
 
 
 

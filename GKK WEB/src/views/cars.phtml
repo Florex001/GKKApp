@@ -6,60 +6,69 @@
         </div>
     
 <?php else : ?>
-    <div class="row-container">
-      <div class="row">
-  <?php foreach ($params['cars'] as $cars) : ?>
-  
-        <div class="col-md cars_card">
-        <div class="card" style="width: 18rem; height:100%;">
-          <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($cars["image"]); ?>">
-          <div class="card-body">
-            <h5 class="card-title"><?= $cars['car'] ?></h5>
-            <p class="card-text">Leírás: <?= $cars["info"] ?> </p>
-        </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Napi ár: <?= $cars["daily_price"] ?> Ft </li>
-          </ul>
-          <a href="/autok?id=<?= $cars['id'] ?>" class="btn btn-primary">Foglalás</a>
-        </div>
-        </div>
+
+  <input class="form-control" type="search" name="search" list="datalistOptions" id="exampleDataList" placeholder="Keresés jármű név alapján...">
+
+  <datalist id="datalistOptions">
+    <?php foreach ($params['cars'] as $cars) : ?>
+      <option value="<?= $cars['car'] ?>">
     <?php endforeach; ?>
-    </div>
-  </div>
+  </datalist>
 
-
-  <?php if (!$params['nocars']) : ?>
-
-
-  <?php else : ?>
-    <div class="card p-3 m-2"> 
-      <div class="jumbotron text-center">
-          <h2>A jelenleg nem elérhető autók</h2>
+      <div class="row-container">
+        <div class="row">
+    <?php foreach ($params['cars'] as $cars) : ?>
+    
+          <div class="col-md cars_card">
+          <div class="card" style="width: 18rem; height:100%;">
+            <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($cars["image"]); ?>">
+            <div class="card-body">
+              <h5 class="card-title"><?= $cars['car'] ?></h5>
+              <p class="card-text">Leírás: <?= $cars["info"] ?> </p>
+          </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Napi ár: <?= $cars["daily_price"] ?> Ft </li>
+            </ul>
+            <a href="/autok?id=<?= $cars['id'] ?>" class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Foglalás</a>
+          </div>
+          </div>
+      <?php endforeach; ?>
       </div>
     </div>
-  
 
 
-    <div class="row-container">
-      <div class="row">
-  <?php foreach ($params['nocars'] as $nocars) : ?>
-  
-        <div class="col-md cars_card">
-        <div class="card" style="width: 18rem; height:100%;">
-          <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($nocars["image"]); ?>">
-          <div class="card-body">
-            <h5 class="card-title"><?= $nocars['car'] ?></h5>
-            <p class="card-text">Leírás: <?= $nocars["info"] ?> </p>
+    <?php if (!$params['nocars']) : ?>
+
+
+    <?php else : ?>
+      <div class="card p-3 m-2"> 
+        <div class="jumbotron text-center">
+            <h2>A jelenleg nem elérhető autók</h2>
         </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Napi ár: <?= $nocars["daily_price"] ?> Ft </li>
-          </ul>
-          <button type="button" class="btn btn-primary" disabled data-bs-toggle="button">Jelenleg nem elérhető</button>
-        </div>
-        </div>
-    <?php endforeach; ?>
       </div>
-    </div>
+    
+
+
+      <div class="row-container">
+        <div class="row">
+    <?php foreach ($params['nocars'] as $nocars) : ?>
+    
+          <div class="col-md cars_card">
+          <div class="card" style="width: 18rem; height:100%;">
+            <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($nocars["image"]); ?>">
+            <div class="card-body">
+              <h5 class="card-title"><?= $nocars['car'] ?></h5>
+              <p class="card-text">Leírás: <?= $nocars["info"] ?> </p>
+          </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Napi ár: <?= $nocars["daily_price"] ?> Ft </li>
+            </ul>
+            <button type="button" class="btn btn-primary" disabled data-bs-toggle="button">Jelenleg nem elérhető</button>
+          </div>
+          </div>
+      <?php endforeach; ?>
+        </div>
+      </div>
     <?php endif ?>
  <?php endif ?>
 
