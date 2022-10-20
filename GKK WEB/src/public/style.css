@@ -449,5 +449,23 @@ width: 286px;
 .col-md.cars_card {
      flex:none; 
 }
-
+button.btn.btn-primary.search_btn{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+input#exampleDataList.form-control{
+  width: 400px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.cars_search{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+@media (max-width:260px) {
+  input#exampleDataList.form-control{
+    width: 100%;
+  }
+}
 /*-------------Autók------------*/
