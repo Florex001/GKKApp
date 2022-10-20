@@ -1,20 +1,36 @@
-<div class="row-container">
-        <div class="row">
-<?php foreach ($params['searchcar'] as $searchcar) : ?>
-    
-    <div class="col-md cars_card">
-    <div class="card" style="width: 18rem; height:100%;">
-      <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($searchcar["image"]); ?>">
-      <div class="card-body">
-        <h5 class="card-title"><?= $searchcar['car'] ?></h5>
-        <p class="card-text">Leírás: <?= $searchcar["info"] ?> </p>
+<div class="card p-3 m-2"> 
+    <div class="jumbotron text-center">
+        <h2>Keresés eredménye:</h2>
     </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Napi ár: <?= $searchcar["daily_price"] ?> Ft </li>
-      </ul>
-      <a href="/autok?id=<?= $searchcar['id'] ?>" class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Foglalás</a>
-    </div>
-    </div>
-<?php endforeach; ?>
 </div>
+
+<?php if (!$params['searchcar']) : ?>
+  <div class="card p-3 m-2"> 
+    <div class="jumbotron text-center">
+        Nincs találat
+    </div>
 </div>
+<?php endif ?>
+
+  <?php if ($params['searchcar']) : ?>
+    <div class="row-container">
+            <div class="row">
+    <?php foreach ($params['searchcar'] as $searchcar) : ?>
+        
+        <div class="col-md cars_card">
+        <div class="card" style="width: 18rem; height:100%;">
+          <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($searchcar["image"]); ?>">
+          <div class="card-body">
+            <h5 class="card-title"><?= $searchcar['car'] ?></h5>
+            <p class="card-text">Leírás: <?= $searchcar["info"] ?> </p>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Napi ár: <?= $searchcar["daily_price"] ?> Ft </li>
+          </ul>
+          <a href="/autok?id=<?= $searchcar['id'] ?>" class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Foglalás</a>
+        </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+    </div>
+<?php endif ?>

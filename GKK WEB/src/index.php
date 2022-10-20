@@ -319,24 +319,23 @@ function bookingPage()
 }//az user megtudja nézni az életben lévő foglalásait majd ha már a bérelt autót átadásra került az ügyfél részére akkor eltünik
 
 function searchPage(){
-
     $search = $_GET['search'];
+    $status = 'elerheto';
 
     $pdo = getConnection();
 
-    $statement = $pdo->prepare("SELECT * FROM `vehicles` WHERE car LIKE '%$search%'");
-    $statement->execute();
+    $statement = $pdo->prepare("SELECT * FROM `vehicles` WHERE car LIKE '%$search%' AND status = ?");
+    $statement->execute([$status]);
     $searchcar = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-
-    
     echo compileTemplate('wrapper.phtml', [
         'content' => compileTemplate('searchPage.phtml', [
+            'info' => $_GET['info'] ?? '',
             'searchcar' => $searchcar
         ]),
-        'bejelentkezve' => true
+        'bejelentkezve' => isLoggedIn()
     ]);
-}
+}//keresés az adatbázisban és uj oldalon való megjelenítése
 
 function bookingcarHandler()
 {
