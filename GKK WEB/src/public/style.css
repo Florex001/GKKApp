@@ -460,8 +460,28 @@ input#exampleDataList.form-control{
 }
 .cars_search{
   display: flex;
-  justify-content: center;
+  justify-content: right;
   margin-top: 20px;
+  float: left;
+  margin-left: 5%;
+}
+.btn-group.filter{
+  margin-left: 77%;
+  margin-top: 20px;
+}
+#filter_button{
+  display: flex;
+}
+@media (max-width:670px) {
+  .cars_search{
+    float: none;
+  }
+  #filter_button{
+    justify-content: center;
+  }
+  .btn-group.filter{
+    margin-left: 0;
+  }
 }
 @media (max-width:260px) {
   input#exampleDataList.form-control{
