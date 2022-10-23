@@ -10,7 +10,9 @@ $routes = [
         "/autok" => 'carsPage',
         "/foglalasaim" => 'bookingPage',
         "/profil" => 'profilePage',
-        "/kereses" => 'searchPage'
+        "/kereses" => 'searchPage',
+        "/orderbyprice" => 'orderbypricePage',
+        "/orderbypricedesc" => 'orderbypricedescPage'
     ],
     'POST' => [
         "/register" => 'registrationhandler',
@@ -132,6 +134,42 @@ function profilePage()
         'bejelentkezve' => true,
     ]);
 }//megjelennek az adott profil adatai és azokat lehet módosítani
+
+function orderbypricePage(){
+    $status = 'elerheto';
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT * FROM `vehicles` WHERE `status` = ? ORDER BY daily_price");
+    $statement->execute([$status]);
+    $orderbyprice = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('orderbypricePage.phtml', [
+            'info' => $_GET['info'] ?? '',
+            'orderbyprice' => $orderbyprice
+        ]),
+        'bejelentkezve' => isLoggedIn()
+    ]);
+}
+
+function orderbypricedescPage(){
+    $status = 'elerheto';
+
+    $pdo = getConnection();
+
+    $statement = $pdo->prepare("SELECT * FROM `vehicles` WHERE `status` = ? ORDER BY daily_price  DESC");
+    $statement->execute([$status]);
+    $orderbypriceesc = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('orderbypricedescPage.phtml', [
+            'info' => $_GET['info'] ?? '',
+            'orderbypriceesc' => $orderbypriceesc
+        ]),
+        'bejelentkezve' => isLoggedIn()
+    ]);
+}
 
 function updatepassHandler(){
     $oldpassword = $_POST["oldpass"];
@@ -426,6 +464,7 @@ function deletebookingHandler(){
 
 
 }
+
 
 
 

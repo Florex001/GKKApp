@@ -1,11 +1,11 @@
 <div class="card p-3 m-2"> 
     <div class="jumbotron text-center">
-        <h2>Keresés eredménye:</h2>
+        <h2>Ár szerint növekvő</h2>
     </div>
 </div>
 <a href="/" class="btn btn-primary"><i class="bi bi-caret-left-fill"></i> Vissza</a>
 
-<?php if (!$params['searchcar']) : ?>
+<?php if (!$params['orderbyprice']) : ?>
   <div class="card p-3 m-2"> 
     <div class="jumbotron text-center">
         Nincs találat
@@ -13,22 +13,22 @@
 </div>
 <?php endif ?>
 
-  <?php if ($params['searchcar']) : ?>
+  <?php if ($params['orderbyprice']) : ?>
     <div class="row-container">
             <div class="row">
-    <?php foreach ($params['searchcar'] as $searchcar) : ?>
+    <?php foreach ($params['orderbyprice'] as $orderbyprice) : ?>
         
         <div class="col-md cars_card">
         <div class="card" style="width: 18rem; height:100%;">
-          <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($searchcar["image"]); ?>">
+          <img style="height:200px ;" src="data:image/jpeg;base64,<?php echo base64_encode($orderbyprice["image"]); ?>">
           <div class="card-body">
-            <h5 class="card-title"><?= $searchcar['car'] ?></h5>
-            <p class="card-text">Leírás: <?= $searchcar["info"] ?> </p>
+            <h5 class="card-title"><?= $orderbyprice['car'] ?></h5>
+            <p class="card-text">Leírás: <?= $orderbyprice["info"] ?> </p>
         </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Napi ár: <?= $searchcar["daily_price"] ?> Ft </li>
+            <li class="list-group-item">Napi ár: <?= $orderbyprice["daily_price"] ?> Ft </li>
           </ul>
-          <a href="/autok?id=<?= $searchcar['id'] ?>" class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Foglalás</a>
+          <a href="/autok?id=<?= $orderbyprice['id'] ?>" class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Foglalás</a>
         </div>
         </div>
     <?php endforeach; ?>
