@@ -311,8 +311,7 @@ public class AdminCon implements Initializable {
         String last_name = name_destroy[1];
         if ((rank.equals("worker"))||(rank.equals("admin"))||(rank.equals("user"))) {
 
-            String update_user = "UPDATE `user` SET `username` = '" + username + "', `first_name` = '" + last_name + "', `last_name` = '" + first_name + "', `password` = '" + password + "'," +
-                    " `email` = '" + email + "', `phone_number` = '" + phone_num + "', `rank` = '" + rank + "' WHERE `user`.`id` = " + id + ";";
+            String update_user = "UPDATE `user` SET `username` = '" + username + "', `first_name` = '" + last_name + "', `last_name` = '" + first_name + "', `email` = '" + email + "', `phone_number` = '" + phone_num + "', `rank` = '" + rank + "' WHERE `user`.`id` = " + id + ";";
 
             PreparedStatement pst = null;
 

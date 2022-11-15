@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="767.0" style="-fx-background-image: src/main/resources/com/example/gepkocsikolcsonzes/picture/login_pic.jpg;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.LoginCon">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="767.0" style="-fx-background-image: src/main/resources/com/example/gepkocsikolcsonzes/picture/login_pic.jpg;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gepkocsikolcsonzes.LoginCon">
    <children>
       <ImageView fitHeight="460.0" fitWidth="1070.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.33331298828125" AnchorPane.topAnchor="0.0">
          <image>
@@ -40,8 +40,8 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="uname_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-border-radius: 13; -fx-background-radius: 13;" text="admin" GridPane.columnIndex="1" />
-            <PasswordField fx:id="pass_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-background-radius: 13; -fx-border-radius: 13;" text="admin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="uname_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-border-radius: 13; -fx-background-radius: 13;" GridPane.columnIndex="1" />
+            <PasswordField fx:id="pass_textfield" opacity="0.6" style="-fx-border-color: lightblue; -fx-background-radius: 13; -fx-border-radius: 13;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#login_button" opacity="0.8" style="-fx-background-radius: 13;" text="Bejelentkezés" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

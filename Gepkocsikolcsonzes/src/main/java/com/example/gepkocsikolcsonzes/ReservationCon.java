@@ -209,6 +209,7 @@ public class ReservationCon implements Initializable {
         String price_add = price_TF.getText();
 
 
+
         if (car_id_add.equals("") || start_add.equals("") || end_add.equals("") || pid_add.equals("") || price_add.equals("")) {
             Alert error_alert = new Alert(Alert.AlertType.CONFIRMATION);
             error_alert.setTitle("Hiba");
