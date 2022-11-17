@@ -12,7 +12,8 @@ $routes = [
         "/profil" => 'profilePage',
         "/kereses" => 'searchPage',
         "/orderbyprice" => 'orderbypricePage',
-        "/orderbypricedesc" => 'orderbypricedescPage'
+        "/orderbypricedesc" => 'orderbypricedescPage',
+        "/aboutus" => 'aboutusPage'
     ],
     'POST' => [
         "/register" => 'registrationhandler',
@@ -134,6 +135,14 @@ function profilePage()
         'bejelentkezve' => true,
     ]);
 }//megjelennek az adott profil adatai és azokat lehet módosítani
+
+function aboutusPage(){
+    echo compileTemplate('wrapper.phtml', [
+        'content' => compileTemplate('aboutus.phtml', [
+        ]),
+        'bejelentkezve' => isLoggedIn()
+    ]);
+}//Róllunk oldal betöltése
 
 function orderbypricePage(){
     $status = 'elerheto';
