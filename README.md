@@ -23,23 +23,23 @@ Tartalom
 
 [Bevezetés. 3](#Bevezetés)
 
-[Felhasználói Dokumentáció. 4](#Felhasználói)
+[Felhasználói Dokumentáció. 4](#Felhasználói_Dokumentáció)
 
 [Rendszerkövetelmény. 4](#Rendszerkövetelmény)
 
-[Hardver követelmények: 4](#Hardver követelmények:)
+[Hardver követelmények: 4](#Hardver_követelmények:)
 
-[Szoftver követelmények. 4](#Szoftver követelmények)
+[Szoftver követelmények. 4](#Szoftver_követelmények)
 
-[Telepítés menete. 5](#Telepítés menete)
+[Telepítés menete. 5](#Telepítés_menete)
 
-[Adatbázis hozzáadása. 5](#Adatbázis hozzáadása)
+[Adatbázis hozzáadása. 5](#Adatbázis_hozzáadása)
 
-[Weboldal telepítés menete: 6](#Weboldal telepítés menete:)
+[Weboldal telepítés menete: 6](#Weboldal_telepítés_menete:)
 
-[Java alkalmazás telepítése: 6](#Java alkalmazás telepítése:)
+[Java alkalmazás telepítése: 6](#Java_alkalmazás_telepítése:)
 
-[Szoftver használata. 8](#Szoftver használata)
+[Szoftver használata. 8](#Szoftver_használata)
 
 [Web alkalmazás használata. 8](#Web alkalmazás használata)
 
