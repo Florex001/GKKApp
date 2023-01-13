@@ -21,55 +21,55 @@ Sátoraljaújhely, 2022
 
 Tartalom
 
-[Bevezetés. 3](#_Toc124332921)
+[Bevezetés. 3](#Bevezetés)
 
-[Felhasználói Dokumentáció. 4](#_Toc124332922)
+[Felhasználói Dokumentáció. 4](#Felhasználói Dokumentáció)
 
-[Rendszerkövetelmény. 4](#_Toc124332923)
+[Rendszerkövetelmény. 4](#Rendszerkövetelmény)
 
-[Hardver követelmények: 4](#_Toc124332924)
+[Hardver követelmények: 4](#Hardver követelmények:)
 
-[Szoftver követelmények. 4](#_Toc124332925)
+[Szoftver követelmények. 4](#Szoftver követelmények)
 
-[Telepítés menete. 5](#_Toc124332926)
+[Telepítés menete. 5](#Telepítés menete)
 
-[Adatbázis hozzáadása. 5](#_Toc124332927)
+[Adatbázis hozzáadása. 5](#Adatbázis hozzáadása)
 
-[Weboldal telepítés menete: 6](#_Toc124332928)
+[Weboldal telepítés menete: 6](#Weboldal telepítés menete:)
 
-[Java alkalmazás telepítése: 6](#_Toc124332929)
+[Java alkalmazás telepítése: 6](#Java alkalmazás telepítése:)
 
-[Szoftver használata. 8](#_Toc124332930)
+[Szoftver használata. 8](#Szoftver használata)
 
-[Web alkalmazás használata. 8](#_Toc124332931)
+[Web alkalmazás használata. 8](#Web alkalmazás használata)
 
-[Java alkalmazás használata. 14](#_Toc124332932)
+[Java alkalmazás használata. 14](#Java alkalmazás használata)
 
-[Fejlesztői dokumentáció. 22](#_Toc124332933)
+[Fejlesztői dokumentáció. 22](#Fejlesztői dokumentáció)
 
-[Az alkalmazott fejlesztői eszközök. 22](#_Toc124332934)
+[Az alkalmazott fejlesztői eszközök. 22](#Az alkalmazott fejlesztői eszközök)
 
-[Trello projektkezelő. 22](#_Toc124332935)
+[Trello projektkezelő. 22](#Trello projektkezelő)
 
-[Git verziókezelő. 22](#_Toc124332936)
+[Git verziókezelő. 22](#Git verziókezelő)
 
-[XAMPP. 23](#_Toc124332937)
+[XAMPP. 23](#XAMPP)
 
-[Microsoft Visual Studio Code. 23](#_Toc124332938)
+[Microsoft Visual Studio Code. 23](#Microsoft Visual Studio Code)
 
-[IntelliJ IDEA.. 24](#_Toc124332939)
+[IntelliJ IDEA.. 24](#IntelliJ IDEA)
 
-[Microsoft Office Word. 24](#_Toc124332940)
+[Microsoft Office Word. 24](#Microsoft Office Word)
 
-[Adatmodell leírása. 25](#_Toc124332941)
+[Adatmodell leírása. 25](#Adatmodell leírása)
 
-[user tábla. 25](#_Toc124332942)
+[user tábla. 25](#user tábla)
 
-[vehicles tábla. 25](#_Toc124332943)
+[vehicles tábla. 25](#vehicles tábla)
 
-[booking tábla. 26](#_Toc124332944)
+[booking tábla. 26](#booking tábla)
 
-[message tábla. 26](#_Toc124332945)
+[message tábla. 26](#message tábla)
 
   
 
