@@ -21,55 +21,55 @@ Sátoraljaújhely, 2022
 
 Tartalom
 
-[Bevezetés. 3](#Bevezetés)
+[Bevezetés](#Bevezetés)
 
-[Felhasználói Dokumentáció. 4](#Felhasználói_Dokumentáció)
+[Felhasználói/Dokumentáció](#Felhasználói/Dokumentáció)
 
 [Rendszerkövetelmény. 4](#Rendszerkövetelmény)
 
-[Hardver követelmények: 4](#Hardver_követelmények:)
+[Hardver követelmények: 4](#Hardver/követelmények:)
 
-[Szoftver követelmények. 4](#Szoftver_követelmények)
+[Szoftver követelmények. 4](#Szoftver/követelmények)
 
-[Telepítés menete. 5](#Telepítés_menete)
+[Telepítés menete. 5](#Telepítés/menete)
 
-[Adatbázis hozzáadása. 5](#Adatbázis_hozzáadása)
+[Adatbázis hozzáadása. 5](#Adatbázis/hozzáadása)
 
-[Weboldal telepítés menete: 6](#Weboldal_telepítés_menete:)
+[Weboldal telepítés menete: 6](#Weboldal/telepítés/menete:)
 
-[Java alkalmazás telepítése: 6](#Java_alkalmazás_telepítése:)
+[Java alkalmazás telepítése: 6](#Java/alkalmazás/telepítése:)
 
-[Szoftver használata. 8](#Szoftver_használata)
+[Szoftver használata. 8](#Szoftver/használata)
 
-[Web alkalmazás használata. 8](#Web alkalmazás használata)
+[Web alkalmazás használata. 8](#Web/alkalmazás/használata)
 
-[Java alkalmazás használata. 14](#Java alkalmazás használata)
+[Java alkalmazás használata. 14](#Java/alkalmazás/használata)
 
-[Fejlesztői dokumentáció. 22](#Fejlesztői dokumentáció)
+[Fejlesztői dokumentáció. 22](#Fejlesztői/dokumentáció)
 
-[Az alkalmazott fejlesztői eszközök. 22](#Az alkalmazott fejlesztői eszközök)
+[Az alkalmazott fejlesztői eszközök. 22](#Az/alkalmazott/fejlesztői/eszközök)
 
-[Trello projektkezelő. 22](#Trello projektkezelő)
+[Trello projektkezelő. 22](#Trello/projektkezelő)
 
-[Git verziókezelő. 22](#Git verziókezelő)
+[Git verziókezelő. 22](#Git/verziókezelő)
 
 [XAMPP. 23](#XAMPP)
 
-[Microsoft Visual Studio Code. 23](#Microsoft Visual Studio Code)
+[Microsoft Visual Studio Code. 23](#Microsoft/Visual/Studio/Code)
 
-[IntelliJ IDEA.. 24](#IntelliJ IDEA)
+[IntelliJ IDEA.. 24](#IntelliJ/IDEA)
 
-[Microsoft Office Word. 24](#Microsoft Office Word)
+[Microsoft Office Word. 24](#Microsoft/Office/Word)
 
-[Adatmodell leírása. 25](#Adatmodell leírása)
+[Adatmodell leírása. 25](#Adatmodell/leírása)
 
-[user tábla. 25](#user tábla)
+[user tábla. 25](#user/tábla)
 
-[vehicles tábla. 25](#vehicles tábla)
+[vehicles tábla. 25](#vehicles/tábla)
 
-[booking tábla. 26](#booking tábla)
+[booking tábla. 26](#booking/tábla)
 
-[message tábla. 26](#message tábla)
+[message tábla. 26](#message/tábla)
 
   
 
@@ -87,11 +87,11 @@ A projekt elkészítése során a következő programozási nyelveket használtu
 
   
 
-# Felhasználói Dokumentáció
+# Felhasználói/Dokumentáció
 
 ## Rendszerkövetelmény
 
-### Hardver követelmények:
+### Hardver/követelmények:
 
 Minimális rendszerkövetelmény:
 
@@ -121,7 +121,7 @@ Ajánlott rendszerkövetelmény:
 
             **Kijelző:** 1280x1024
 
-### Szoftver követelmények
+### Szoftver/követelmények
 
 ·         XAMPP  v3.3.0
 
@@ -131,9 +131,9 @@ Ajánlott rendszerkövetelmény:
 
   
 
-## Telepítés menete
+## Telepítés/menete
 
-### Adatbázis hozzáadása
+### Adatbázis/hozzáadása
 
 Indítsa el a xampp-ot, ha nincs feltelepítve a számítógépre, akkor telepítse a v3.3.0 verzió számú vagy újabb programot, amely 8.1.6 vagy újabb php-val rendelkezik. A telepítésének folyamata a telepitő állomány megnyitásával kezdődik, majd ha végzett a telepítés indítsa el az Apache és a MySQL szervert. Ez az adatbázis FONTOS a weboldal és a java alkalmazás futtatásához is!
 
@@ -153,11 +153,11 @@ Nyissa meg a létrehozott adatbázist (gkkdb) és kattintson az **_import_** fü
 
 0‑3. Adatbázis importálása
 
-### Weboldal telepítés menete:
+### Weboldal/telepítés/menete:
 
 A weboldal feltelepítése előtt keresse meg a _xampp/htdocs_ nevű mappát, majd törölje annak minden tartalmát, ha ez megtörtént helyezze a _GKK WEB_ mappa tartalmát a törölt fájlok helyére. Írja be a keresőmezőbe a _localhost_ címet és élvezze weboldalunk nyújtotta szolgáltatásokat.
 
-### Java alkalmazás telepítése:
+### Java/alkalmazás/telepítése:
 
 #### Windows indítás:
 
@@ -183,9 +183,9 @@ Töltse le a git reposytort([https://github.com/Florex001/GKKApp](https://github
 
 6. Hiba üzenet Java
 
-## Szoftver használata
+## Szoftver/használata
 
-### Web alkalmazás használata
+### Web/alkalmazás/használata
 
 ![](vizsgaremekDokumentáció_files/image006.jpg)
 
@@ -260,7 +260,7 @@ A profil oldalon megjelenik egy profilkép, a felhasználónév, a felhasználó
 
 Az adatok csak külön-külön változtathatók meg. A felhasználónév, az e-mail cím, a telefonszám és a jelszó módosítható. A jelszót csak a régi jelszó tudatában tudja módosítani és az új jelszónak és az újra mezőnek egyeznie kell. Ha a vezetékneve és keresztneve változott vegye fel velünk a kapcsolatot e-mail címen.
 
-### Java alkalmazás használata
+### Java/alkalmazás/használata
 
 #### Általános Információk
 
@@ -366,11 +366,11 @@ A Felhasználók fülön egy táblázatban fel van sorolva az összes felhaszná
 
   
 
-# Fejlesztői dokumentáció
+# Fejlesztői/dokumentáció
 
-## Az alkalmazott fejlesztői eszközök
+## Az/alkalmazott/fejlesztői/eszközök
 
-### Trello projektkezelő
+### Trello/projektkezelő
 
 A csapatunk a Trello nevű projektkezelőt használta. A Trello megkönnyíti a projektek és feladatok kezelését a csapatok számára. A Trello olyan vizuális eszköz, amely segítette a csapatunk projektjének munkafolyamatát és segített a feladatkövetés kezelésében.
 
@@ -378,7 +378,7 @@ A csapatunk a Trello nevű projektkezelőt használta. A Trello megkönnyíti a 
 
 30.Trello Ikon
 
-### Git verziókezelő
+### Git/verziókezelő
 
 A Git egy ingyenes és nyílt forráskódú elosztott verziókezelő rendszer, amely a kicsitől, a nagyon nagy projektig mindent gyorsan és hatékonyan kezel. A csapatunk a Github rendszerét választotta. Alapvetően is ezt a verziókezelőt használtuk volna. Saját funkcióin felül a Git elosztott verziókövetését és forráskódkezelését (SCM) teszi elérhetővé. Hozzáférés-kezelést és számos együttműködési funkciót nyújt, mint például bug követés, szolgáltatáslekérés, feladatkezelés, valamint wikiket minden projekthez.
 
@@ -394,7 +394,7 @@ Azért a XAMPP adatbázis kezelőt választottuk, mert a PHP weboldalunknál nag
 
 32. XAMPP
 
-### Microsoft Visual Studio Code
+### Microsoft/Visual/Studio/Code
 
 Azért a Visual Studio Code-ot használtuk, mert ezt találtuk a legalkalmasabbnak mivel, sokféle programnyelvet és a Git verzió kezelését is támogatja. Ezen kívül számtalan hasznos bővítmény elérhető hozzá. A Visual Studio Code ingyenes, nyílt forráskódú kódszerkesztő, melyet a Microsoft fejleszt Windows, Linux és OS X operációs rendszerekhez. Támogatja a hibakeresőket, továbbá képes az intelligens kódkiegészítésre az IntelliSense segítségével.
 
@@ -404,7 +404,7 @@ Azért a Visual Studio Code-ot használtuk, mert ezt találtuk a legalkalmasabbn
 
   
 
-### IntelliJ IDEA
+### IntelliJ/IDEA
 
 Azért az IntelliJ IDEA-t használtuk, mert ez nyújtja a legnagyobb segítséget a JAVA alkalmazás fejlesztése közben. Az alkalmazást 11.0.14-es verzió számú JDK-val fejlesztettük. Az IntelliJ IDEA egy intelligens, a Java programkód írására alkalmas IDE a Java és más JVM-nyelvek, például a Kotlin, a Scala és a Groovy használatához mindenféle alkalmazáson. Az IntelliJ IDEA bővíthető a JetBrains által fejlesztett ingyenes bővítményekkel, amelyek lehetővé teszik más programozási nyelvekkel való együttműködést. Az IDE (Integrált fejlesztői környezet), olyan szoftver alkalmazás, amely átfogó létesítményeket biztosít a számítógépes programozók számára a szoftverfejlesztéshez.
 
@@ -412,7 +412,7 @@ Azért az IntelliJ IDEA-t használtuk, mert ez nyújtja a legnagyobb segítsége
 
 34. IntelliJ IDEA
 
-### Microsoft Office Word
+### Microsoft/Office/Word
 
 A dokumentáció megírásához a Microsoft Office csomagban található Microsoft Word-öt használtuk. A megbízható Word alkalmazás segítségével gyorsan és egyszerűen létrehozhatja, szerkesztheti, megtekintheti és megoszthatja fájljait másokkal.
 
@@ -420,11 +420,11 @@ A dokumentáció megírásához a Microsoft Office csomagban található Microso
 
 35. Microsoft Office Word
 
-## Adatmodell leírása
+## Adatmodell/leírása
 
 A projektünkhöz használt adatbázisnak a neve „gkkdb”. Ez az adatbázis 4 táblából áll, ezeknek a neve user, vehicles, bookings és message. Ezek között a táblák között kapcsolatok lettek kialakítva. Az adatbázis szerver futtatásához XAMPP szervert használtunk.
 
-### user tábla
+### user/tábla
 
 ![](vizsgaremekDokumentáció_files/image037.jpg)
 
@@ -432,7 +432,7 @@ A projektünkhöz használt adatbázisnak a neve „gkkdb”. Ez az adatbázis 4
 
 A(z) user táblába a felhasználó adatit tároljuk. A táblában 9 féle adatot tárolunk. Az első az **id**, amely egy azonosító, ami automatikusan kapja, az értékét minden egy regisztrációnál egyel nő a kapott érték. Ez az elsődleges kulcs a táblában. A(z) **username** a felhasználó fantázia neve. Ez a tábla másodlagos kulcsa. A **first\_name** és a **last\_name** a felhasználó keresztneve és vezetékneve. A **password** a felhasználó belépésekor az azonosításhoz szükséges jelszó. Az **email** és a **phone\_number** a felhasználó elektronikus levél címe és telefonszáma. A **registration\_date** (éééé-hh-nn) tárolja, hogy mikor regisztrált a felhasználó. Ez automatikusan tölti fel az adatot az aktuális dátummal. A **rank** a felhasználó jogosultságát tárolja, ezek lehetnek a(z) _user_, a _worker_ és az _admin_.
 
-### vehicles tábla
+### vehicles/tábla
 
 ![](vizsgaremekDokumentáció_files/image039.jpg)
 
@@ -440,7 +440,7 @@ A(z) user táblába a felhasználó adatit tároljuk. A táblában 9 féle adato
 
 A vehicles táblában a gépjárművek kerülnek tárolásra. Az id az elsődleges kulcs és ez az azonosítója az eltárolt gépjárműveknek. A **car** oszlopban tároljuk a gépjárművek pontos nevét. Az **info** nevű oszlopban tároljuk az adott autó leírását. A **daily\_price** nevű oszlopban van eltárolva a gépjármű napi ára forintban. Az **image** nevű oszlopban tároljuk a képeket amely **_mediumblob_** formátumban van eltárolva. A kép maximális mérete 16 MB lehet. A **status** a gépjármű aktuális állapotát tárolja el melyek a következők lehetnek, _foglalva_ és _elérhető_.
 
-### booking tábla
+### booking/tábla
 
 ![](vizsgaremekDokumentáció_files/image041.jpg)
 
@@ -448,7 +448,7 @@ A vehicles táblában a gépjárművek kerülnek tárolásra. Az id az elsődleg
 
 A bookings táblába a felhasználók gépjármű foglalásait tároljuk. Az első az **id**, amely egy elsődleges kulcs foglalás azonosítója. Ez az érték minden foglalásnál egyel nagyobb lesz . A(z) **user\_id** egy idegen kulcs amely a(z) **user** táblából kapja meg a felhasználó azonoítóját. A **borrowed\_vehicle\_id** is egy idegen kulcs ami a **vehicle** táblából kapja meg a gépjármű azonosítóját. A **borrow\_start** és a **borrow\_end** azok a dátumokat tárolja amelyet a felhasználó megad a foglaláskor , innentől kezdődik meg a gépjármű bérlése és fejeződik be. Ezeknek a formátuma éééé-hh-nn. A **driver\_license\_number** a felhasználó vezetői engedély száma amit a foglalásnál ad meg. A **price** az a bérlés megkezdése és a bérlés vége közötti különbség szorozva gépjármű napi árával forintba. A **status** a foglalásnak a státusza amelyek a következők lehetnek, _foglalva_, _elvitte_ és a _teljesítve_.
 
-### message tábla
+### message/tábla
 
 ![](vizsgaremekDokumentáció_files/image043.jpg)
 
