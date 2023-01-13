@@ -23,7 +23,7 @@ Tartalom
 
 [Bevezetés. 3](#Bevezetés)
 
-[Felhasználói Dokumentáció. 4](#FelhasználóiDokumentáció)
+[Felhasználói Dokumentáció. 4](#Felhasználói)
 
 [Rendszerkövetelmény. 4](#Rendszerkövetelmény)
 
